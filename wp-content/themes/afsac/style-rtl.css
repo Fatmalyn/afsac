@@ -1,0 +1,78 @@
+/*
+Theme Name: AFSAC (RTL)
+Description: Surcharges droite-à-gauche pour l'arabe. Chargé automatiquement par
+WordPress à la place de style.css quand la direction est RTL (is_rtl()). La
+plupart de la mise en page utilise déjà des propriétés logiques (margin-inline,
+inset-inline, padding-inline) : ce fichier ne corrige que les cas physiques.
+*/
+
+body { direction: rtl; text-align: right; }
+
+/* Police arabe. */
+body, h1, h2, h3, h4 { font-family: var(--afsac-font-arabic); }
+
+/* Barres flex : inverser l'ordre visuel. */
+.afsac-topbar__inner,
+.afsac-mainbar__inner,
+.afsac-footer__bottom-inner { flex-direction: row-reverse; }
+
+.afsac-topbar__contact,
+.afsac-topbar__aside,
+.afsac-mainbar__actions,
+.afsac-social__list,
+.afsac-language-switcher__list { flex-direction: row-reverse; }
+
+/* Sous-menus : aligner sur la droite. */
+.afsac-primary-nav .sub-menu { left: auto; right: 0; }
+
+/* Soulignement des lettres latines : neutre en arabe. */
+.afsac-logo__name { letter-spacing: 0.05em; }
+.afsac-footer__heading,
+.afsac-badge-inst,
+.afsac-language-switcher__link { letter-spacing: 0; }
+
+/* Tiroir mobile : déjà géré par inset-inline-end / translateX dans style.css. */
+@media (max-width: 980px) {
+	.afsac-primary-nav { transform: translateX(-100%); }
+	.afsac-primary-nav.is-open { transform: translateX(0); }
+}
+
+/* Carrousels : les chevrons « précédent / suivant » sont des tracés PHYSIQUES,
+ * ils doivent être retournés en lecture de droite à gauche. (La géométrie de
+ * l'anneau « Pourquoi nous choisir » est, elle, gérée en JS via dirSign.) */
+.afsac-fgrid__arrow svg,
+.afsac-pourquoi__arrow svg { transform: scaleX(-1); }
+
+/* Les barres qui se déploient horizontalement partent du bord de DÉBUT de
+ * lecture : à droite en RTL (transform-origin n'a pas de mot-clé logique). */
+.afsac-fgrid__dot.is-active::after,
+.afsac-fs-services .afsac-feature-card::before,
+.afsac-progress__bar,
+.afsac-pourquoi__progress-bar { transform-origin: right center; }
+
+/* « Pourquoi nous choisir » : la fenêtre de lecture déborde du côté d'où arrive
+ * le texte — à GAUCHE en lecture de droite à gauche (clip-path est physique).
+ * Les deux valeurs de inset() sont donc permutées. */
+.afsac-pourquoi__slides { clip-path: inset(-14px -1px -14px calc(-1 * var(--afsac-why-gap, 0px))); }
+
+/* Actualités (liste + page « Savoir plus »).
+ * - Alternance des rangées : l'entrée latérale part du côté du visuel, donc
+ *   inversée en lecture de droite à gauche.
+ * - Flèches et lettrine : glyphes / flottement PHYSIQUES, à retourner.
+ * - Le soulignement du titre se dessine depuis le bord de début (à droite). */
+.afsac-anim .afsac-nrow.afsac-reveal { transform: translate3d(26px, 18px, 0); }
+.afsac-anim .afsac-nrow--flip.afsac-reveal { transform: translate3d(-26px, 18px, 0); }
+.afsac-nrow__link { background-position: 100% 100%; }
+.afsac-nrow__cta .afsac-arrow,
+.afsac-anav__arrow,
+.afsac-article__back-arrow { transform: scaleX(-1); }
+.afsac-nrow:hover .afsac-nrow__cta .afsac-arrow { transform: scaleX(-1) translateX(5px); }
+.afsac-anav__card--prev:hover .afsac-anav__arrow { transform: scaleX(-1) translateX(-4px); }
+.afsac-anav__card--next:hover .afsac-anav__arrow { transform: scaleX(-1) translateX(4px); }
+.afsac-article__back .afsac-button:hover .afsac-article__back-arrow { transform: scaleX(-1) translateX(-4px); }
+.afsac-article .afsac-prose > p:first-of-type::first-letter { float: right; }
+
+@media (max-width: 860px) {
+	.afsac-anim .afsac-nrow.afsac-reveal,
+	.afsac-anim .afsac-nrow--flip.afsac-reveal { transform: translate3d(0, 18px, 0); }
+}

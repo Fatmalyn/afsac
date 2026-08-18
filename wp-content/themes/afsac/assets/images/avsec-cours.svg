@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 270" width="480" height="270">
+	<!--
+		Catalogue AVSEC — illustration du format « cours certifiant » : salle de
+		cours (tableau + rangées de pupitres). Deux bleus OACI uniquement, comme
+		les autres surfaces du site : le navy et le noir encre ont été retirés à
+		la demande du client (06/08/2026). AUCUN texte incrusté — l'illustration
+		doit valoir en FR comme en EN.
+	-->
+	<rect width="480" height="270" fill="#0054a4"/>
+
+	<!-- Sol : même bleu, une valeur en dessous, pour poser la perspective. -->
+	<path d="M0 168h480v102H0z" fill="#00478c"/>
+	<g stroke="#7db1e8" stroke-width="0.8" opacity="0.28" fill="none">
+		<path d="M62 168 38 270M162 168 152 270M318 168 328 270M418 168 442 270"/>
+		<path d="M0 188h480M0 212h480M0 240h480"/>
+	</g>
+
+	<!-- Tableau / écran de projection. -->
+	<rect x="150" y="40" width="180" height="88" fill="#00417f" stroke="#9fc6ec" stroke-width="1.5"/>
+	<g stroke="#cfe2f7" stroke-width="2.5" stroke-linecap="round" opacity="0.7">
+		<path d="M170 68h140M170 86h112M170 104h84"/>
+	</g>
+
+	<!-- Pupitres : 4 rangs de 3, comme une salle de cours OACI. -->
+	<g fill="#7db1e8" opacity="0.9">
+		<rect x="45" y="192" width="60" height="12" rx="3"/>
+		<rect x="155" y="192" width="60" height="12" rx="3"/>
+		<rect x="265" y="192" width="60" height="12" rx="3"/>
+		<rect x="375" y="192" width="60" height="12" rx="3"/>
+		<rect x="45" y="214" width="60" height="12" rx="3"/>
+		<rect x="155" y="214" width="60" height="12" rx="3"/>
+		<rect x="265" y="214" width="60" height="12" rx="3"/>
+		<rect x="375" y="214" width="60" height="12" rx="3"/>
+		<rect x="45" y="236" width="60" height="12" rx="3"/>
+		<rect x="155" y="236" width="60" height="12" rx="3"/>
+		<rect x="265" y="236" width="60" height="12" rx="3"/>
+		<rect x="375" y="236" width="60" height="12" rx="3"/>
+	</g>
+</svg>

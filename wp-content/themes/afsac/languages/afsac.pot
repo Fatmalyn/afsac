@@ -1,0 +1,4469 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: AFSAC\n"
+"Report-Msgid-Bugs-To: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Domain: afsac\n"
+"Language: \n"
+
+#: style.css includes/acf-fields.php:59
+msgid "AFSAC"
+msgstr ""
+
+#: style.css afsac-core.php
+msgid "https://afsac.local"
+msgstr ""
+
+#: 404.php:18
+msgid "Thème classique custom premium pour le site B2B AFSAC (centre de formation OACI). Présentation uniquement — la logique métier vit dans le plugin afsac-core. Multilingue FR/EN/AR avec support RTL."
+msgstr ""
+
+#: 404.php:21
+msgid "Page introuvable"
+msgstr ""
+
+#: 404.php:25
+msgid "La page demandée n’existe pas ou a été déplacée."
+msgstr ""
+
+#: archive-afsac_formation.php:42 index.php:45 template-actualites.php:120
+#: template-parts/home/temoignages.php:52
+msgid "Retour à l’accueil"
+msgstr ""
+
+#: archive-afsac_formation.php:43 index.php:46 template-actualites.php:121
+#: template-parts/home/temoignages.php:65 template-parts/shared/tour.php
+msgid "Précédent"
+msgstr ""
+
+#: functions.php:50 template-parts/header/nav.php:43
+#: template-parts/shared/tour.php
+msgid "Suivant"
+msgstr ""
+
+#: functions.php:51
+msgid "Navigation principale"
+msgstr ""
+
+#: functions.php:52
+msgid "Barre utilitaire (haut)"
+msgstr ""
+
+#: functions.php:186
+msgid "Pied de page — Liens utiles"
+msgstr ""
+
+#: functions.php:187
+msgid "%d session(s) non localisée(s) sur la carte (virtuelles, en ligne ou sans coordonnées)."
+msgstr ""
+
+#: functions.php:511 template-parts/footer/bottom.php:54
+msgid "Voir dans la liste"
+msgstr ""
+
+#: functions.php:512
+msgid "Mentions légales"
+msgstr ""
+
+#: functions.php:541 template-qui-sommes-nous.php:239
+msgid "Politique de confidentialité"
+msgstr ""
+
+#: functions.php:542
+msgid "Années d’expertise"
+msgstr ""
+
+#: functions.php:543 template-qui-sommes-nous.php:241
+#: template-references-temoignages.php:94
+msgid "Cours OACI"
+msgstr ""
+
+#: functions.php:544
+msgid "États accompagnés"
+msgstr ""
+
+#: functions.php:637
+msgid "Langues FR / EN / AR"
+msgstr ""
+
+#: functions.php:644 includes/breadcrumb.php:76 includes/breadcrumb.php:119
+msgid "Accueil"
+msgstr ""
+
+#: functions.php:673 includes/post-types.php:41 includes/post-types.php:96
+#: includes/post-types.php:147 includes/post-types.php:195
+#: includes/post-types.php:244
+msgid "Formations"
+msgstr ""
+
+#: functions.php:674 single-afsac_formation.php:402 includes/acf-fields.php:882
+msgid "Ouvert"
+msgstr ""
+
+#: functions.php:675 includes/acf-fields.php:883
+msgid "Complet"
+msgstr ""
+
+#: functions.php:676 includes/acf-fields.php:891
+msgid "Archivé"
+msgstr ""
+
+#: functions.php:703
+msgid "Annulé"
+msgstr ""
+
+#: functions.php:730
+msgid ""
+"Centre régional\n"
+"de formation OACI"
+msgstr ""
+
+#: functions.php:731 includes/messaging.php:121
+msgid "Coordonnées AFSAC"
+msgstr ""
+
+#: functions.php:766
+msgid "Téléphone, emails, adresse, réseaux sociaux et liens légaux affichés dans le header et le footer."
+msgstr ""
+
+#: functions.php:767
+msgid "Slogan à côté du logo (header)"
+msgstr ""
+
+#: functions.php:770 template-contact.php:174
+msgid "Page « Qui sommes-nous » (CTA accueil)"
+msgstr ""
+
+#: functions.php:771 includes/messaging.php:134
+msgid "Téléphone"
+msgstr ""
+
+#: functions.php:772
+msgid "Email — contact"
+msgstr ""
+
+#: functions.php:773
+msgid "Email — formation (training)"
+msgstr ""
+
+#: functions.php:774
+msgid "Email — sur-mesure (bespoke)"
+msgstr ""
+
+#: functions.php:777
+msgid "Adresse (une ligne par retour à la ligne)"
+msgstr ""
+
+#: functions.php:778
+msgid "Réseau social — LinkedIn (URL)"
+msgstr ""
+
+#: functions.php:779
+msgid "Réseau social — X / Twitter (URL)"
+msgstr ""
+
+#: functions.php:780
+msgid "Réseau social — Facebook (URL)"
+msgstr ""
+
+#: functions.php:783
+msgid "Réseau social — YouTube (URL)"
+msgstr ""
+
+#: functions.php:784
+msgid "Lien légal — Mentions légales (URL)"
+msgstr ""
+
+#: functions.php:785
+msgid "Lien légal — Politique de confidentialité (URL)"
+msgstr ""
+
+#: header.php:28
+msgid "Lien légal — Plan du site (URL)"
+msgstr ""
+
+#: page.php:33
+msgid "Aller au contenu principal"
+msgstr ""
+
+#: single-afsac_formation.php:124
+msgid "Pages :"
+msgstr ""
+
+#: single-afsac_formation.php:125 includes/acf-fields.php:692
+msgid "Initiation"
+msgstr ""
+
+#: single-afsac_formation.php:126 includes/acf-fields.php:693
+msgid "Fondamental"
+msgstr ""
+
+#: single-afsac_formation.php:127 includes/acf-fields.php:694
+msgid "Intermédiaire"
+msgstr ""
+
+#: single-afsac_formation.php:128 includes/acf-fields.php:695
+msgid "Avancé"
+msgstr ""
+
+#: single-afsac_formation.php:129 includes/acf-fields.php:696
+msgid "Technique"
+msgstr ""
+
+#: single-afsac_formation.php:184 taxonomy-afsac_area.php:175
+#: template-calendrier.php:262 includes/acf-fields.php:705
+msgid "Management"
+msgstr ""
+
+#: single-afsac_formation.php:186 taxonomy-afsac_area.php:77
+#: taxonomy-afsac_area.php:177
+msgid "En ligne (auto-rythmé)"
+msgstr ""
+
+#: single-afsac_formation.php:208 includes/acf-fields.php:188
+msgid "Avec instructeur"
+msgstr ""
+
+#: single-afsac_formation.php:278
+msgid "Retour"
+msgstr ""
+
+#: single-afsac_formation.php:285
+msgid "Objectif"
+msgstr ""
+
+#: single-afsac_formation.php:297
+msgid "Objectifs pédagogiques"
+msgstr ""
+
+#: single-afsac_formation.php:302
+msgid "Structure"
+msgstr ""
+
+#: single-afsac_formation.php:312
+msgid "Module %d :"
+msgstr ""
+
+#: single-afsac_formation.php:319 includes/acf-fields.php:630
+msgid "Public cible"
+msgstr ""
+
+#: single-afsac_formation.php:326
+msgid "Pré-requis"
+msgstr ""
+
+#: single-afsac_formation.php:337 includes/acf-fields.php:649
+msgid "Résultats attendus"
+msgstr ""
+
+#: single-afsac_formation.php:348 includes/acf-fields.php:672
+msgid "Développé par"
+msgstr ""
+
+#: single-afsac_formation.php:351 single-afsac_session.php:75
+#: taxonomy-afsac_area.php:246 taxonomy-afsac_area.php:248
+#: template-calendrier.php:327 template-calendrier.php:328
+#: template-inscription.php:150 template-parts/course-card.php:31
+msgid "Informations sur le cours"
+msgstr ""
+
+#: single-afsac_formation.php:354 includes/acf-fields.php:390
+msgid "Langue"
+msgstr ""
+
+#: single-afsac_formation.php:357 includes/acf-fields.php:682
+msgid "Autres langues"
+msgstr ""
+
+#: single-afsac_formation.php:360 template-inscription.php:153
+#: template-parts/card-formation.php:31 template-parts/course-card.php:37
+msgid "Mode de prestation"
+msgstr ""
+
+#: single-afsac_formation.php:363 includes/acf-fields.php:715
+msgid "Durée"
+msgstr ""
+
+#: single-afsac_formation.php:366 includes/acf-fields.php:689
+msgid "Niveau"
+msgstr ""
+
+#: single-afsac_formation.php:369
+msgid "Public"
+msgstr ""
+
+#: single-afsac_formation.php:369
+msgid "Certificat"
+msgstr ""
+
+#: single-afsac_formation.php:372 template-calendrier.php:381
+#: template-inscription.php:159 template-parts/session-row.php:84
+#: includes/acf-fields.php:748
+msgid "Oui"
+msgstr ""
+
+#: single-afsac_formation.php:380 template-parts/home/sessions.php:49
+msgid "Frais"
+msgstr ""
+
+#: single-afsac_formation.php:404
+msgid "Prochaines sessions"
+msgstr ""
+
+#: single-afsac_formation.php:415
+msgid "places"
+msgstr ""
+
+#: single-afsac_formation.php:420 template-inscription.php:131
+#: template-parts/session-row.php:95
+msgid "S’inscrire"
+msgstr ""
+
+#: single-afsac_formation.php:422 includes/inscription.php:249
+msgid "Inscription"
+msgstr ""
+
+#: single-afsac_formation.php:423 taxonomy-afsac_area.php:303
+#: template-calendrier.php:412
+msgid "Aucune session programmée pour le moment."
+msgstr ""
+
+#: single-afsac_session.php:39
+msgid "Demander une session"
+msgstr ""
+
+#: single-afsac_session.php:50
+msgid "Formation :"
+msgstr ""
+
+#: single-afsac_session.php:57 includes/acf-fields.php:835
+msgid "Date de début"
+msgstr ""
+
+#: single-afsac_session.php:64 template-calendrier.php:381
+#: template-inscription.php:147 template-parts/card-session.php:46
+#: template-parts/session-row.php:83 includes/acf-fields.php:844
+msgid "Date de fin"
+msgstr ""
+
+#: single-afsac_session.php:82 includes/acf-fields.php:852
+msgid "Lieu"
+msgstr ""
+
+#: single-afsac_session.php:89 template-parts/card-session.php:53
+#: includes/acf-fields.php:869
+msgid "Places disponibles"
+msgstr ""
+
+#: single.php:74 includes/acf-fields.php:881
+msgid "Statut"
+msgstr ""
+
+#: single.php:98
+msgid "Retour aux actualités"
+msgstr ""
+
+#: taxonomy-afsac_area.php:76 template-parts/footer/columns.php:45
+msgid "À lire aussi"
+msgstr ""
+
+#: taxonomy-afsac_area.php:78
+msgid "Tous les cours"
+msgstr ""
+
+#: taxonomy-afsac_area.php:79
+msgid "Auto-rythmé"
+msgstr ""
+
+#: taxonomy-afsac_area.php:89
+msgid "Programmes"
+msgstr ""
+
+#: taxonomy-afsac_area.php:91 template-catalogue.php:112
+msgid "Retour aux domaines"
+msgstr ""
+
+#: taxonomy-afsac_area.php:98
+msgid "Domaine OACI"
+msgstr ""
+
+#: taxonomy-afsac_area.php:225 includes/acf-fields.php:185
+msgid "Méthode de dispensation"
+msgstr ""
+
+#: taxonomy-afsac_area.php:226
+msgid "Sous-domaines"
+msgstr ""
+
+#: taxonomy-afsac_area.php:236 taxonomy-afsac_area.php:238
+#: template-calendrier.php:304 template-calendrier.php:305
+msgid "Tous les sous-domaines"
+msgstr ""
+
+#: taxonomy-afsac_area.php:256 taxonomy-afsac_area.php:258
+#: taxonomy-afsac_area.php:278 template-references-temoignages.php:248
+#: template-references-temoignages.php:293
+msgid "Localisation"
+msgstr ""
+
+#: taxonomy-afsac_area.php:267
+msgid "Type"
+msgstr ""
+
+#: taxonomy-afsac_area.php:267
+msgid "Rechercher un cours…"
+msgstr ""
+
+#: taxonomy-afsac_area.php:274
+msgid "Rechercher un cours"
+msgstr ""
+
+#: taxonomy-afsac_area.php:276 template-calendrier.php:353
+msgid "cours"
+msgstr ""
+
+#: taxonomy-afsac_area.php:279 template-calendrier.php:356
+msgid "trier par :"
+msgstr ""
+
+#: taxonomy-afsac_area.php:284 template-parts/home/sessions.php:50
+msgid "Titre (A→Z)"
+msgstr ""
+
+#: taxonomy-afsac_area.php:285
+msgid "Sessions à venir"
+msgstr ""
+
+#: taxonomy-afsac_area.php:286
+msgid "Virtuel uniquement"
+msgstr ""
+
+#: taxonomy-afsac_area.php:294
+msgid "Tarif réduit États ACA"
+msgstr ""
+
+#: taxonomy-afsac_area.php:296 template-calendrier.php:391
+msgid "Aucun cours ne correspond à vos critères."
+msgstr ""
+
+#: taxonomy-afsac_area.php:301
+msgid "Pagination"
+msgstr ""
+
+#: taxonomy-afsac_area.php:302
+msgid "Aucun cours programmé pour ce domaine"
+msgstr ""
+
+msgid "Ce domaine sera bientôt enrichi. Contactez-nous pour organiser une session sur mesure ou recevoir le programme détaillé."
+msgstr ""
+
+#: template-actualites.php:57
+msgid "Actualités"
+msgstr ""
+
+#: template-actualites.php:61
+msgid "Le fil de l’AFSAC"
+msgstr ""
+
+#: template-actualites.php:126
+msgid "Décryptages, actualités réglementaires et temps forts de la formation aéronautique civile."
+msgstr ""
+
+#: template-actualites.php:136
+msgid "Pagination des actualités"
+msgstr ""
+
+#: template-actualites.php:137
+msgid "Aucune actualité pour le moment"
+msgstr ""
+
+#: template-actualites.php:138 template-contact.php:63
+#: template-espace-participant.php:84
+msgid "Revenez bientôt : nous publions régulièrement des actualités sur l’aviation civile et nos formations."
+msgstr ""
+
+msgid "Nous contacter"
+msgstr ""
+
+#: template-calendrier.php:67 template-calendrier.php:260
+#: includes/post-types.php:106
+msgid "Calendrier des sessions"
+msgstr ""
+
+#: template-calendrier.php:68 template-calendrier.php:181
+msgid "Présentiel"
+msgstr ""
+
+#: template-calendrier.php:69 template-calendrier.php:179
+msgid "Virtuel"
+msgstr ""
+
+#: template-calendrier.php:259
+msgid "En ligne"
+msgstr ""
+
+#: template-calendrier.php:261
+msgid "Tous les modes"
+msgstr ""
+
+#: template-calendrier.php:271
+msgid "Virtuel (synchrone)"
+msgstr ""
+
+#: template-calendrier.php:272
+msgid "Sessions OACI à venir"
+msgstr ""
+
+#: template-calendrier.php:275
+msgid "Calendrier des sessions de formation"
+msgstr ""
+
+#: template-calendrier.php:294
+msgid "Modes de formation"
+msgstr ""
+
+#: template-calendrier.php:295
+msgid "Types de session"
+msgstr ""
+
+#: template-calendrier.php:311 template-calendrier.php:312
+#: includes/taxonomies.php:220
+msgid "Tous les types"
+msgstr ""
+
+#: template-calendrier.php:319 template-calendrier.php:320
+#: template-inscription.php:141
+msgid "Domaine"
+msgstr ""
+
+#: template-calendrier.php:335 template-parts/card-session.php:32
+#: includes/acf-fields.php:894
+msgid "Institution hôte"
+msgstr ""
+
+#: template-calendrier.php:336
+msgid "Du"
+msgstr ""
+
+#: template-calendrier.php:339 template-parts/card-session.php:39
+msgid "À partir du"
+msgstr ""
+
+#: template-calendrier.php:340
+msgid "Au"
+msgstr ""
+
+#: template-calendrier.php:344
+msgid "Jusqu’au"
+msgstr ""
+
+#: template-calendrier.php:344
+msgid "Rechercher…"
+msgstr ""
+
+#: template-calendrier.php:351 includes/post-types.php:103
+msgid "Rechercher une session"
+msgstr ""
+
+#: template-calendrier.php:351
+msgid "session"
+msgstr ""
+
+#: template-calendrier.php:355
+msgid "sessions"
+msgstr ""
+
+#: template-calendrier.php:364 includes/inscription.php:120
+msgid "Date"
+msgstr ""
+
+#: template-calendrier.php:366
+msgid "Sessions avec tarif réduit"
+msgstr ""
+
+#: template-calendrier.php:367
+msgid "Affichage"
+msgstr ""
+
+#: template-calendrier.php:368
+msgid "Liste"
+msgstr ""
+
+#: template-calendrier.php:381 template-parts/session-row.php:61
+msgid "Carte"
+msgstr ""
+
+#: template-calendrier.php:381 template-inscription.php:144
+#: template-parts/session-row.php:79 includes/messaging.php:37
+msgid "Cours"
+msgstr ""
+
+#: template-calendrier.php:381 template-parts/session-row.php:91
+msgid "Dates"
+msgstr ""
+
+#: template-calendrier.php:389
+msgid "Action"
+msgstr ""
+
+#: template-calendrier.php:397
+msgid "Aucune session ne correspond à vos critères."
+msgstr ""
+
+#: template-calendrier.php:410
+msgid "Carte des sessions"
+msgstr ""
+
+#: template-calendrier.php:411
+msgid "Aucune session programmée pour le moment"
+msgstr ""
+
+msgid "De nouvelles sessions sont planifiées régulièrement. Contactez-nous pour organiser une session sur mesure ou recevoir le calendrier détaillé."
+msgstr ""
+
+#: template-catalogue.php:44
+msgid "Catalogue"
+msgstr ""
+
+#: template-catalogue.php:48
+msgid "Notre catalogue"
+msgstr ""
+
+#: template-catalogue.php:56
+msgid "TRAINAIR PLUS & AVSEC, en français, anglais et arabe."
+msgstr ""
+
+#: template-catalogue.php:72
+msgid "Catalogue · %s domaines OACI"
+msgstr ""
+
+#: template-catalogue.php:124
+msgid "Programmes TRAINAIR PLUS & AVSEC : %1$s domaines aéronautiques OACI, %2$s cours standardisés, en français, anglais et arabe."
+msgstr ""
+
+#: template-catalogue.php:131 template-parts/home/departments.php:31
+msgid "%s cours"
+msgid_plural "%s cours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: template-catalogue.php:136
+msgid "Voir les cours"
+msgstr ""
+
+#: template-inscription.php:165 template-parts/footer/columns.php:60
+msgid "Le catalogue des domaines sera bientôt disponible."
+msgstr ""
+
+#: template-contact.php:51
+msgid "Contact"
+msgstr ""
+
+#: template-contact.php:52
+msgid "LinkedIn"
+msgstr ""
+
+#: template-contact.php:53
+msgid "Facebook"
+msgstr ""
+
+#: template-contact.php:54
+msgid "X"
+msgstr ""
+
+#: template-contact.php:67
+msgid "YouTube"
+msgstr ""
+
+#: template-contact.php:88
+msgid "Une question, un projet de formation ? Notre équipe vous répond."
+msgstr ""
+
+#: template-contact.php:89
+msgid "Message envoyé"
+msgstr ""
+
+#: template-contact.php:95 template-inscription.php:185
+msgid "Merci. Votre message a bien été reçu ; nous reviendrons vers vous dans les meilleurs délais."
+msgstr ""
+
+#: template-contact.php:114 template-inscription.php:221
+msgid "Merci de corriger les points suivants :"
+msgstr ""
+
+#: template-contact.php:118 template-contact.php:183
+#: template-inscription.php:225 includes/messaging.php:422
+msgid "Nom"
+msgstr ""
+
+#: template-contact.php:122 template-inscription.php:249
+#: includes/contact.php:236 includes/messaging.php:415
+msgid "E-mail"
+msgstr ""
+
+#: template-contact.php:126 includes/acf-fields.php:374
+msgid "Organisation"
+msgstr ""
+
+#: template-contact.php:128 includes/contact.php:237
+#: includes/inscription.php:250
+msgid "Sujet"
+msgstr ""
+
+#: template-contact.php:135
+msgid "Choisir un sujet"
+msgstr ""
+
+#: template-contact.php:142 template-inscription.php:317
+#: includes/contact.php:235 includes/inscription.php:248
+#: includes/messaging.php:413 includes/messaging.php:456
+msgid "Message"
+msgstr ""
+
+#: template-contact.php:146
+msgid "J’accepte le traitement de mes données conformément au RGPD et à la loi n° 63-2004 relative à la protection des données personnelles."
+msgstr ""
+
+#: template-contact.php:151
+msgid "Envoyer le message"
+msgstr ""
+
+#: template-contact.php:165 template-parts/footer/columns.php:87
+msgid "Réponse sous 48 h ouvrées."
+msgstr ""
+
+#: template-contact.php:192 includes/messaging.php:128
+msgid "Adresse"
+msgstr ""
+
+#: template-contact.php:211 includes/messaging.php:147
+msgid "Horaires"
+msgstr ""
+
+#: template-contact.php:225
+msgid "Réseaux"
+msgstr ""
+
+#: template-espace-participant.php:22 template-parts/footer/columns.php:48
+#: template-parts/header/nav.php:67
+msgid "Carte de localisation AFSAC"
+msgstr ""
+
+#: template-espace-participant.php:26
+msgid "Espace participant"
+msgstr ""
+
+#: template-espace-participant.php:41
+msgid "Votre espace personnel arrive bientôt : suivez vos inscriptions, accédez à vos supports de cours et téléchargez vos attestations."
+msgstr ""
+
+#: template-espace-participant.php:45
+msgid "Bientôt disponible"
+msgstr ""
+
+#: template-espace-participant.php:52
+msgid "Ce que votre espace vous offrira"
+msgstr ""
+
+#: template-espace-participant.php:53
+msgid "Suivre mes inscriptions"
+msgstr ""
+
+#: template-espace-participant.php:57
+msgid "Retrouvez l’état de vos demandes d’inscription et vos sessions confirmées."
+msgstr ""
+
+#: template-espace-participant.php:58
+msgid "Accéder aux supports de cours"
+msgstr ""
+
+#: template-espace-participant.php:62
+msgid "Téléchargez les supports pédagogiques de vos formations en cours."
+msgstr ""
+
+#: template-espace-participant.php:63
+msgid "Télécharger mes attestations"
+msgstr ""
+
+#: template-espace-participant.php:67
+msgid "Obtenez vos certificats et attestations de fin de formation."
+msgstr ""
+
+#: template-espace-participant.php:68
+msgid "Gérer mon profil"
+msgstr ""
+
+#: template-espace-participant.php:75
+#: template-parts/page-formations/pillars.php:45
+#: template-qui-sommes-nous.php:280
+msgid "Mettez à jour vos informations et vos préférences pédagogiques."
+msgstr ""
+
+#: template-espace-participant.php:78
+msgid "Voir le catalogue"
+msgstr ""
+
+#: template-espace-participant.php:81
+msgid "Voir le calendrier"
+msgstr ""
+
+#: template-espace-participant.php:111
+msgid "S’inscrire à une session"
+msgstr ""
+
+#: template-espace-participant.php:126
+msgid "Disponible prochainement"
+msgstr ""
+
+#: template-espace-participant.php:127
+msgid "En attendant"
+msgstr ""
+
+msgid "Continuez votre parcours"
+msgstr ""
+
+#: template-formations-services.php:34
+msgid "AFSAC — Formations & Services"
+msgstr ""
+
+#: template-formations-services.php:38
+msgid "Notre offre"
+msgstr ""
+
+msgid "Formations OACI certifiées et services d’accompagnement réglementaire."
+msgstr ""
+
+#: template-inscription.php:89
+msgid "Inscription participant"
+msgstr ""
+
+#: template-inscription.php:89
+msgid "M."
+msgstr ""
+
+#: template-inscription.php:89 template-inscription.php:96
+#: template-inscription.php:103
+msgid "Mme"
+msgstr ""
+
+#: template-inscription.php:92 includes/contact.php:123
+#: includes/inscription.php:64
+msgid "Autre"
+msgstr ""
+
+#: template-inscription.php:93
+msgid "Autorité / DGAC"
+msgstr ""
+
+#: template-inscription.php:94
+msgid "Aéroport / ANSP"
+msgstr ""
+
+#: template-inscription.php:95
+msgid "Compagnie aérienne"
+msgstr ""
+
+#: template-inscription.php:98
+msgid "Académie / École"
+msgstr ""
+
+#: template-inscription.php:98
+msgid "Français"
+msgstr ""
+
+#: template-inscription.php:98
+msgid "Anglais"
+msgstr ""
+
+#: template-inscription.php:100
+msgid "Arabe"
+msgstr ""
+
+#: template-inscription.php:101
+msgid "Bon de commande"
+msgstr ""
+
+#: template-inscription.php:102
+msgid "Virement bancaire"
+msgstr ""
+
+#: template-inscription.php:113
+msgid "Prise en charge institutionnelle"
+msgstr ""
+
+#: template-inscription.php:115 template-inscription.php:179
+msgid "Inscription du participant"
+msgstr ""
+
+#: template-inscription.php:133
+msgid "Retour au cours"
+msgstr ""
+
+#: template-inscription.php:137
+msgid "Détails du cours"
+msgstr ""
+
+#: template-inscription.php:156
+msgid "Sélectionnez une session pour afficher les détails (dates, lieu, langue, places restantes)."
+msgstr ""
+
+#: template-inscription.php:177
+msgid "Places restantes"
+msgstr ""
+
+#: template-inscription.php:178
+msgid "Inscription reçue"
+msgstr ""
+
+#: template-inscription.php:205
+msgid "Merci. Votre demande d’inscription a bien été enregistrée ; vous recevrez un e-mail de confirmation. Nos équipes vous recontacteront."
+msgstr ""
+
+#: template-inscription.php:208
+msgid "Informations personnelles"
+msgstr ""
+
+#: template-inscription.php:210 template-inscription.php:255
+#: template-inscription.php:274 template-inscription.php:297
+msgid "Civilité"
+msgstr ""
+
+#: template-inscription.php:217
+msgid "Sélectionner"
+msgstr ""
+
+#: template-inscription.php:227
+msgid "Prénom"
+msgstr ""
+
+#: template-inscription.php:230
+msgid "Une confirmation vous sera envoyée à cette adresse."
+msgstr ""
+
+#: template-inscription.php:232
+msgid "Tranche d’âge"
+msgstr ""
+
+#: template-inscription.php:242
+msgid "Non précisé"
+msgstr ""
+
+#: template-inscription.php:245
+msgid "Informations professionnelles"
+msgstr ""
+
+#: template-inscription.php:253 includes/acf-fields.php:367
+msgid "Fonction"
+msgstr ""
+
+#: template-inscription.php:262 template-references-temoignages.php:292
+msgid "Type d’organisation"
+msgstr ""
+
+#: template-inscription.php:269 includes/messaging.php:460
+#: includes/post-types.php:40
+msgid "Pays"
+msgstr ""
+
+#: template-inscription.php:272
+msgid "Préférences pédagogiques"
+msgstr ""
+
+#: template-inscription.php:281
+msgid "Langue préférée des supports"
+msgstr ""
+
+#: template-inscription.php:285
+msgid "Régime alimentaire"
+msgstr ""
+
+#: template-inscription.php:292
+msgid "Besoins d’accessibilité"
+msgstr ""
+
+#: template-inscription.php:295
+msgid "Mode de paiement"
+msgstr ""
+
+#: template-inscription.php:304 includes/messaging.php:465
+msgid "Mode de règlement"
+msgstr ""
+
+#: template-inscription.php:313
+msgid "N° de bon de commande"
+msgstr ""
+
+#: template-inscription.php:322
+msgid "Je certifie l’exactitude des informations fournies et j’accepte les conditions générales de l’AFSAC."
+msgstr ""
+
+#: template-inscription.php:323
+msgid "Annuler"
+msgstr ""
+
+#: template-inscription.php:323
+msgid "Brouillon enregistré ✓"
+msgstr ""
+
+#: template-inscription.php:324
+msgid "Enregistrer le brouillon"
+msgstr ""
+
+#: template-parts/card-formation.php:39
+msgid "Soumettre l’inscription"
+msgstr ""
+
+#: template-parts/content-none.php:13 includes/post-types.php:46
+msgid "Voir la formation"
+msgstr ""
+
+#: template-parts/content-none.php:14
+msgid "Aucun résultat"
+msgstr ""
+
+#: template-parts/course-card.php:34
+msgid "Aucun contenu ne correspond pour le moment. Revenez bientôt."
+msgstr ""
+
+#: template-parts/course-card.php:56
+msgid "Modalité"
+msgstr ""
+
+#: template-parts/course-row.php:66
+msgid "Voir le cours"
+msgstr ""
+
+#: template-parts/course-row.php:86
+msgid "Développé par %s"
+msgstr ""
+
+#: template-parts/footer/bottom.php:23
+msgid "Tarif réduit ACA"
+msgstr ""
+
+#: template-parts/footer/bottom.php:31
+msgid "Member State"
+msgstr ""
+
+#: template-parts/footer/bottom.php:32
+msgid "Regional"
+msgstr ""
+
+#: template-parts/footer/bottom.php:46
+msgid "AVSEC Training Centre"
+msgstr ""
+
+#: template-parts/footer/columns.php:36
+msgid "© %1$s %2$s · ICAO ASTC Tunisia. Tous droits réservés."
+msgstr ""
+
+#: template-parts/footer/columns.php:43
+msgid "Liens utiles"
+msgstr ""
+
+#: template-parts/footer/columns.php:44
+msgid "Qui sommes-nous"
+msgstr ""
+
+#: template-parts/footer/columns.php:46
+msgid "Mission & Vision"
+msgstr ""
+
+#: template-parts/footer/columns.php:47 includes/post-types.php:102
+msgid "Toutes les sessions"
+msgstr ""
+
+#: template-parts/footer/columns.php:95
+msgid "Demande de formation"
+msgstr ""
+
+#: template-parts/footer/columns.php:110
+msgid "Réseaux sociaux"
+msgstr ""
+
+#: template-parts/footer/columns.php:113
+msgid "S’abonner"
+msgstr ""
+
+#: template-parts/header/nav.php:58
+msgid "Nous écrire"
+msgstr ""
+
+#: template-parts/header/nav.php:70
+msgid "Rechercher"
+msgstr ""
+
+#: template-parts/header/topbar.php:51
+msgid "Ouvrir le menu"
+msgstr ""
+
+#: template-parts/home/departments.php:37
+msgid "Liens rapides"
+msgstr ""
+
+#: template-parts/home/departments.php:38
+msgid "Catégories de formation"
+msgstr ""
+
+#: template-parts/home/departments.php:90
+msgid "Choisissez votre département"
+msgstr ""
+
+#: template-parts/home/departments.php:173
+msgid "11 domaines OACI · 483 cours"
+msgstr ""
+
+#: template-parts/home/documentation.php:24
+msgid "Voir tout le catalogue"
+msgstr ""
+
+#: template-parts/home/documentation.php:25
+msgid "Documentation"
+msgstr ""
+
+#: template-parts/home/documentation.php:26
+msgid "Téléchargez le programme de formation 2026"
+msgstr ""
+
+#: template-parts/home/documentation.php:41
+msgid "Catalogue complet AFSAC : programmes TRAINAIR PLUS sur les 11 domaines OACI, formations AVSEC en français, anglais et arabe, prestations de conseil et d'audit. Format PDF."
+msgstr ""
+
+#: template-parts/home/documentation.php:42
+msgid "français"
+msgstr ""
+
+#: template-parts/home/documentation.php:43
+msgid "anglais"
+msgstr ""
+
+#: template-parts/home/documentation.php:54
+msgid "arabe"
+msgstr ""
+
+#: template-parts/home/documentation.php:57
+msgid "Télécharger la brochure en %1$s (PDF, %2$s)"
+msgstr ""
+
+#: template-parts/home/hero.php:32
+msgid "Télécharger la brochure en %s (PDF)"
+msgstr ""
+
+#: template-parts/home/hero.php:33
+msgid "Centre régional de formation à la sûreté de l’aviation · OACI"
+msgstr ""
+
+#: template-parts/home/hero.php:34
+msgid "L’excellence en formation à la sûreté de l’aviation"
+msgstr ""
+
+#: template-parts/home/hero.php:35
+msgid "Programmes TRAINAIR PLUS et AVSEC certifiés OACI, dispensés en français, anglais et arabe pour les autorités et opérateurs de l’aviation civile."
+msgstr ""
+
+#: template-parts/home/hero.php:36
+msgid "Consulter les formations"
+msgstr ""
+
+#: template-parts/home/intro.php
+msgid "diaporama"
+msgstr ""
+
+#: template-parts/home/intro.php
+msgid "AFSAC – ICAO ASTC Tunis"
+msgstr ""
+
+#: template-parts/home/intro.php
+msgid "Votre partenaire stratégique pour le développement des capacités de l’aviation civile"
+msgstr ""
+
+#: template-parts/home/intro.php
+msgid "L’AFSAC – ICAO ASTC Tunis est un Centre international d’excellence de l’Organisation de l’Aviation Civile Internationale (OACI), bénéficiant d’un positionnement unique grâce à sa double reconnaissance officielle en tant que <strong>Centre Régional de Formation à la Sûreté de l’Aviation Civile (ICAO Aviation Security Training Centre – ASTC)</strong> et <strong>membre du Programme mondial ICAO TRAINAIR PLUS (Global Aviation Training – GAT)</strong>."
+msgstr ""
+
+#: template-parts/home/intro.php
+msgid "Cette double reconnaissance confère à l’AFSAC la capacité de concevoir, développer et dispenser des <strong>programmes de formation certifiants</strong> couvrant les différents domaines techniques de l’aviation civile relevant des <strong>19 Annexes de la Convention de Chicago</strong>, en s’appuyant sur les mallettes pédagogiques officielles de l’OACI (Standardized Training Packages – STPs, Competency-Based Training Packages – CBTs et TRAINAIR PLUS Training Packages – TPPs), conformément aux Standards et Pratiques Recommandées (SARPs), aux Procédures pour les services de navigation aérienne (PANS) et aux meilleures pratiques internationales."
+msgstr ""
+
+#: template-parts/home/intro.php
+msgid "Au-delà de son rôle de centre de formation, l’AFSAC accompagne les <strong>États, les Autorités de l’Aviation Civile, les exploitants d’aéroports, les prestataires de services de navigation aérienne, les compagnies aériennes et les organisations internationales</strong> dans la mise en œuvre des normes et exigences de l’OACI, à travers des solutions intégrées de formation, assistance technique, coaching, conseil, audits, renforcement des capacités, développement des compétences, ingénierie pédagogique et appui institutionnel."
+msgstr ""
+
+#: template-parts/home/intro.php
+msgid "En parfaite cohérence avec l’initiative mondiale de l’OACI <strong>« No Country Left Behind »</strong>, l’AFSAC mobilise son réseau d’experts internationaux afin d’accompagner les États dans le développement durable de leurs capacités nationales, le transfert de connaissances et d’expertise ainsi que le renforcement des compétences de leur capital humain. À travers ses programmes de formation, ses missions d’assistance technique et son accompagnement stratégique, l’AFSAC contribue à l’amélioration des systèmes nationaux de supervision, à la préparation aux audits internationaux et à la modernisation des structures de l’aviation civile, en faveur d’un transport aérien plus sûr, plus sécurisé, plus performant et durable."
+msgstr ""
+
+#: template-parts/home/intro.php
+msgid "Sessions de formation à l’AFSAC – ICAO ASTC Tunis"
+msgstr ""
+
+#: template-parts/home/intro.php
+msgid "Participants et équipe de l’AFSAC réunis dans le hall du Centre régional de formation à la sûreté de l’aviation de l’OACI de Tunis"
+msgstr ""
+
+#: template-parts/home/intro.php
+msgid "Stagiaires déployant le drapeau de l’OACI à l’ouverture d’une session de formation"
+msgstr ""
+
+#: template-parts/home/intro.php
+msgid "Maquette du bâtiment du Centre régional de formation à la sûreté de l’aviation de l’OACI de Tunis (ASTC)"
+msgstr ""
+
+#: template-parts/home/intro.php
+msgid "Remise du drapeau de l’OACI lors de la réunion Course Developers and Instructors Standardization (CDI/STD) de l’OACI à Tunis, décembre 2017"
+msgstr ""
+
+#: template-parts/home/intro.php
+msgid "Stagiaires venus de la région déployant le drapeau de l’OACI à l’ouverture de deux sessions de formation"
+msgstr ""
+
+#: template-parts/home/intro.php
+msgid "Stagiaires présentant leur certificat à l’issue d’une session de formation à la sûreté de l’aviation"
+msgstr ""
+
+#: template-parts/home/intro.php
+msgid "Photo de clôture d’une promotion devant le mur du Centre régional de formation de l’OACI de Tunis"
+msgstr ""
+
+#: template-parts/home/intro.php
+msgid "Trois stagiaires présentant leur certificat de formation à la sûreté de l’aviation"
+msgstr ""
+
+#: template-parts/home/intro.php
+msgid "Participants d’un cours pour inspecteurs de la sûreté de l’aviation avec leur attestation"
+msgstr ""
+
+#: template-parts/home/intro.php
+msgid "Participants d’un atelier sur le contrôle qualité de la sûreté de l’aviation civile"
+msgstr ""
+
+#: template-parts/home/intro.php
+msgid "Instructeurs certifiés en sûreté de l’aviation civile à l’issue de leur formation de formateurs"
+msgstr ""
+
+#: template-parts/home/intro.php
+msgid "Stagiaires déployant le drapeau de l’OACI à l’issue d’un cours pour inspecteurs de la sûreté de l’aviation"
+msgstr ""
+
+#: template-parts/home/intro.php
+msgid "Choisir une photo"
+msgstr ""
+
+#: template-parts/home/intro.php
+msgid "Photo %d"
+msgstr ""
+
+#: template-parts/home/partenaires.php:34
+#: template-references-temoignages.php:120
+msgid "Découvrir l’AFSAC"
+msgstr ""
+
+#: template-parts/home/partenaires.php:35
+#: template-references-temoignages.php:121
+msgid "Ils nous font confiance"
+msgstr ""
+
+#: template-parts/home/sessions.php:53
+msgid "Partenaires institutionnels et clients de référence"
+msgstr ""
+
+#: template-parts/home/sessions.php:55
+msgid "Calendrier complet"
+msgstr ""
+
+#: template-parts/home/sessions.php:56
+msgid "Sessions précédentes"
+msgstr ""
+
+#: template-parts/home/sessions.php:153
+msgid "Sessions suivantes"
+msgstr ""
+
+#: template-parts/home/sessions.php:155 template-parts/home/sessions.php:157
+msgid "%s place"
+msgid_plural "%s places"
+msgstr[0] ""
+msgstr[1] ""
+
+#: template-parts/home/temoignages.php:45
+msgid "S'inscrire"
+msgstr ""
+
+#: template-parts/home/temoignages.php:47
+msgid "L'expérience AFSAC"
+msgstr ""
+
+#: template-parts/home/temoignages.php:49 includes/post-types.php:146
+msgid "Témoignages"
+msgstr ""
+
+#: template-parts/home/temoignages.php:69
+msgid "Ce qu'en disent nos clients…"
+msgstr ""
+
+#: template-parts/news-card.php:53
+msgid "Témoignage %d"
+msgstr ""
+
+#: template-parts/page-formations/catalogue-cta.php:33
+#: template-qui-sommes-nous.php:277
+msgid "Lire l’article"
+msgstr ""
+
+#: template-parts/page-formations/catalogue-cta.php:38
+msgid "Téléchargez notre catalogue"
+msgstr ""
+
+#: template-parts/page-formations/catalogue-cta.php:47
+msgid "Catalogue digital complet 2026 : %1$s cours TRAINAIR PLUS sur les %2$s domaines OACI, formations AVSEC en français, anglais et arabe, prestations de conseil et d'audit."
+msgstr ""
+
+#: template-parts/page-formations/catalogue-cta.php:51
+msgid "Télécharger le PDF"
+msgstr ""
+
+#: template-parts/page-formations/intro.php:18
+msgid "Demander le catalogue"
+msgstr ""
+
+#: template-parts/page-formations/intro.php:22
+msgid "Notre approche"
+msgstr ""
+
+#: template-parts/page-formations/intro.php:33
+msgid "Former, conseiller, accompagner"
+msgstr ""
+
+#: template-parts/page-formations/intro.php:36
+msgid "En tant que centre régional de formation OACI, l'AFSAC déploie une double offre : un catalogue complet de formations TRAINAIR PLUS & AVSEC sur les onze domaines aéronautiques, et un portefeuille de services de conseil et d'accompagnement réglementaire."
+msgstr ""
+
+#: template-parts/page-formations/intro.php:37
+msgid "Certifié OACI"
+msgstr ""
+
+#: template-parts/page-formations/intro.php:38
+msgid "11 domaines OACI"
+msgstr ""
+
+#: template-parts/page-formations/pillars.php:23
+msgid "FR · EN · AR"
+msgstr ""
+
+#: template-parts/page-formations/pillars.php:33
+msgid "%1$s domaines · %2$s cours"
+msgstr ""
+
+#: template-parts/page-formations/pillars.php:34
+msgid "Pilier 01"
+msgstr ""
+
+#: template-parts/page-formations/pillars.php:36
+#: template-parts/shared/illustration-hero.php:38
+msgid "Formations OACI"
+msgstr ""
+
+#: template-parts/page-formations/pillars.php:38
+msgid "Salle de formation"
+msgstr ""
+
+#: template-parts/page-formations/pillars.php:40
+msgid "Catalogue complet des formations TRAINAIR PLUS et AVSEC dispensées en présentiel, à distance ou en intra-entreprise. Programmes standardisés OACI, instructeurs certifiés, certificats reconnus à l'international."
+msgstr ""
+
+#: template-parts/page-formations/pillars.php:41
+msgid "11 domaines aéronautiques OACI couverts"
+msgstr ""
+
+#: template-parts/page-formations/pillars.php:42
+msgid "Présentiel, virtuel et e-learning autonome"
+msgstr ""
+
+#: template-parts/page-formations/pillars.php:43
+msgid "Trois langues : français, anglais et arabe"
+msgstr ""
+
+#: template-parts/page-formations/pillars.php:49
+msgid "Sessions ouvertes & intra sur demande"
+msgstr ""
+
+#: template-parts/page-formations/pillars.php:50
+msgid "Pilier 02"
+msgstr ""
+
+#: template-parts/page-formations/pillars.php:52
+#: template-parts/shared/illustration-hero.php:40
+msgid "Services & conseil"
+msgstr ""
+
+#: template-parts/page-formations/pillars.php:53
+msgid "Réunion institutionnelle"
+msgstr ""
+
+#: template-parts/page-formations/pillars.php:54
+msgid "Audit · Ingénierie · Accompagnement"
+msgstr ""
+
+#: template-parts/page-formations/pillars.php:56
+msgid "Accompagnement réglementaire et opérationnel des autorités, aéroports et compagnies : audits sûreté, ingénierie pédagogique sur mesure, création de centres de formation, missions d'expertise OACI."
+msgstr ""
+
+#: template-parts/page-formations/pillars.php:57
+msgid "Audit AVSEC & conformité Annexe 17"
+msgstr ""
+
+#: template-parts/page-formations/pillars.php:58
+msgid "Ingénierie de formation sur mesure"
+msgstr ""
+
+#: template-parts/page-formations/pillars.php:59
+msgid "Création & certification de centres OACI"
+msgstr ""
+
+#: template-parts/page-formations/pillars.php:61
+msgid "Missions d'experts ICAO senior"
+msgstr ""
+
+#: template-parts/page-formations/pillars.php:74
+msgid "Voir nos services"
+msgstr ""
+
+#: template-parts/page-formations/pillars.php:75
+msgid "Nos deux piliers"
+msgstr ""
+
+#: template-parts/page-formations/services.php:59
+msgid "Formation et conseil, sous un même toit"
+msgstr ""
+
+#: template-parts/page-formations/services.php:60
+msgid "Notre accompagnement"
+msgstr ""
+
+#: template-parts/page-formations/services.php:84
+msgid "Notre portefeuille de services"
+msgstr ""
+
+#: template-parts/session-row.php:74
+msgid "En savoir plus"
+msgstr ""
+
+#: template-parts/session-row.php:93
+msgid "Hébergé par %s"
+msgstr ""
+
+#: template-parts/shared/illustration-hero.php:37
+msgid "Inscription clôturée"
+msgstr ""
+
+#: template-parts/shared/illustration-hero.php:39
+msgid "Campus · Tunis"
+msgstr ""
+
+#: template-qui-sommes-nous.php:35
+msgid "Piste · TUN"
+msgstr ""
+
+#: template-qui-sommes-nous.php:39
+msgid "À propos"
+msgstr ""
+
+#: template-qui-sommes-nous.php:46
+msgid "Centre OACI labellisé AVSEC et membre du programme TRAINAIR PLUS."
+msgstr ""
+
+#: template-qui-sommes-nous.php:55
+msgid "À propos de l’AFSAC — Centre Régional de Formation OACI"
+msgstr ""
+
+#: template-qui-sommes-nous.php:56
+msgid "Création de l’AFSAC"
+msgstr ""
+
+#: template-qui-sommes-nous.php:61
+msgid "Décret fondateur · Tunisie · ICAO Member State"
+msgstr ""
+
+#: template-qui-sommes-nous.php:62
+msgid "Centre Régional AVSEC OACI"
+msgstr ""
+
+#: template-qui-sommes-nous.php:67
+msgid "Reconnaissance officielle · Sûreté de l’aviation FR/AR"
+msgstr ""
+
+#: template-qui-sommes-nous.php:68
+msgid "Adhésion TRAINAIR PLUS"
+msgstr ""
+
+#: template-qui-sommes-nous.php:73
+msgid "Programme mondial OACI · Standardised Training Packages"
+msgstr ""
+
+#: template-qui-sommes-nous.php:74
+msgid "Plateforme e-Learning"
+msgstr ""
+
+#: template-qui-sommes-nous.php:79
+msgid "Formation virtuelle · classroom hybride · LMS dédié"
+msgstr ""
+
+#: template-qui-sommes-nous.php:80
+msgid "Extension AVSEC anglais"
+msgstr ""
+
+#: template-qui-sommes-nous.php:85
+msgid "Africa anglophone · Middle East · 1ère session"
+msgstr ""
+
+#: template-qui-sommes-nous.php:86
+msgid "Refonte numérique"
+msgstr ""
+
+#: template-qui-sommes-nous.php:93
+msgid "Nouveau site B2B · catalogue OACI complet · 11 domaines"
+msgstr ""
+
+#: template-qui-sommes-nous.php:94
+msgid "Approche par compétences alignée OACI Doc 9941"
+msgstr ""
+
+#: template-qui-sommes-nous.php:95
+msgid "Trilinguisme natif"
+msgstr ""
+
+#: template-qui-sommes-nous.php:96
+msgid "Études de cas régionales"
+msgstr ""
+
+#: template-qui-sommes-nous.php:97
+msgid "Évaluation rigoureuse"
+msgstr ""
+
+#: template-qui-sommes-nous.php:98
+msgid "Mode mixte"
+msgstr ""
+
+#: template-qui-sommes-nous.php:103
+msgid "Mise à jour continue"
+msgstr ""
+
+#: template-qui-sommes-nous.php:104
+msgid "Mission"
+msgstr ""
+
+#: template-qui-sommes-nous.php:105
+msgid "Vision"
+msgstr ""
+
+#: template-qui-sommes-nous.php:106
+msgid "Valeurs"
+msgstr ""
+
+#: template-qui-sommes-nous.php:118
+msgid "Gouvernance"
+msgstr ""
+
+#: template-qui-sommes-nous.php:122
+msgid "Notre mission"
+msgstr ""
+
+#: template-qui-sommes-nous.php:132
+msgid "Faire monter en compétence l’aviation civile"
+msgstr ""
+
+#: template-qui-sommes-nous.php:133
+msgid "L’AFSAC est un centre international de formation labellisé par l’Organisation de l’Aviation Civile Internationale (OACI), reconnu à la fois comme <strong>Centre Régional de Formation à la Sûreté de l’Aviation (AVSEC)</strong> et comme <strong>membre du programme mondial TRAINAIR PLUS</strong>."
+msgstr ""
+
+#: template-qui-sommes-nous.php:134
+msgid "Notre mission : faciliter la montée en compétence des professionnels de l’aviation civile à travers des solutions de formation innovantes, en présentiel et à distance, dispensées en français, anglais et arabe au service des autorités, aéroports, compagnies aériennes et acteurs institutionnels."
+msgstr ""
+
+#: template-qui-sommes-nous.php:156
+msgid "Découvrir notre histoire"
+msgstr ""
+
+#: template-qui-sommes-nous.php:157
+msgid "FRISE CHRONOLOGIQUE"
+msgstr ""
+
+#: template-qui-sommes-nous.php:176
+msgid "Plus de quatre décennies au service de l’aviation civile internationale"
+msgstr ""
+
+#: template-qui-sommes-nous.php:177
+msgid "HISTOIRE · LEADERSHIP · EXCELLENCE"
+msgstr ""
+
+#: template-qui-sommes-nous.php:182
+msgid "À la pointe de l’aviation depuis 1981"
+msgstr ""
+
+#: template-qui-sommes-nous.php:193
+msgid "Leadership institutionnel"
+msgstr ""
+
+#: template-qui-sommes-nous.php:206
+msgid "Qualité & reconnaissance internationale"
+msgstr ""
+
+#: template-qui-sommes-nous.php:216
+msgid "Une équipe pédagogique experte"
+msgstr ""
+
+#: template-qui-sommes-nous.php:238
+msgid "Notre signature pédagogique"
+msgstr ""
+
+#: template-qui-sommes-nous.php:240
+msgid "Année de création"
+msgstr ""
+
+#: template-qui-sommes-nous.php:242 template-references-temoignages.php:95
+msgid "Cours OACI au catalogue"
+msgstr ""
+
+#: template-qui-sommes-nous.php:243 template-references-temoignages.php:98
+msgid "Professionnels formés"
+msgstr ""
+
+#: template-qui-sommes-nous.php:253
+msgid "Langues · FR / EN / AR"
+msgstr ""
+
+#: template-qui-sommes-nous.php:254
+msgid "EN SAVOIR PLUS SUR L’ORGANISATION"
+msgstr ""
+
+#: template-qui-sommes-nous.php:272
+msgid "Mission, vision, valeurs, gouvernance — découvrez l’AFSAC dans le détail"
+msgstr ""
+
+#: template-qui-sommes-nous.php:273
+msgid "CATALOGUE"
+msgstr ""
+
+#: template-qui-sommes-nous.php:278
+msgid "FORMATION"
+msgstr ""
+
+msgid "Catalogue digital complet 2026 : 483 cours TRAINAIR PLUS sur les 11 domaines OACI, formations AVSEC en français, anglais et arabe, prestations de conseil et d’audit."
+msgstr ""
+
+#: template-references-temoignages.php:37
+msgid "Références & Témoignages"
+msgstr ""
+
+#: template-references-temoignages.php:41
+msgid "Références · Témoignages"
+msgstr ""
+
+#: template-references-temoignages.php:48
+msgid "Depuis 1981, l’AFSAC forme les acteurs de l’aviation civile dans 48 États."
+msgstr ""
+
+#: template-references-temoignages.php:60
+msgid "Les autorités, aéroports et compagnies qui se forment avec l’AFSAC"
+msgstr ""
+
+#: template-references-temoignages.php:64
+msgid "Notre empreinte"
+msgstr ""
+
+#: template-references-temoignages.php:74
+msgid "Quatre décennies au service de l’aviation civile"
+msgstr ""
+
+#: template-references-temoignages.php:75
+msgid "Depuis 1981, l’AFSAC accompagne les autorités de l’aviation civile, exploitants d’aéroports, académies et opérateurs dans <strong>48 États</strong> d’Afrique et du Moyen-Orient. Cette page recense, sur registre public, les institutions dont les inspecteurs, régulateurs et exploitants ont suivi nos programmes."
+msgstr ""
+
+#: template-references-temoignages.php:77
+msgid "Trois langues, onze domaines OACI, plus de 12 000 professionnels formés. Un récit institutionnel qui se lit dans les chiffres, dans le registre des partenaires, et dans les voix de ceux qui nous ont fait confiance."
+msgstr ""
+
+#: template-references-temoignages.php:78
+msgid "Ouvrir le registre"
+msgstr ""
+
+#: template-references-temoignages.php:93
+msgid "Lire les témoignages"
+msgstr ""
+
+#: template-references-temoignages.php:96
+msgid "Partenaires institutionnels"
+msgstr ""
+
+#: template-references-temoignages.php:97
+msgid "Clients récurrents"
+msgstr ""
+
+#: template-references-temoignages.php:132
+msgid "Cours OACI dispensés"
+msgstr ""
+
+#: template-references-temoignages.php:139
+msgid "autres institutions au registre AFSAC."
+msgstr ""
+
+#: template-references-temoignages.php:140
+msgid "DGAC"
+msgstr ""
+
+#: template-references-temoignages.php:141
+msgid "Aéroport/ANSP"
+msgstr ""
+
+#: template-references-temoignages.php:142
+msgid "Académie"
+msgstr ""
+
+#: template-references-temoignages.php:145
+#: template-references-temoignages.php:235
+msgid "Compagnie"
+msgstr ""
+
+#: template-references-temoignages.php:146
+msgid "Maghreb"
+msgstr ""
+
+#: template-references-temoignages.php:147
+msgid "Afrique de l’Ouest & Centrale"
+msgstr ""
+
+#: template-references-temoignages.php:148
+#: template-references-temoignages.php:238
+msgid "Afrique de l’Est & Australe"
+msgstr ""
+
+#: template-references-temoignages.php:161
+msgid "Moyen-Orient"
+msgstr ""
+
+#: template-references-temoignages.php:162
+msgid "Empreinte régionale · Q1 2026"
+msgstr ""
+
+#: template-references-temoignages.php:166
+msgid "<span class=\"afsac-count\" data-target=\"48\" data-suffix=\"\">0</span> États, <span class=\"afsac-section-header__title-accent\">quatre régions,</span> un seul mandat OACI."
+msgstr ""
+
+#: template-references-temoignages.php:172
+#: template-references-temoignages.php:254
+msgid "Chaque État contractant de la zone d’intervention AFSAC dispose d’un dossier de coopération actif. Répartition par région et mix d’entités partenaires."
+msgstr ""
+
+#: template-references-temoignages.php:173
+msgid "Région"
+msgstr ""
+
+#: template-references-temoignages.php:179
+msgid "États"
+msgstr ""
+
+#: template-references-temoignages.php:183
+msgid "Partenaires actifs"
+msgstr ""
+
+#: template-references-temoignages.php:187
+msgid "Diplômés formés"
+msgstr ""
+
+#: template-references-temoignages.php:218
+msgid "Mix d’entités · %"
+msgstr ""
+
+#: template-references-temoignages.php:219
+msgid "Registre · public"
+msgstr ""
+
+#: template-references-temoignages.php:223
+msgid "Toutes les institutions <span class=\"afsac-section-header__title-accent\">au registre AFSAC.</span>"
+msgstr ""
+
+#: template-references-temoignages.php:227
+msgid "Index filtrable de nos partenaires institutionnels actifs. Le registre complet — incluant accords bilatéraux et engagements historiques — est disponible aux correspondants OACI sur demande."
+msgstr ""
+
+#: template-references-temoignages.php:228
+msgid "Tous les partenaires"
+msgstr ""
+
+#: template-references-temoignages.php:229
+msgid "Autorités · DGAC"
+msgstr ""
+
+#: template-references-temoignages.php:230
+msgid "Aéroports & ANSP"
+msgstr ""
+
+#: template-references-temoignages.php:231
+msgid "Académies & écoles"
+msgstr ""
+
+#: template-references-temoignages.php:234
+msgid "Compagnies & opérateurs"
+msgstr ""
+
+#: template-references-temoignages.php:236
+msgid "Toutes les régions"
+msgstr ""
+
+#: template-references-temoignages.php:237
+msgid "Afrique Ouest & Centrale"
+msgstr ""
+
+#: template-references-temoignages.php:244
+msgid "Afrique Est & Australe"
+msgstr ""
+
+#: template-references-temoignages.php:244
+msgid "Rechercher une institution ou un pays..."
+msgstr ""
+
+#: template-references-temoignages.php:291
+msgid "Rechercher dans le registre"
+msgstr ""
+
+#: template-references-temoignages.php:294
+msgid "Institution"
+msgstr ""
+
+#: template-references-temoignages.php:295
+msgid "Depuis"
+msgstr ""
+
+#: template-references-temoignages.php:317
+msgid "Cours dispensés"
+msgstr ""
+
+#: template-references-temoignages.php:322
+msgid "Aucun résultat. Affinez votre recherche ou réinitialisez les filtres."
+msgstr ""
+
+#: template-references-temoignages.php:339
+msgid "Le registre complet (148 partenaires) est disponible sur demande aux correspondants OACI."
+msgstr ""
+
+#: template-references-temoignages.php:340
+msgid "Certifiés"
+msgstr ""
+
+#: template-references-temoignages.php:341
+msgid "STP rédigés"
+msgstr ""
+
+#: template-references-temoignages.php:353
+msgid "Mois"
+msgstr ""
+
+#: template-references-temoignages.php:354
+msgid "STP"
+msgstr ""
+
+#: template-references-temoignages.php:355
+msgid "Instructeurs"
+msgstr ""
+
+#: template-references-temoignages.php:367
+msgid "Audit réussi"
+msgstr ""
+
+#: template-references-temoignages.php:368
+msgid "Inspecteurs"
+msgstr ""
+
+#: template-references-temoignages.php:369
+msgid "Langues"
+msgstr ""
+
+#: template-references-temoignages.php:382
+msgid "Cohorte 1 cert."
+msgstr ""
+
+#: template-references-temoignages.php:383
+msgid "Études de cas"
+msgstr ""
+
+#: template-references-temoignages.php:387
+msgid "Trois engagements <span class=\"afsac-refs__cases-em\">institutionnels</span> <span class=\"afsac-refs__cases-accent\">au registre.</span>"
+msgstr ""
+
+#: template-references-temoignages.php:409
+msgid "Mandats de coopération pluriannuels sélectionnés — publiés avec l’accord écrit du partenaire. La bibliothèque complète des cas est accessible aux autorités de l’aviation civile sur demande."
+msgstr ""
+
+#: template-references-temoignages.php:437
+msgid "Mandat sur demande"
+msgstr ""
+
+#: template-references-temoignages.php:438
+msgid "Voix sur registre"
+msgstr ""
+
+#: template-references-temoignages.php:442
+msgid "Ce qu’en disent <span class=\"afsac-section-header__title-accent\">nos partenaires.</span>"
+msgstr ""
+
+#: template-references-temoignages.php:442 includes/post-types.php:148
+msgid "Témoignage"
+msgstr ""
+
+#: template-references-temoignages.php:453
+msgid "Vidéo"
+msgstr ""
+
+#: template-references-temoignages.php:458
+msgid "Lire la vidéo"
+msgstr ""
+
+#: template-references-temoignages.php:459
+msgid "Témoignage précédent"
+msgstr ""
+
+#: template-references-temoignages.php:473
+msgid "Témoignage suivant"
+msgstr ""
+
+#: template-references-temoignages.php:508
+msgid "Témoignages enregistrés sur le campus de Tunis, publiés avec l’autorisation du signataire. Transcriptions complémentaires disponibles sur demande."
+msgstr ""
+
+#: template-references-temoignages.php:509
+msgid "Devenir partenaire institutionnel"
+msgstr ""
+
+#: template-references-temoignages.php:510
+msgid "Rejoignez le registre des autorités <span class=\"afsac-refs__cta-title-accent\">qui forment avec nous.</span>"
+msgstr ""
+
+#: template-references-temoignages.php:514
+msgid "Accords de coopération, mandats de formation et missions d’ingénierie pédagogique sont examinés directement par la Direction de la Formation. Réponse sous un jour ouvré pour les autorités de l’aviation civile."
+msgstr ""
+
+#: template-references-temoignages.php:519
+msgid "Initier un partenariat"
+msgstr ""
+
+msgid "Note de coopération (PDF)"
+msgstr ""
+
+#: afsac-core.php afsac-core.php
+msgid "AFSAC Core"
+msgstr ""
+
+#: afsac-core.php
+msgid "Logique métier du site AFSAC : types de contenu (formation, session, témoignage, référence), taxonomies et relations. Toute la logique métier vit ici, jamais dans le thème."
+msgstr ""
+
+#: includes/acf-fields.php:118
+msgid "En-tête de page"
+msgstr ""
+
+#: includes/acf-fields.php:121
+msgid "Sur-titre"
+msgstr ""
+
+#: includes/acf-fields.php:125
+msgid "Court label affiché au-dessus du titre (ex. « Nous contacter »)."
+msgstr ""
+
+#: includes/acf-fields.php:130
+msgid "Chapô"
+msgstr ""
+
+#: includes/acf-fields.php:134
+msgid "Une phrase d’introduction affichée dans le hero, sous le titre."
+msgstr ""
+
+#: includes/acf-fields.php:137
+msgid "Intro — sur-titre"
+msgstr ""
+
+#: includes/acf-fields.php:141
+msgid "Sur-titre (orange) de la carte d’intro sous le hero (ex. « Notre mission »)."
+msgstr ""
+
+#: includes/acf-fields.php:144
+msgid "Intro — titre"
+msgstr ""
+
+#: includes/acf-fields.php:163
+msgid "Titre court de la carte d’intro sous le hero."
+msgstr ""
+
+#: includes/acf-fields.php:182
+msgid "Classement (liste de cours)"
+msgstr ""
+
+#: includes/acf-fields.php:187
+msgid "Pilote les onglets « Avec instructeur » / « Auto-rythmé »."
+msgstr ""
+
+#: includes/acf-fields.php:198
+msgid "Auto-rythmé (en ligne)"
+msgstr ""
+
+#: includes/acf-fields.php:201
+msgid "Tarif réduit (États ACA)"
+msgstr ""
+
+#: includes/acf-fields.php:222
+msgid "Tarif préférentiel pour les États membres ACA."
+msgstr ""
+
+#: includes/acf-fields.php:238
+msgid "Présentation du domaine"
+msgstr ""
+
+#: includes/acf-fields.php:242
+msgid "Chapô affiché sous le titre de la page « Liste de cours » du domaine."
+msgstr ""
+
+#: includes/acf-fields.php:245
+msgid "Chapô (introduction)"
+msgstr ""
+
+#: includes/acf-fields.php:266
+msgid "Texte d’introduction du domaine. À défaut, la description courte du terme est utilisée."
+msgstr ""
+
+#: includes/acf-fields.php:282
+msgid "Détails service"
+msgstr ""
+
+#: includes/acf-fields.php:286
+msgid "Champs de la carte service du hub Formations & Services."
+msgstr ""
+
+#: includes/acf-fields.php:289
+msgid "Description"
+msgstr ""
+
+#: includes/acf-fields.php:295
+msgid "Texte court affiché sur la carte."
+msgstr ""
+
+#: includes/acf-fields.php:298
+msgid "Icône"
+msgstr ""
+
+#: includes/acf-fields.php:300
+msgid "Pictogramme de la carte. Vide = aucune icône."
+msgstr ""
+
+#: includes/acf-fields.php:301
+msgid "Document / audit"
+msgstr ""
+
+#: includes/acf-fields.php:302
+msgid "Crayon / ingénierie"
+msgstr ""
+
+#: includes/acf-fields.php:303
+msgid "Bâtiment / centre"
+msgstr ""
+
+#: includes/acf-fields.php:304
+msgid "Équipe / experts"
+msgstr ""
+
+#: includes/acf-fields.php:305
+msgid "Calendrier / intra"
+msgstr ""
+
+#: includes/acf-fields.php:314
+msgid "Bulle / conseil"
+msgstr ""
+
+#: includes/acf-fields.php:317
+msgid "Lien « En savoir plus »"
+msgstr ""
+
+#: includes/acf-fields.php:337
+msgid "Optionnel. Si vide, la carte pointe vers la page du service."
+msgstr ""
+
+#: includes/acf-fields.php:353
+msgid "Détails témoignage"
+msgstr ""
+
+#: includes/acf-fields.php:357
+msgid "Champs structurés du témoignage. La citation et l’auteur retombent sur le contenu / le titre s’ils sont vides."
+msgstr ""
+
+#: includes/acf-fields.php:360
+msgid "Auteur"
+msgstr ""
+
+#: includes/acf-fields.php:364 includes/messaging.php:458
+msgid "Nom de la personne citée (ex. Mme. Aïcha Diallo). À défaut, le titre du témoignage est utilisé."
+msgstr ""
+
+#: includes/acf-fields.php:371 includes/messaging.php:414
+#: includes/messaging.php:457
+msgid "Fonction · entité (ex. Directrice Sûreté · ANAC Sénégal)."
+msgstr ""
+
+#: includes/acf-fields.php:378
+msgid "Institution affichée en étiquette (ex. ANAC Sénégal)."
+msgstr ""
+
+#: includes/acf-fields.php:381
+msgid "Citation"
+msgstr ""
+
+#: includes/acf-fields.php:387
+msgid "Texte du témoignage. À défaut, le contenu de l’éditeur est utilisé."
+msgstr ""
+
+#: includes/acf-fields.php:403
+msgid "Langue du témoignage (badge). Optionnel."
+msgstr ""
+
+#: includes/acf-fields.php:406
+msgid "Durée (vidéo)"
+msgstr ""
+
+#: includes/acf-fields.php:410
+msgid "Durée de la vidéo au format mm:ss (ex. 04:12). Optionnel."
+msgstr ""
+
+#: includes/acf-fields.php:413
+msgid "URL vidéo"
+msgstr ""
+
+#: includes/acf-fields.php:433
+msgid "Lien de la vidéo du témoignage. Optionnel."
+msgstr ""
+
+#: includes/acf-fields.php:449
+msgid "Couleur du domaine"
+msgstr ""
+
+#: includes/acf-fields.php:453
+msgid "Couleur d’accent du domaine OACI (filet des cartes du catalogue & en-tête d’archive)."
+msgstr ""
+
+#: includes/acf-fields.php:456
+msgid "Couleur d’accent"
+msgstr ""
+
+#: includes/acf-fields.php:477
+msgid "Couleur hexadécimale d’accent. Laisser vide pour le repli bleu marine du thème."
+msgstr ""
+
+#: includes/acf-fields.php:493
+msgid "Formations & Services (vue d’ensemble)"
+msgstr ""
+
+#: includes/acf-fields.php:497
+msgid "Données du hub Formations & Services (réglées une fois, sur la page en langue par défaut)."
+msgstr ""
+
+#: includes/acf-fields.php:500
+msgid "Nombre de cours (périmètre OACI)"
+msgstr ""
+
+#: includes/acf-fields.php:507
+msgid "Valeur éditoriale du périmètre du programme (ex. 483) — PAS un comptage de publications."
+msgstr ""
+
+#: includes/acf-fields.php:513
+msgid "Catalogue complet (PDF)"
+msgstr ""
+
+#: includes/acf-fields.php:540
+msgid "Catalogue PDF complet (peut rester vide pour l’instant)."
+msgstr ""
+
+#: includes/acf-fields.php:547
+msgid "PDF global (identique en FR et EN)."
+msgstr ""
+
+#: includes/acf-fields.php:563
+msgid "Brochures (page d’accueil)"
+msgstr ""
+
+#: includes/acf-fields.php:565
+msgid "PDF téléchargeables de la section Documentation (globaux, mêmes fichiers FR/EN)."
+msgstr ""
+
+#: includes/acf-fields.php:566
+msgid "Brochure — Français (PDF)"
+msgstr ""
+
+#: includes/acf-fields.php:567
+msgid "Brochure — English (PDF)"
+msgstr ""
+
+#: includes/acf-fields.php:582
+msgid "Brochure — العربية (PDF)"
+msgstr ""
+
+#: includes/acf-fields.php:598
+msgid "Détails formation"
+msgstr ""
+
+#: includes/acf-fields.php:602
+msgid "Champs structurés de la formation. La description commerciale principale se rédige dans l’éditeur de blocs."
+msgstr ""
+
+#: includes/acf-fields.php:605
+msgid "Abréviation"
+msgstr ""
+
+#: includes/acf-fields.php:609
+msgid "Acronyme court affiché à côté du titre (ex. TDC EN)."
+msgstr ""
+
+#: includes/acf-fields.php:612
+msgid "Référence (complète)"
+msgstr ""
+
+#: includes/acf-fields.php:617
+msgid "ex. 214001/TDCEN"
+msgstr ""
+
+#: includes/acf-fields.php:620
+msgid "Objectifs"
+msgstr ""
+
+#: includes/acf-fields.php:627
+msgid "Objectifs pédagogiques de la formation."
+msgstr ""
+
+#: includes/acf-fields.php:637
+msgid "À qui s’adresse cette formation."
+msgstr ""
+
+#: includes/acf-fields.php:640
+msgid "Prérequis"
+msgstr ""
+
+#: includes/acf-fields.php:646
+msgid "Connaissances ou conditions requises avant l’inscription."
+msgstr ""
+
+#: includes/acf-fields.php:656
+msgid "Compétences acquises à l’issue de la formation."
+msgstr ""
+
+#: includes/acf-fields.php:659
+msgid "Structure (modules)"
+msgstr ""
+
+#: includes/acf-fields.php:665
+msgid "Un module par ligne. Le gabarit numérote automatiquement (Module 0, 1, 2…) et met le préfixe en gras."
+msgstr ""
+
+#: includes/acf-fields.php:679
+msgid "Développé par (détail)"
+msgstr ""
+
+#: includes/acf-fields.php:686
+msgid "Langues additionnelles, séparées par des virgules (ex. Français, Espagnol, Russe)."
+msgstr ""
+
+#: includes/acf-fields.php:691
+msgid "Valeur = slug (le libellé est traduit côté gabarit). Liste éditable ici."
+msgstr ""
+
+#: includes/acf-fields.php:708
+msgid "Public (résumé)"
+msgstr ""
+
+#: includes/acf-fields.php:712
+msgid "Version courte pour la sidebar (ex. Cadres & experts). Le détaillé reste dans Public cible."
+msgstr ""
+
+#: includes/acf-fields.php:716
+msgid "Format libre, ex. « 5 jours »."
+msgstr ""
+
+#: includes/acf-fields.php:720
+msgid "5 jours"
+msgstr ""
+
+#: includes/acf-fields.php:723
+msgid "Frais (montant)"
+msgstr ""
+
+#: includes/acf-fields.php:728
+msgid "Montant seul, sans devise (ex. 1800)."
+msgstr ""
+
+#: includes/acf-fields.php:742
+msgid "Devise"
+msgstr ""
+
+#: includes/acf-fields.php:745
+msgid "Certificat délivré"
+msgstr ""
+
+#: includes/acf-fields.php:747
+msgid "Cocher si la formation donne lieu à un certificat."
+msgstr ""
+
+#: includes/acf-fields.php:753
+msgid "Non"
+msgstr ""
+
+#: includes/acf-fields.php:756
+msgid "Intitulé du certificat"
+msgstr ""
+
+#: includes/acf-fields.php:769
+msgid "Nom exact du certificat délivré."
+msgstr ""
+
+#: includes/acf-fields.php:772
+msgid "Note (★, décoratif)"
+msgstr ""
+
+#: includes/acf-fields.php:791
+msgid "Optionnel, purement décoratif. N’est PAS émis en données structurées (évite tout signalement de faux avis)."
+msgstr ""
+
+#: includes/acf-fields.php:812
+msgid "Détails session"
+msgstr ""
+
+#: includes/acf-fields.php:815
+msgid "Formation liée"
+msgstr ""
+
+#: includes/acf-fields.php:825
+msgid "Formation dont cette session est une occurrence planifiée."
+msgstr ""
+
+#: includes/acf-fields.php:855
+msgid "Langue de la session"
+msgstr ""
+
+#: includes/acf-fields.php:866
+msgid "Langue d’animation (réutilise la taxonomie « Langue de formation »)."
+msgstr ""
+
+#: includes/acf-fields.php:876 includes/inscription.php:247
+msgid "Nombre de places restantes (optionnel)."
+msgstr ""
+
+#: includes/acf-fields.php:898
+msgid "Organisation qui héberge la session (ex. Autorité de l’aviation civile, AFSAC)."
+msgstr ""
+
+#: includes/acf-fields.php:901
+msgid "Contact — nom"
+msgstr ""
+
+#: includes/acf-fields.php:905
+msgid "Personne de contact pour cette session (optionnel)."
+msgstr ""
+
+#: includes/acf-fields.php:908
+msgid "Contact — e-mail"
+msgstr ""
+
+#: includes/acf-fields.php:912
+msgid "E-mail de contact affiché sur la page d’inscription (optionnel)."
+msgstr ""
+
+#: includes/acf-fields.php:915 includes/acf-fields.php:927
+msgid "Latitude"
+msgstr ""
+
+#: includes/acf-fields.php:924
+msgid "Coordonnée pour la vue carte (optionnel). À défaut, déduite de la ville du lieu."
+msgstr ""
+
+#: includes/breadcrumb.php:36
+msgid "Longitude"
+msgstr ""
+
+#: includes/breadcrumb.php:81 includes/breadcrumb.php:124
+msgid "Formations & Services"
+msgstr ""
+
+#: includes/contact.php:25
+msgid "Catalogue OACI"
+msgstr ""
+
+#: includes/contact.php:26
+msgctxt "Nom général du CPT"
+msgid "Messages"
+msgstr ""
+
+#: includes/contact.php:27
+msgctxt "Nom singulier du CPT"
+msgid "Message"
+msgstr ""
+
+#: includes/contact.php:28
+msgid "Messages"
+msgstr ""
+
+#: includes/contact.php:29
+msgid "Tous les messages"
+msgstr ""
+
+#: includes/contact.php:30
+msgid "Voir / éditer le message"
+msgstr ""
+
+#: includes/contact.php:31
+msgid "Voir le message"
+msgstr ""
+
+#: includes/contact.php:32
+msgid "Rechercher un message"
+msgstr ""
+
+#: includes/contact.php:33
+msgid "Aucun message."
+msgstr ""
+
+#: includes/contact.php:68
+msgid "Aucun message dans la corbeille."
+msgstr ""
+
+#: includes/contact.php:69
+msgid "Demande d’information"
+msgstr ""
+
+#: includes/contact.php:70
+msgid "Inscription à une formation"
+msgstr ""
+
+#: includes/contact.php:71
+msgid "Devis sur-mesure"
+msgstr ""
+
+#: includes/contact.php:72
+msgid "Formation sur-mesure"
+msgstr ""
+
+#: includes/contact.php:73
+msgid "Partenariat"
+msgstr ""
+
+#: includes/contact.php:152
+msgid "Votre session a expiré. Merci de renvoyer le formulaire."
+msgstr ""
+
+#: includes/contact.php:155 includes/inscription.php:129
+msgid "Votre nom est requis."
+msgstr ""
+
+#: includes/contact.php:159
+msgid "Une adresse e-mail valide est requise."
+msgstr ""
+
+#: includes/contact.php:162
+msgid "Merci de choisir un sujet."
+msgstr ""
+
+#: includes/contact.php:165
+msgid "Votre message doit comporter au moins 10 caractères."
+msgstr ""
+
+#: includes/contact.php:193 includes/inscription.php:195
+msgid "Vous devez accepter le traitement de vos données (RGPD)."
+msgstr ""
+
+#: includes/contact.php:234 includes/messaging.php:417
+msgid "Une erreur technique est survenue. Merci de réessayer."
+msgstr ""
+
+#: includes/inscription.php:123
+msgid "Civilité requise."
+msgstr ""
+
+#: includes/inscription.php:126
+msgid "Prénom requis."
+msgstr ""
+
+#: includes/inscription.php:132
+msgid "Nom requis."
+msgstr ""
+
+#: includes/inscription.php:135
+msgid "Fonction requise."
+msgstr ""
+
+#: includes/inscription.php:138
+msgid "Organisation requise."
+msgstr ""
+
+#: includes/inscription.php:141
+msgid "Type d’organisation requis."
+msgstr ""
+
+#: includes/inscription.php:144
+msgid "Pays requis."
+msgstr ""
+
+#: includes/inscription.php:147
+msgid "Langue préférée des supports requise."
+msgstr ""
+
+#: includes/inscription.php:150
+msgid "Mode de règlement requis."
+msgstr ""
+
+#: includes/inscription.php:153
+msgid "Vous devez certifier l’exactitude des informations et accepter les conditions de l’AFSAC."
+msgstr ""
+
+#: includes/inscription.php:246 includes/post-types.php:295
+msgid "Vous devez accepter le traitement de vos données (RGPD / loi 63-2004)."
+msgstr ""
+
+#: includes/messaging.php:38
+msgid "AFSAC — Réglages & coordonnées"
+msgstr ""
+
+#: includes/messaging.php:62
+msgid "AFSAC Réglages"
+msgstr ""
+
+#: includes/messaging.php:75
+msgid "Notifications & CRM"
+msgstr ""
+
+#: includes/messaging.php:78
+msgid "E-mail(s) de notification"
+msgstr ""
+
+#: includes/messaging.php:82
+msgid "Destinataires internes des leads (inscription + contact). Séparer par des virgules. Vide = e-mail admin du site."
+msgstr ""
+
+#: includes/messaging.php:85
+msgid "Nom de l’expéditeur"
+msgstr ""
+
+#: includes/messaging.php:89
+msgid "Vide = nom du site."
+msgstr ""
+
+#: includes/messaging.php:92
+msgid "E-mail de l’expéditeur"
+msgstr ""
+
+#: includes/messaging.php:96
+msgid "Adresse « From » des e-mails. Vide = no-reply@domaine."
+msgstr ""
+
+#: includes/messaging.php:99
+msgid "Webhook CRM (URL)"
+msgstr ""
+
+#: includes/messaging.php:108
+msgid "Optionnel : chaque lead est POSTé en JSON à cette URL."
+msgstr ""
+
+#: includes/messaging.php:140
+msgid "E-mail public"
+msgstr ""
+
+#: includes/messaging.php:157
+msgid "Latitude (carte)"
+msgstr ""
+
+#: includes/messaging.php:167
+msgid "Longitude (carte)"
+msgstr ""
+
+#: includes/messaging.php:173
+msgid "LinkedIn (URL)"
+msgstr ""
+
+#: includes/messaging.php:179
+msgid "Facebook (URL)"
+msgstr ""
+
+#: includes/messaging.php:185
+msgid "X / Twitter (URL)"
+msgstr ""
+
+#: includes/messaging.php:196
+msgid "YouTube (URL)"
+msgstr ""
+
+#: includes/messaging.php:209
+msgid "CTA accueil"
+msgstr ""
+
+#: includes/messaging.php:212
+msgid "CTA principal — lien"
+msgstr ""
+
+#: includes/messaging.php:216
+msgid "Bouton « Consulter les formations » du hero. Vide = page Catalogue."
+msgstr ""
+
+#: includes/messaging.php:219
+msgid "CTA secondaire — lien"
+msgstr ""
+
+#: includes/messaging.php:228 includes/messaging.php:241
+msgid "Bouton « Demander un devis » du hero. Vide = Contact (sujet devis)."
+msgstr ""
+
+#: includes/messaging.php:244
+msgid "Chiffres-clés"
+msgstr ""
+
+#: includes/messaging.php:245
+msgid "Bande de chiffres réutilisée sous les heros (ex. « 45+ » / « Années d’expertise »). Vide = valeurs par défaut."
+msgstr ""
+
+#: includes/messaging.php:249
+msgid "Ajouter un chiffre"
+msgstr ""
+
+#: includes/messaging.php:256
+msgid "Valeur"
+msgstr ""
+
+#: includes/messaging.php:378
+msgid "Libellé"
+msgstr ""
+
+#: includes/messaging.php:412
+msgid "Voir dans l’administration :"
+msgstr ""
+
+#: includes/messaging.php:427
+msgid "Nouveau message de contact"
+msgstr ""
+
+#: includes/messaging.php:430 includes/messaging.php:473
+msgid "Votre message a bien été reçu"
+msgstr ""
+
+#: includes/messaging.php:431
+msgid "Bonjour %s,"
+msgstr ""
+
+#: includes/messaging.php:455
+msgid "Nous avons bien reçu votre message et reviendrons vers vous dans les meilleurs délais."
+msgstr ""
+
+#: includes/messaging.php:459
+msgid "Participant"
+msgstr ""
+
+#: includes/messaging.php:461
+msgid "Formation"
+msgstr ""
+
+#: includes/messaging.php:465
+msgid "Nouvelle inscription"
+msgstr ""
+
+#: includes/messaging.php:470
+msgid "participant"
+msgstr ""
+
+#: includes/messaging.php:474
+msgid "Votre demande d’inscription a bien été reçue"
+msgstr ""
+
+#: includes/polylang.php:131
+msgid "Nous avons bien reçu votre demande d’inscription ; nos équipes vous recontacteront."
+msgstr ""
+
+#: includes/post-types.php:37
+msgid "Sélecteur de langue"
+msgstr ""
+
+#: includes/post-types.php:38
+msgctxt "Nom général du CPT"
+msgid "Formations"
+msgstr ""
+
+#: includes/post-types.php:39
+msgctxt "Nom singulier du CPT"
+msgid "Formation"
+msgstr ""
+
+#: includes/post-types.php:42
+msgid "Ajouter"
+msgstr ""
+
+#: includes/post-types.php:43
+msgid "Ajouter une formation"
+msgstr ""
+
+#: includes/post-types.php:44
+msgid "Nouvelle formation"
+msgstr ""
+
+#: includes/post-types.php:45
+msgid "Modifier la formation"
+msgstr ""
+
+#: includes/post-types.php:47
+msgid "Toutes les formations"
+msgstr ""
+
+#: includes/post-types.php:48
+msgid "Rechercher une formation"
+msgstr ""
+
+#: includes/post-types.php:49
+msgid "Aucune formation trouvée."
+msgstr ""
+
+#: includes/post-types.php:50
+msgid "Aucune formation dans la corbeille."
+msgstr ""
+
+#: includes/post-types.php:51 includes/post-types.php:254
+msgid "Visuel de la formation"
+msgstr ""
+
+#: includes/post-types.php:52 includes/post-types.php:255
+msgid "Définir le visuel"
+msgstr ""
+
+#: includes/post-types.php:53
+msgid "Retirer le visuel"
+msgstr ""
+
+#: includes/post-types.php:54
+msgid "Catalogue des formations"
+msgstr ""
+
+#: includes/post-types.php:55
+msgid "Formation publiée."
+msgstr ""
+
+#: includes/post-types.php:92
+msgid "Formation mise à jour."
+msgstr ""
+
+#: includes/post-types.php:93
+msgctxt "Nom général du CPT"
+msgid "Sessions"
+msgstr ""
+
+#: includes/post-types.php:94
+msgctxt "Nom singulier du CPT"
+msgid "Session"
+msgstr ""
+
+#: includes/post-types.php:95
+msgid "Sessions"
+msgstr ""
+
+#: includes/post-types.php:97
+msgid "Session"
+msgstr ""
+
+#: includes/post-types.php:98
+msgid "Ajouter une session"
+msgstr ""
+
+#: includes/post-types.php:99
+msgid "Nouvelle session"
+msgstr ""
+
+#: includes/post-types.php:100
+msgid "Modifier la session"
+msgstr ""
+
+#: includes/post-types.php:101
+msgid "Voir la session"
+msgstr ""
+
+#: includes/post-types.php:104
+msgid "Aucune session trouvée."
+msgstr ""
+
+#: includes/post-types.php:105
+msgid "Aucune session dans la corbeille."
+msgstr ""
+
+#: includes/post-types.php:107
+msgid "Session publiée."
+msgstr ""
+
+#: includes/post-types.php:143
+msgid "Session mise à jour."
+msgstr ""
+
+#: includes/post-types.php:144
+msgctxt "Nom général du CPT"
+msgid "Témoignages"
+msgstr ""
+
+#: includes/post-types.php:145
+msgctxt "Nom singulier du CPT"
+msgid "Témoignage"
+msgstr ""
+
+#: includes/post-types.php:149
+msgid "Ajouter un témoignage"
+msgstr ""
+
+#: includes/post-types.php:150
+msgid "Nouveau témoignage"
+msgstr ""
+
+#: includes/post-types.php:151
+msgid "Modifier le témoignage"
+msgstr ""
+
+#: includes/post-types.php:152
+msgid "Voir le témoignage"
+msgstr ""
+
+#: includes/post-types.php:153
+msgid "Tous les témoignages"
+msgstr ""
+
+#: includes/post-types.php:154
+msgid "Rechercher un témoignage"
+msgstr ""
+
+#: includes/post-types.php:155
+msgid "Aucun témoignage trouvé."
+msgstr ""
+
+#: includes/post-types.php:191
+msgid "Aucun témoignage dans la corbeille."
+msgstr ""
+
+#: includes/post-types.php:192
+msgctxt "Nom général du CPT"
+msgid "Références"
+msgstr ""
+
+#: includes/post-types.php:193
+msgctxt "Nom singulier du CPT"
+msgid "Référence"
+msgstr ""
+
+#: includes/post-types.php:194
+msgid "Références"
+msgstr ""
+
+#: includes/post-types.php:196
+msgid "Référence"
+msgstr ""
+
+#: includes/post-types.php:197
+msgid "Ajouter une référence"
+msgstr ""
+
+#: includes/post-types.php:198
+msgid "Nouvelle référence"
+msgstr ""
+
+#: includes/post-types.php:199
+msgid "Modifier la référence"
+msgstr ""
+
+#: includes/post-types.php:200
+msgid "Voir la référence"
+msgstr ""
+
+#: includes/post-types.php:201
+msgid "Toutes les références"
+msgstr ""
+
+#: includes/post-types.php:202
+msgid "Rechercher une référence"
+msgstr ""
+
+#: includes/post-types.php:203
+msgid "Aucune référence trouvée."
+msgstr ""
+
+#: includes/post-types.php:240
+msgid "Aucune référence dans la corbeille."
+msgstr ""
+
+#: includes/post-types.php:241
+msgctxt "Nom général du CPT"
+msgid "Services"
+msgstr ""
+
+#: includes/post-types.php:242
+msgctxt "Nom singulier du CPT"
+msgid "Service"
+msgstr ""
+
+#: includes/post-types.php:243
+msgid "Services"
+msgstr ""
+
+#: includes/post-types.php:245
+msgid "Service"
+msgstr ""
+
+#: includes/post-types.php:246
+msgid "Ajouter un service"
+msgstr ""
+
+#: includes/post-types.php:247
+msgid "Nouveau service"
+msgstr ""
+
+#: includes/post-types.php:248
+msgid "Modifier le service"
+msgstr ""
+
+#: includes/post-types.php:249
+msgid "Voir le service"
+msgstr ""
+
+#: includes/post-types.php:250
+msgid "Tous les services"
+msgstr ""
+
+#: includes/post-types.php:251
+msgid "Rechercher un service"
+msgstr ""
+
+#: includes/post-types.php:252
+msgid "Aucun service trouvé."
+msgstr ""
+
+#: includes/post-types.php:253
+msgid "Aucun service dans la corbeille."
+msgstr ""
+
+#: includes/post-types.php:256
+msgid "Visuel du service"
+msgstr ""
+
+#: includes/post-types.php:257
+msgid "Service publié."
+msgstr ""
+
+#: includes/post-types.php:292
+msgid "Service mis à jour."
+msgstr ""
+
+#: includes/post-types.php:293
+msgctxt "Nom général du CPT"
+msgid "Inscriptions"
+msgstr ""
+
+#: includes/post-types.php:294
+msgctxt "Nom singulier du CPT"
+msgid "Inscription"
+msgstr ""
+
+#: includes/post-types.php:296
+msgid "Inscriptions"
+msgstr ""
+
+#: includes/post-types.php:297
+msgid "Toutes les inscriptions"
+msgstr ""
+
+#: includes/post-types.php:298
+msgid "Voir / éditer l’inscription"
+msgstr ""
+
+#: includes/post-types.php:299
+msgid "Voir l’inscription"
+msgstr ""
+
+#: includes/post-types.php:300
+msgid "Rechercher une inscription"
+msgstr ""
+
+#: includes/post-types.php:301
+msgid "Aucune inscription."
+msgstr ""
+
+#: includes/relations.php:39
+msgid "Aucune inscription dans la corbeille."
+msgstr ""
+
+#: includes/taxonomies.php:35
+msgid "ID de la formation rattachée à cette session."
+msgstr ""
+
+#: includes/taxonomies.php:36
+msgctxt "Nom général de la taxonomie"
+msgid "Areas OACI"
+msgstr ""
+
+#: includes/taxonomies.php:37
+msgctxt "Nom singulier de la taxonomie"
+msgid "Area OACI"
+msgstr ""
+
+#: includes/taxonomies.php:38
+msgid "Areas OACI"
+msgstr ""
+
+#: includes/taxonomies.php:39
+msgid "Toutes les areas"
+msgstr ""
+
+#: includes/taxonomies.php:40
+msgid "Modifier l'area"
+msgstr ""
+
+#: includes/taxonomies.php:41
+msgid "Voir l'area"
+msgstr ""
+
+#: includes/taxonomies.php:42
+msgid "Mettre à jour l'area"
+msgstr ""
+
+#: includes/taxonomies.php:43
+msgid "Ajouter une area"
+msgstr ""
+
+#: includes/taxonomies.php:44
+msgid "Nom de la nouvelle area"
+msgstr ""
+
+#: includes/taxonomies.php:45
+msgid "Area parente"
+msgstr ""
+
+#: includes/taxonomies.php:46
+msgid "Area parente :"
+msgstr ""
+
+#: includes/taxonomies.php:47
+msgid "Rechercher une area"
+msgstr ""
+
+#: includes/taxonomies.php:48
+msgid "Aucune area trouvée."
+msgstr ""
+
+#: includes/taxonomies.php:79
+msgid "Retour aux areas"
+msgstr ""
+
+#: includes/taxonomies.php:80
+msgctxt "Nom général de la taxonomie"
+msgid "Familles"
+msgstr ""
+
+#: includes/taxonomies.php:81
+msgctxt "Nom singulier de la taxonomie"
+msgid "Famille"
+msgstr ""
+
+#: includes/taxonomies.php:82
+msgid "Familles"
+msgstr ""
+
+#: includes/taxonomies.php:83
+msgid "Toutes les familles"
+msgstr ""
+
+#: includes/taxonomies.php:84
+msgid "Modifier la famille"
+msgstr ""
+
+#: includes/taxonomies.php:85
+msgid "Voir la famille"
+msgstr ""
+
+#: includes/taxonomies.php:86
+msgid "Mettre à jour la famille"
+msgstr ""
+
+#: includes/taxonomies.php:87
+msgid "Ajouter une famille"
+msgstr ""
+
+#: includes/taxonomies.php:88
+msgid "Nom de la nouvelle famille"
+msgstr ""
+
+#: includes/taxonomies.php:89
+msgid "Famille parente"
+msgstr ""
+
+#: includes/taxonomies.php:90
+msgid "Famille parente :"
+msgstr ""
+
+#: includes/taxonomies.php:91
+msgid "Rechercher une famille"
+msgstr ""
+
+#: includes/taxonomies.php:92
+msgid "Aucune famille trouvée."
+msgstr ""
+
+#: includes/taxonomies.php:123
+msgid "Retour aux familles"
+msgstr ""
+
+#: includes/taxonomies.php:124
+msgctxt "Nom général de la taxonomie"
+msgid "Langues de formation"
+msgstr ""
+
+#: includes/taxonomies.php:125
+msgctxt "Nom singulier de la taxonomie"
+msgid "Langue de formation"
+msgstr ""
+
+#: includes/taxonomies.php:126
+msgid "Langues de formation"
+msgstr ""
+
+#: includes/taxonomies.php:127
+msgid "Toutes les langues"
+msgstr ""
+
+#: includes/taxonomies.php:128
+msgid "Modifier la langue"
+msgstr ""
+
+#: includes/taxonomies.php:129
+msgid "Voir la langue"
+msgstr ""
+
+#: includes/taxonomies.php:130
+msgid "Mettre à jour la langue"
+msgstr ""
+
+#: includes/taxonomies.php:131
+msgid "Ajouter une langue"
+msgstr ""
+
+#: includes/taxonomies.php:132
+msgid "Nom de la nouvelle langue"
+msgstr ""
+
+#: includes/taxonomies.php:133
+msgid "Rechercher une langue"
+msgstr ""
+
+#: includes/taxonomies.php:134
+msgid "Langues fréquentes"
+msgstr ""
+
+#: includes/taxonomies.php:135
+msgid "Séparer les langues par des virgules"
+msgstr ""
+
+#: includes/taxonomies.php:136
+msgid "Ajouter ou retirer des langues"
+msgstr ""
+
+#: includes/taxonomies.php:137
+msgid "Choisir parmi les langues les plus utilisées"
+msgstr ""
+
+#: includes/taxonomies.php:138
+msgid "Aucune langue trouvée."
+msgstr ""
+
+#: includes/taxonomies.php:169
+msgid "Retour aux langues"
+msgstr ""
+
+#: includes/taxonomies.php:170
+msgctxt "Nom général de la taxonomie"
+msgid "Modalités"
+msgstr ""
+
+#: includes/taxonomies.php:171
+msgctxt "Nom singulier de la taxonomie"
+msgid "Modalité"
+msgstr ""
+
+#: includes/taxonomies.php:172
+msgid "Modalités"
+msgstr ""
+
+#: includes/taxonomies.php:173
+msgid "Toutes les modalités"
+msgstr ""
+
+#: includes/taxonomies.php:174
+msgid "Modifier la modalité"
+msgstr ""
+
+#: includes/taxonomies.php:175
+msgid "Voir la modalité"
+msgstr ""
+
+#: includes/taxonomies.php:176
+msgid "Mettre à jour la modalité"
+msgstr ""
+
+#: includes/taxonomies.php:177
+msgid "Ajouter une modalité"
+msgstr ""
+
+#: includes/taxonomies.php:178
+msgid "Nom de la nouvelle modalité"
+msgstr ""
+
+#: includes/taxonomies.php:179
+msgid "Rechercher une modalité"
+msgstr ""
+
+#: includes/taxonomies.php:180
+msgid "Séparer les modalités par des virgules"
+msgstr ""
+
+#: includes/taxonomies.php:181
+msgid "Ajouter ou retirer des modalités"
+msgstr ""
+
+#: includes/taxonomies.php:182
+msgid "Choisir parmi les modalités les plus utilisées"
+msgstr ""
+
+#: includes/taxonomies.php:183
+msgid "Aucune modalité trouvée."
+msgstr ""
+
+#: includes/taxonomies.php:216
+msgid "Retour aux modalités"
+msgstr ""
+
+#: includes/taxonomies.php:217
+msgctxt "Nom général de la taxonomie"
+msgid "Types de cours"
+msgstr ""
+
+#: includes/taxonomies.php:218
+msgctxt "Nom singulier de la taxonomie"
+msgid "Type de cours"
+msgstr ""
+
+#: includes/taxonomies.php:219
+msgid "Types de cours"
+msgstr ""
+
+#: includes/taxonomies.php:221
+msgid "Modifier le type"
+msgstr ""
+
+#: includes/taxonomies.php:222
+msgid "Ajouter un type"
+msgstr ""
+
+#: includes/taxonomies.php:223
+msgid "Rechercher un type"
+msgstr ""
+
+msgid "Aucun type trouvé."
+msgstr ""
+
+#: includes/messaging.php
+msgid "Aucun destinataire de notification n’est réglé : les leads (inscriptions + messages) sont envoyés à l’e-mail d’administration du site (%s). Renseignez un ou plusieurs destinataires pour ne rien manquer."
+msgstr ""
+
+#: includes/messaging.php
+msgid "Configurer les notifications"
+msgstr ""
+
+#: template-parts/home/formations-carousel.php
+msgid "Consulter nos formations à venir"
+msgstr ""
+
+#: template-parts/home/formations-carousel.php
+msgid "Carrousel de formations"
+msgstr ""
+
+#: template-parts/home/formations-carousel.php
+msgid "carrousel"
+msgstr ""
+
+#: template-parts/home/formations-carousel.php
+msgid "Pages du carrousel"
+msgstr ""
+
+#: template-parts/home/formations-carousel.php
+msgid "Formations précédentes"
+msgstr ""
+
+#: template-parts/home/formations-carousel.php
+msgid "Formations suivantes"
+msgstr ""
+
+#: template-parts/home/formations-carousel.php
+msgid "Page %d"
+msgstr ""
+
+#: template-parts/home/pourquoi.php
+msgid "Nos atouts"
+msgstr ""
+
+#: template-parts/home/pourquoi.php
+msgid "Atout précédent"
+msgstr ""
+
+#: template-parts/home/pourquoi.php
+msgid "Atout suivant"
+msgstr ""
+
+#: template-parts/home/pourquoi.php
+msgid ""
+msgstr ""
+
+#: template-parts/home/pourquoi.php
+msgid "Pourquoi choisir l’AFSAC ?"
+msgstr ""
+
+#: template-parts/home/pourquoi.php
+msgid "Reconnaissance internationale"
+msgstr ""
+
+#: template-parts/home/pourquoi.php
+msgid "Une reconnaissance internationale OACI"
+msgstr ""
+
+#: template-parts/home/pourquoi.php
+msgid "Bénéficiant d’une double reconnaissance en tant que Centre Régional de Formation à la Sûreté de l’Aviation Civile (ICAO ASTC) et membre du Programme ICAO TRAINAIR PLUS, l’AFSAC garantit des formations alignées sur les standards internationaux de l’aviation civile."
+msgstr ""
+
+#: template-parts/home/pourquoi.php
+msgid "Certification"
+msgstr ""
+
+#: template-parts/home/pourquoi.php
+msgid "Des formations certifiantes reconnues mondialement"
+msgstr ""
+
+#: template-parts/home/pourquoi.php
+msgid "Nos programmes sont développés selon les méthodologies officielles de l’OACI et permettent aux professionnels d’acquérir des compétences opérationnelles conformes aux exigences internationales."
+msgstr ""
+
+#: template-parts/home/pourquoi.php
+msgid "Experts & instructeurs"
+msgstr ""
+
+#: template-parts/home/pourquoi.php
+msgid "Un réseau d’experts et d’instructeurs internationaux"
+msgstr ""
+
+#: template-parts/home/pourquoi.php
+msgid "L’AFSAC s’appuie sur des experts aéronautiques qualifiés et expérimentés, capables de transmettre des connaissances actualisées adaptées aux réalités opérationnelles des États et organisations."
+msgstr ""
+
+#: template-parts/home/pourquoi.php
+msgid "Domaines couverts"
+msgstr ""
+
+#: template-parts/home/pourquoi.php
+msgid "Une expertise couvrant les différents domaines de l’aviation civile"
+msgstr ""
+
+#: template-parts/home/pourquoi.php
+msgid "Grâce à son appartenance aux réseaux OACI, l’AFSAC propose des solutions de formation couvrant un large éventail de domaines techniques de l’aviation civile, au-delà de la sûreté aérienne."
+msgstr ""
+
+#: template-parts/home/pourquoi.php
+msgid "Accompagnement sur mesure"
+msgstr ""
+
+#: template-parts/home/pourquoi.php
+msgid "Un accompagnement personnalisé des États et organisations"
+msgstr ""
+
+#: template-parts/home/pourquoi.php
+msgid "Nous développons des solutions adaptées aux besoins spécifiques de nos partenaires : formations dédiées, assistance technique, renforcement des capacités et accompagnement institutionnel."
+msgstr ""
+
+#: template-parts/home/pourquoi.php
+msgid "Partage des connaissances"
+msgstr ""
+
+#: template-parts/home/pourquoi.php
+msgid "Une approche internationale basée sur le partage des connaissances"
+msgstr ""
+
+#: template-parts/home/pourquoi.php
+msgid "Dans le cadre de l’initiative OACI « No Country Left Behind », l’AFSAC contribue au transfert d’expertise et au développement durable des compétences aéronautiques à travers le monde."
+msgstr ""
+
+#: template-parts/footer/documentation.php
+msgid "Téléchargez la brochure"
+msgstr ""
+
+#: template-parts/footer/documentation.php
+msgid "Le catalogue complet des formations AFSAC en un seul PDF : programmes TRAINAIR PLUS sur les 11 domaines de l’OACI et cursus AVSEC."
+msgstr ""
+
+#: template-parts/footer/documentation.php
+msgid "Langue de la brochure"
+msgstr ""
+
+#: template-parts/footer/documentation.php
+msgid "Télécharger la brochure AFSAC (PDF, %s)"
+msgstr ""
+
+#: template-parts/footer/documentation.php
+msgid "Télécharger la brochure AFSAC (PDF)"
+msgstr ""
+
+#: template-parts/footer/documentation.php
+msgid "Programme de formation"
+msgstr ""
+
+#: template-parts/footer/documentation.php
+msgid "Brochure AFSAC"
+msgstr ""
+
+#: template-parts/footer/documentation.php
+msgid "Télécharger"
+msgstr ""
+
+#: template-parts/footer/documentation.php
+msgid "PDF"
+msgstr ""
+
+#: template-parts/footer
+msgid "Centre Régional de Formation à la Sûreté de l’Aviation de l’OACI — Tunis, Tunisie"
+msgstr ""
+
+#: template-parts/footer
+msgid "Programmes TRAINAIR PLUS sur les 11 domaines OACI et formations AVSEC — en français et en anglais."
+msgstr ""
+
+#: template-parts/footer
+msgid "Suivez-nous"
+msgstr ""
+
+#: template-parts/footer
+msgid "Recevez le calendrier des sessions et nos actualités de formation."
+msgstr ""
+
+#: template-parts/footer
+msgid "PDF · %s"
+msgstr ""
+
+#  Catalogue, volet AVSEC — refonte « deux formats » du 06/08/2026.
+#: template-parts/page-formations/avsec-showcase.php
+msgid "Deux formats, deux finalités : le cours qualifie une personne, l’atelier produit un document de référence. Choisissez le vôtre, puis ouvrez la liste des formations."
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "Un cours qualifie une FONCTION : agent d’inspection filtrage, superviseur, inspecteur national, instructeur. Il se termine par une évaluation et délivre un certificat de l’OACI, reconnu à l’international."
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "Évaluation finale et certificat nominatif de l’OACI"
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "De 5 à 10 jours, en français ou en anglais"
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "Animé par des instructeurs agréés OACI"
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "Liste des cours certifiants"
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "Livrable pour l’État"
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "Ateliers OACI"
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "Un atelier réunit les acteurs d’un même dispositif pour produire un LIVRABLE : programme national de sûreté, programme de contrôle qualité, plan de gestion de crise, système de certification. Le travail est collectif et directement applicable."
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "Un livrable rédigé pendant l’atelier"
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "Autorités, exploitants d’aéroport et compagnies"
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "Animé par des experts OACI"
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "Liste des ateliers"
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "Voir plus"
+msgstr ""
+
+#: template-parts/page-formations/avsec-liste.php
+msgid "Cours & ateliers AVSEC"
+msgstr ""
+
+#: template-parts/page-formations/avsec-liste.php
+msgid "Deux formats, deux finalités : le cours qualifie une personne, l’atelier produit un document de référence."
+msgstr ""
+
+#: template-parts/page-formations/avsec-liste.php
+msgid "Tout le programme AVSEC"
+msgstr ""
+
+#: template-parts/page-formations/avsec-liste.php
+msgid "Programme AVSEC"
+msgstr ""
+
+#: template-parts/page-formations/avsec-liste.php
+msgid "Retour au catalogue"
+msgstr ""
+
+#: template-parts/page-formations/avsec-liste.php
+msgid "Format de formation"
+msgstr ""
+
+#: template-parts/page-formations/avsec-liste.php
+msgid "Aucune formation dans ce format pour le moment"
+msgstr ""
+
+#: template-parts/page-formations/avsec-liste.php
+msgid "Contactez-nous pour organiser une session sur mesure ou recevoir le programme détaillé."
+msgstr ""
+
+#: template-parts/page-formations/avsec-cadre.php
+msgid "Réseau mondial · ASTC"
+msgstr ""
+
+#: template-parts/page-formations/avsec-cadre.php
+msgid "Les Centres de formation agréés par l’OACI pour la sûreté de l’aviation civile (ICAO Aviation Security Training Centres – ASTCs) représentent un élément essentiel du dispositif mondial de renforcement des capacités de l’OACI. Ils assurent la diffusion des programmes de formation reconnus par l’Organisation, contribuent au développement des compétences des professionnels de l’aviation civile et participent activement à l’amélioration de la conformité des États aux normes internationales."
+msgstr ""
+
+#: template-parts/page-formations/avsec-cadre.php
+msgid "L’AFSAC – Centre Régional de Formation à la Sûreté de l’Aviation Civile de l’OACI de Tunis (ICAO ASTC Tunis), membre du réseau mondial OACI GAT TRAINAIR PLUS, s’inscrit pleinement dans cette mission en offrant des formations spécialisées destinées aux autorités de l’aviation civile, aux exploitants d’aéroports, aux compagnies aériennes et aux différents acteurs impliqués dans la chaîne de sûreté aérienne."
+msgstr ""
+
+#: template-parts/page-formations/avsec-cadre.php
+msgid "Cadre international"
+msgstr ""
+
+#: template-parts/page-formations/avsec-cadre.php
+msgid "La formation AVSEC au cœur des exigences internationales de l’OACI"
+msgstr ""
+
+#: template-parts/page-formations/avsec-cadre.php
+msgid "La sûreté de l’aviation civile constitue un pilier essentiel du système international de l’aviation civile et vise à protéger l’aviation contre les actes d’intervention illicite, tout en assurant la fluidité et l’efficacité des opérations aéroportuaires."
+msgstr ""
+
+#: template-parts/page-formations/avsec-cadre.php
+msgid "Dans ce cadre, l’OACI accompagne les États dans la mise en œuvre des Normes et Pratiques Recommandées (SARPs) applicables notamment au titre de l’Annexe 17 – Sûreté, consacrée à la protection de l’aviation civile contre les actes d’intervention illicite, ainsi qu’au titre de l’Annexe 9 – Facilitation, qui encadre les mesures visant à faciliter le mouvement des aéronefs, des passagers, des équipages, des bagages, du fret et des documents, tout en intégrant les exigences pertinentes de sûreté."
+msgstr ""
+
+#: template-parts/page-formations/avsec-cadre.php
+msgid "À travers son programme d’assistance et de renforcement des capacités, l’OACI contribue ainsi à permettre aux États de développer, mettre en œuvre et maintenir des systèmes nationaux efficaces de sûreté et de facilitation, conformément aux exigences internationales."
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "Trousses de formation · ASTP"
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "Les trousses de formation à la sûreté de l’aviation civile de l’OACI (ASTP)"
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "Afin de soutenir les États dans le développement des compétences nécessaires à l’application efficace des exigences internationales, l’OACI élabore et actualise des trousses de formation spécialisées en sûreté de l’aviation civile (Aviation Security Training Packages – ASTPs)."
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "Ces programmes de formation sont conçus selon une approche basée sur les compétences et répondent aux différents niveaux de responsabilité impliqués dans la gestion et la mise en œuvre de la sûreté aérienne."
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "Ils couvrent notamment :"
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "La formation de base du personnel de sûreté de l’aviation civile"
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "La formation des instructeurs nationaux en sûreté de l’aviation civile"
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "La formation des superviseurs de sûreté aéroportuaire"
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "La sûreté du fret et de la poste aérienne"
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "La formation des inspecteurs nationaux de sûreté de l’aviation civile"
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "La formation des gestionnaires de sûreté de l’aviation civile"
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "La détection des comportements suspects"
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "Ces formations permettent aux participants d’acquérir les connaissances, compétences et aptitudes nécessaires pour assurer la mise en œuvre des mesures préventives, réaliser les activités de contrôle qualité, conduire les inspections, gérer les programmes de sûreté et développer les capacités nationales de formation, conformément aux exigences de l’Annexe 17 et aux orientations établies par l’OACI."
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "Ateliers spécialisés"
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "Ateliers de l’OACI sur la sûreté de l’aviation civile"
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "En complément des programmes de formation, l’OACI développe des ateliers spécialisés en sûreté de l’aviation civile destinés à accompagner les États et les organisations dans l’amélioration de leurs dispositifs réglementaires, opérationnels et institutionnels."
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "Ces ateliers adoptent une approche pratique et interactive permettant aux participants d’analyser leurs systèmes existants, d’identifier les écarts éventuels, de partager les meilleures pratiques internationales et de développer des solutions adaptées à leurs environnements nationaux et organisationnels."
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "Ils portent notamment sur :"
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "La culture de sûreté de l’aviation civile"
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "Le Programme national de sûreté de l’aviation civile (PNSAC)"
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "Le Programme de sûreté d’aéroport"
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "Le Programme national de contrôle qualité de la sûreté de l’aviation civile"
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "Le Programme national de formation à la sûreté de l’aviation civile"
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "La certification des personnels et des intervenants en sûreté"
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "La gestion des risques liés à la sûreté"
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "La gestion des crises et des situations d’urgence"
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "La prévention et la gestion du risque interne"
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "Contrairement aux formations classiques, principalement orientées vers l’acquisition de connaissances et de compétences individuelles, les ateliers de l’OACI privilégient une approche collaborative fondée sur l’analyse de cas pratiques, l’évaluation des dispositifs existants, l’utilisation d’outils méthodologiques et l’élaboration de plans d’action applicables au niveau national ou organisationnel."
+msgstr ""
+
+#: template-parts/page-formations/avsec-showcase.php
+msgid "À travers son statut de Centre régional de formation à la sûreté de l’aviation civile de l’OACI, l’AFSAC – ICAO ASTC Tunis contribue au développement durable des compétences des professionnels de l’aviation civile, au partage de l’expertise internationale et au renforcement des capacités des États, conformément aux objectifs stratégiques de l’OACI et à l’initiative mondiale <strong>« Aucun État laissé de côté » (« No Country Left Behind »)</strong>."
+msgstr ""
+
+#: template-calendrier.php
+msgid "Tous les programmes"
+msgstr ""
+
+#: template-calendrier.php
+msgid "Programmes de formation"
+msgstr ""
+
+#: template-calendrier.php
+msgid "Tous les domaines"
+msgstr ""
+
+#: refonte references-temoignages 08/2026
+msgid "Partenaires institutionnels, paroles de participants et institutions qui se forment avec l’AFSAC."
+msgstr ""
+
+msgid "Nos partenaires"
+msgstr ""
+
+msgid "Organisations internationales, autorités de l’aviation civile et opérateurs avec lesquels l’AFSAC conduit ses programmes de formation."
+msgstr ""
+
+msgid "Une formation de très haute qualité. L’expertise des formateurs AFSAC et leur connaissance approfondie des standards OACI ont permis à notre équipe d’atteindre un niveau opérationnel exemplaire."
+msgstr ""
+
+msgid "Directrice Sûreté"
+msgstr ""
+
+msgid "La rigueur méthodologique de l’AFSAC a transformé notre approche de la sûreté aéroportuaire : nos équipes appliquent les standards OACI avec une confiance nouvelle."
+msgstr ""
+
+msgid "Responsable Sûreté aéroportuaire"
+msgstr ""
+
+msgid "La collaboration avec l’AFSAC a élevé le niveau de notre académie : des supports de cours remarquables, transférés à nos formateurs."
+msgstr ""
+
+msgid "Directrice pédagogique"
+msgstr ""
+
+msgid "Paroles de participants"
+msgstr ""
+
+msgid "Lire le témoignage vidéo de %s"
+msgstr ""
+
+msgid "Témoignage vidéo"
+msgstr ""
+
+msgid "Fermer la vidéo"
+msgstr ""
+
+msgid "Autorité · DGAC"
+msgstr ""
+
+msgid "Aéroport & ANSP"
+msgstr ""
+
+msgid "Académie & école"
+msgstr ""
+
+msgid "Compagnie & opérateur"
+msgstr ""
+
+msgid "Organisation internationale"
+msgstr ""
+
+msgid "Tunisie"
+msgstr ""
+
+msgid "Sénégal"
+msgstr ""
+
+msgid "Kenya"
+msgstr ""
+
+msgid "Égypte"
+msgstr ""
+
+msgid "Émirats arabes unis"
+msgstr ""
+
+msgid "Maroc"
+msgstr ""
+
+msgid "Nigeria"
+msgstr ""
+
+msgid "Multilatéral"
+msgstr ""
+
+msgid "Éthiopie"
+msgstr ""
+
+msgid "Institutions accompagnées"
+msgstr ""
+
+msgid "Nos références"
+msgstr ""
+
+msgid "Détails référence"
+msgstr ""
+
+msgid "Le nom de l’institution est le titre ; le logo est l’image à la une."
+msgstr ""
+
+msgid "Pays ou zone (ex. Tunisie, Multilatéral). Affiché sous le nom."
+msgstr ""
+
+msgid "Type d’institution"
+msgstr ""
+
+msgid "Étiquette affichée en bas de la carte. Optionnel."
+msgstr ""
+
+msgid "Afficher dans le bandeau « Nos partenaires »"
+msgstr ""
+
+msgid "À cocher pour les logos du bandeau défilant (accueil + page Références). Nécessite une image à la une."
+msgstr ""
+
+#: refonte references-temoignages — playlist 08/2026
+msgid "Import des témoignages vidéo"
+msgstr ""
+
+msgid "Import témoignages vidéo"
+msgstr ""
+
+msgid "Importe les retours d’expérience publiés sur la chaîne YouTube de l’AFSAC (vidéo, vignette, auteur, organisation, langue) ainsi que les institutions citées, dans « Références ». Idempotent : relancer met à jour sans dupliquer, et ne remplace jamais une image à la une posée à la main."
+msgstr ""
+
+msgid "Lancer l’import"
+msgstr ""
+
+msgid "Témoignages : %1$d créés, %2$d mis à jour, %3$d vignettes importées. Références : %4$d créées, %5$d mises à jour."
+msgstr ""
+
+msgid "Échecs : %s."
+msgstr ""
+
+msgid "%d retour d’expérience filmé sur le campus de Tunis, publié avec l’accord du participant."
+msgid_plural "%d retours d’expérience filmés sur le campus de Tunis, publiés avec l’accord des participants."
+msgstr[0] ""
+msgstr[1] ""
+
+#: template-parts/news-row.php
+msgid "Savoir plus"
+msgstr ""
+
+#: template-parts/news-row.php
+msgid "À la une"
+msgstr ""
+
+#: template-actualites.php
+msgid "Toutes"
+msgstr ""
+
+#: template-actualites.php
+msgid "Filtrer les actualités par catégorie"
+msgstr ""
+
+#: template-actualites.php
+msgid "Aucune actualité dans cette catégorie"
+msgstr ""
+
+#: template-actualites.php
+msgid "Retirez le filtre pour retrouver l’ensemble du fil d’actualité."
+msgstr ""
+
+#: template-actualites.php
+msgid "Voir toutes les actualités"
+msgstr ""
+
+#: single.php
+msgid "Partager sur LinkedIn"
+msgstr ""
+
+#: single.php
+msgid "Partager sur X"
+msgstr ""
+
+#: single.php
+msgid "Partager sur Facebook"
+msgstr ""
+
+#: single.php
+msgid "Partager cette actualité"
+msgstr ""
+
+#: single.php
+msgid "Partager"
+msgstr ""
+
+#: single.php
+msgid "Lien copié"
+msgstr ""
+
+#: single.php
+msgid "Copier le lien de l’article"
+msgstr ""
+
+#: single.php
+msgid "Mots-clés"
+msgstr ""
+
+#: single.php
+msgid "Navigation entre les actualités"
+msgstr ""
+
+#: single.php
+msgid "Actualité précédente"
+msgstr ""
+
+#: single.php
+msgid "Actualité suivante"
+msgstr ""
+
+#: single.php
+msgid "Toutes les actualités"
+msgstr ""
+
+#: template-parts/news-row.php
+msgid "%d min de lecture"
+msgid_plural "%d min de lecture"
+msgstr[0] ""
+msgstr[1] ""
+
+#: template-actualites.php
+msgid "actualité publiée"
+msgid_plural "actualités publiées"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Votre prénom est requis."
+msgstr ""
+
+msgid "Le numéro de téléphone saisi n’est pas valide."
+msgstr ""
+
+msgid "Votre numéro de téléphone est requis."
+msgstr ""
+
+msgid "Votre fonction est requise."
+msgstr ""
+
+msgid "Votre organisation est requise."
+msgstr ""
+
+msgid "Numéro de téléphone requis."
+msgstr ""
+
+msgid "Indicatif pays compris, pour vous joindre avant la session."
+msgstr ""
+
+msgid "L’AFSAC en vidéo"
+msgstr ""
+
+msgid "Nos shorts"
+msgstr ""
+
+msgid "Formats courts tournés au centre de Tunis : coulisses des sessions, paroles d’instructeurs et repères de sûreté aérienne, en une minute."
+msgstr ""
+
+msgid "Voir la chaîne YouTube"
+msgstr ""
+
+msgid "Vidéos précédentes"
+msgstr ""
+
+msgid "Vidéos suivantes"
+msgstr ""
+
+msgid "Short"
+msgstr ""
+
+msgid "Vidéo AFSAC"
+msgstr ""
+
+msgid "Vidéo précédente"
+msgstr ""
+
+msgid "Vidéo suivante"
+msgstr ""
+
+msgid "Ouvrir sur YouTube"
+msgstr ""
+
+msgid "Vidéos & Shorts"
+msgstr ""
+
+msgid "Shorts YouTube mis en avant sur l’accueil. Une ligne par vidéo, au format « URL | Titre ». Laisser vide pour afficher les shorts de la chaîne AFSAC connus du thème."
+msgstr ""
+
+msgid "Shorts YouTube (une par ligne : URL | Titre)"
+msgstr ""
+
+msgid "Avant de nous écrire, découvrez le centre en images : coulisses des sessions, paroles d’instructeurs et repères de sûreté aérienne, en une minute."
+msgstr ""
+
+msgid "Shorts YouTube affichés sur la page Contact. Une ligne par vidéo, au format « URL | Titre ». Laisser vide pour afficher les shorts de la chaîne AFSAC connus du thème."
+msgstr ""
+
+#: includes/brochure.php:59
+msgctxt "Nom général du CPT"
+msgid "Téléchargements"
+msgstr ""
+
+#: includes/brochure.php:60
+msgctxt "Nom singulier du CPT"
+msgid "Téléchargement"
+msgstr ""
+
+#: includes/brochure.php:61
+msgid "Téléchargements"
+msgstr ""
+
+#: includes/brochure.php:62
+msgid "Demandes de brochure"
+msgstr ""
+
+#: includes/brochure.php:63
+msgid "Voir la demande"
+msgstr ""
+
+#: includes/brochure.php:65
+msgid "Rechercher une demande"
+msgstr ""
+
+#: includes/brochure.php:66
+msgid "Aucune demande de brochure."
+msgstr ""
+
+#: includes/brochure.php:67
+msgid "Aucune demande dans la corbeille."
+msgstr ""
+
+#: includes/brochure.php:176
+msgid "Édition multilingue"
+msgstr ""
+
+#: includes/brochure.php:433
+msgid "Une adresse e-mail valide est requise : c’est elle qui reçoit le lien de téléchargement."
+msgstr ""
+
+#: includes/brochure.php:442
+msgid "La brochure n’est pas disponible pour le moment. Merci de nous contacter."
+msgstr ""
+
+#: includes/brochure.php:461
+msgid "Trop de demandes envoyées depuis cette connexion. Merci de réessayer dans une heure."
+msgstr ""
+
+#: includes/brochure.php:671
+msgid "Personne"
+msgstr ""
+
+#: includes/brochure.php:674
+msgid "Édition"
+msgstr ""
+
+#: includes/brochure.php:675
+msgid "Demandes / Téléch."
+msgstr ""
+
+#: includes/brochure.php:719
+msgid "Jamais téléchargé"
+msgstr ""
+
+#: includes/brochure.php:771
+msgid "Personnes"
+msgstr ""
+
+#: includes/brochure.php:771
+msgid "fiches uniques (1 e-mail = 1 fiche)"
+msgstr ""
+
+#: includes/brochure.php:772
+msgid "PDF réellement servis"
+msgstr ""
+
+#: includes/brochure.php:773
+msgid "Formulaires envoyés"
+msgstr ""
+
+#: includes/brochure.php:773
+msgid "demandes, ré-envois compris"
+msgstr ""
+
+#: includes/brochure.php:775
+msgid "Ce mois-ci"
+msgstr ""
+
+#: includes/brochure.php:775
+msgid "%s%% des fiches ont téléchargé"
+msgstr ""
+
+#: includes/brochure.php:802
+msgid "Éditions demandées"
+msgstr ""
+
+#: includes/brochure.php:812
+msgid "Exporter en CSV"
+msgstr ""
+
+#: includes/brochure.php:825
+msgid "Action non autorisée."
+msgstr ""
+
+#: includes/brochure.php:846
+msgid "Demandes"
+msgstr ""
+
+#: includes/brochure.php:848
+msgid "Première demande"
+msgstr ""
+
+#: includes/brochure.php:849
+msgid "Dernière demande"
+msgstr ""
+
+#: includes/brochure.php:850
+msgid "Dernier téléchargement"
+msgstr ""
+
+#: includes/brochure.php:851
+msgid "Langue du site"
+msgstr ""
+
+#: includes/brochure.php:852
+msgid "Page d’origine"
+msgstr ""
+
+#: includes/brochure.php:853
+msgid "Consentement RGPD"
+msgstr ""
+
+#: includes/brochure.php:854
+msgid "Adresse IP"
+msgstr ""
+
+#: includes/brochure.php:911
+msgid "Aucun PDF de brochure n’est téléversé : la bande « Téléchargez la brochure » n’apparaît pas sur le site."
+msgstr ""
+
+#: includes/brochure.php:916
+msgid "Téléverser la brochure sur la page d’accueil"
+msgstr ""
+
+#: includes/lead-admin.php:35
+msgid "Autorité de l’aviation civile"
+msgstr ""
+
+#: includes/lead-admin.php:36
+msgid "Aéroport"
+msgstr ""
+
+#: includes/lead-admin.php:38
+msgid "Académie / centre de formation"
+msgstr ""
+
+#: includes/lead-admin.php:44
+msgid "Prise en charge par l’institution"
+msgstr ""
+
+#: includes/lead-admin.php:53
+msgid "Nouveau"
+msgstr ""
+
+#: includes/lead-admin.php:54
+msgid "Traité"
+msgstr ""
+
+#: includes/lead-admin.php:93
+msgid "Demandeur"
+msgstr ""
+
+#: includes/lead-admin.php:99
+msgid "Brochure"
+msgstr ""
+
+#: includes/lead-admin.php:100
+msgid "Édition demandée"
+msgstr ""
+
+#: includes/lead-admin.php:102
+msgid "Téléchargements effectifs"
+msgstr ""
+
+#: includes/lead-admin.php:107
+msgid "Traçabilité"
+msgstr ""
+
+#: includes/lead-admin.php:118
+msgid "Expéditeur"
+msgstr ""
+
+#: includes/lead-admin.php:126
+msgid "Demande"
+msgstr ""
+
+#: includes/lead-admin.php:157
+msgid "Séance"
+msgstr ""
+
+#: includes/lead-admin.php:158
+msgid "Langue des supports"
+msgstr ""
+
+#: includes/lead-admin.php:160
+msgid "Logistique"
+msgstr ""
+
+#: includes/lead-admin.php:162
+msgid "Accessibilité"
+msgstr ""
+
+#: includes/lead-admin.php:164
+msgid "Référence bon de commande"
+msgstr ""
+
+#: includes/lead-admin.php:171
+msgid "Attestation d’exactitude"
+msgstr ""
+
+#: includes/lead-admin.php:173
+msgid "Navigateur"
+msgstr ""
+
+#: includes/lead-admin.php:189
+msgid "Non renseigné"
+msgstr ""
+
+#: includes/lead-admin.php:265
+msgid "Votre demande auprès de %s"
+msgstr ""
+
+#: includes/lead-admin.php:270
+msgid "Répondre à cette personne"
+msgstr ""
+
+#: includes/lead-admin.php:283
+msgid "Détail de la demande"
+msgstr ""
+
+#: includes/messaging.php:535
+msgid "Aucun destinataire de notification n’est réglé : les leads (inscriptions, messages, demandes de brochure) sont envoyés à l’e-mail d’administration du site (%s). Renseignez un ou plusieurs destinataires pour ne rien manquer."
+msgstr ""
+
+#: includes/messaging.php:733
+msgid "Cette personne avait DÉJÀ demandé la brochure : ses compteurs ont été mis à jour."
+msgstr ""
+
+#: includes/messaging.php:734
+msgid "Nouveau contact."
+msgstr ""
+
+#: includes/messaging.php:741
+msgid "Nouvelle demande de brochure"
+msgstr ""
+
+#: includes/messaging.php:746
+msgid "Votre brochure AFSAC"
+msgstr ""
+
+#: includes/messaging.php:750
+msgid "Merci de votre intérêt. Voici le lien de téléchargement de la brochure AFSAC :"
+msgstr ""
+
+#: includes/messaging.php:752
+msgid "Ce lien reste valable 7 jours. Notre équipe se tient à votre disposition pour toute question sur nos formations."
+msgstr ""
+
+#: template-parts/shared/brochure-gate.php:76
+msgid "Les 11 domaines OACI du programme TRAINAIR PLUS"
+msgstr ""
+
+#: template-parts/shared/brochure-gate.php:79
+msgid "Le cursus AVSEC complet, en français et en anglais"
+msgstr ""
+
+#: template-parts/shared/brochure-gate.php:78
+msgid "Modalités, durées et publics visés de chaque cours"
+msgstr ""
+
+#: template-parts/shared/brochure-gate.php:87
+msgid "Fermer"
+msgstr ""
+
+#: template-parts/shared/brochure-gate.php:121
+msgid "Merci, votre brochure arrive"
+msgstr ""
+
+#: template-parts/shared/brochure-gate.php:122
+msgid "Le téléchargement démarre automatiquement. Nous vous avons également envoyé le lien par e-mail : il reste valable 7 jours."
+msgstr ""
+
+#: template-parts/shared/brochure-gate.php:124
+msgid "Télécharger la brochure"
+msgstr ""
+
+#: template-parts/shared/brochure-gate.php:126
+msgid "Le téléchargement n’a pas démarré ? Utilisez le bouton ci-dessus."
+msgstr ""
+
+#: template-parts/shared/brochure-gate.php:132
+msgid "Recevoir la brochure"
+msgstr ""
+
+#: template-parts/shared/brochure-gate.php:133
+msgid "Indiquez-nous simplement qui vous êtes : le téléchargement démarre aussitôt et le lien vous est envoyé par e-mail."
+msgstr ""
+
+#: template-parts/shared/brochure-gate.php:137
+msgid "Ce lien de téléchargement a expiré. Renseignez à nouveau votre e-mail pour en recevoir un nouveau."
+msgstr ""
+
+#: template-parts/shared/brochure-gate.php:169
+msgid "Nom et prénom"
+msgstr ""
+
+#: template-parts/shared/brochure-gate.php:173
+msgid "E-mail professionnel"
+msgstr ""
+
+#: template-parts/shared/brochure-gate.php:189
+msgid "Édition souhaitée"
+msgstr ""
+
+#: template-parts/shared/brochure-gate.php:206
+msgid "J’accepte que mes données soient utilisées pour me transmettre la brochure et les informations d’AFSAC, conformément au RGPD et à la loi n° 63-2004."
+msgstr ""
+
+#: template-parts/shared/brochure-gate.php:216
+msgid "Vos données ne sont ni revendues ni cédées. Aucun compte à créer."
+msgstr ""
+
+#: template-parts/footer/documentation.php:51
+msgid "Recevoir la brochure AFSAC (PDF, %s) — un e-mail vous sera demandé"
+msgstr ""
+
+#: template-parts/footer/documentation.php:53
+msgid "Recevoir la brochure AFSAC (PDF) — un e-mail vous sera demandé"
+msgstr ""
+
+#: template-parts/footer/documentation.php:73
+msgid "Éditions disponibles"
+msgstr ""
+
+#: template-parts/footer/documentation.php:108
+msgid "PDF · %s · e-mail demandé"
+msgstr ""
+
+#: template-parts/footer/documentation.php:110
+msgid "PDF · e-mail demandé"
+msgstr ""
+
+#: template-parts/footer/documentation.php:117
+msgid "Recevoir"
+msgstr ""
+
+#: functions.php
+msgid "Bienvenue au Centre régional de formation de l’OACI"
+msgstr ""
+
+#: functions.php
+msgid "Première visite ? En moins d’une minute, voici où trouver un cours, les prochaines sessions et comment nous joindre. Vous pouvez quitter la visite à tout moment."
+msgstr ""
+
+#: functions.php
+msgid "Tout le site part d’ici"
+msgstr ""
+
+#: functions.php
+msgid "Formations & services, catalogue, calendrier, références : chaque rubrique s’ouvre depuis ce menu, en <strong>français, anglais et arabe</strong>."
+msgstr ""
+
+#: functions.php
+msgid "Le catalogue des formations"
+msgstr ""
+
+#: functions.php
+msgid "Les cours <strong>TRAINAIR PLUS</strong> classés par les 11 domaines de l’OACI, et l’ensemble des cursus <strong>AVSEC</strong> : cours normalisés et ateliers."
+msgstr ""
+
+#: functions.php
+msgid "Les prochaines sessions"
+msgstr ""
+
+#: functions.php
+msgid "Dates, lieu, langue et tarifs : le calendrier liste les sessions ouvertes, et chaque fiche mène au programme du cours puis à l’inscription en ligne."
+msgstr ""
+
+#: functions.php
+msgid "Vous cherchez un cours précis ?"
+msgstr ""
+
+#: functions.php
+msgid "Un code de cours, un mot-clé ou un domaine suffit : la recherche interroge tout le catalogue."
+msgstr ""
+
+#: functions.php
+msgid "Le programme complet en PDF"
+msgstr ""
+
+#: functions.php
+msgid "Laissez votre e-mail : nous vous envoyons le lien de téléchargement de la brochure, dans la langue de votre choix."
+msgstr ""
+
+#: functions.php
+msgid "Une question, un besoin sur mesure ?"
+msgstr ""
+
+#: functions.php
+msgid "Demande de devis, formation dans vos locaux, conseil ou audit : notre équipe vous répond. Bonne visite !"
+msgstr ""
+
+#: functions.php
+msgid "Découvrir le catalogue"
+msgstr ""
+
+#: functions.php
+msgid "Visite guidée"
+msgstr ""
+
+#: functions.php
+msgid "Visite en 7 étapes proposée au visiteur qui découvre le site. Elle ne se lance qu’une fois par navigateur ; le lien « Revoir la visite guidée » du pied de page la rejoue, tout comme l’adresse ?visite=1 sur l’accueil."
+msgstr ""
+
+#: functions.php
+msgid "Proposer la visite guidée à la première visite"
+msgstr ""
+
+#: template-parts/shared/tour.php
+msgid "Étape %1$s sur %2$s"
+msgstr ""
+
+#: template-parts/shared/tour.php
+msgid "Fermer la visite guidée"
+msgstr ""
+
+#: template-parts/shared/tour.php
+msgid "Passer"
+msgstr ""
+
+#: template-parts/shared/tour.php
+msgid "Démarrer la visite"
+msgstr ""
+
+#: template-parts/shared/tour.php
+msgid "Terminer"
+msgstr ""
+
+#: template-parts/footer/bottom.php
+msgid "Revoir la visite guidée"
+msgstr ""
+
+#: template-parts/home/hero.php:48
+msgid "L’expertise OACI au service de votre performance aéronautique."
+msgstr ""
+
+#: template-parts/home/hero.php:49
+msgid "Grâce à notre expertise <strong>ICAO ASTC</strong> et <strong>TRAINAIR PLUS</strong>, nous proposons des formations spécialisées, des solutions de renforcement des capacités, de l’ingénierie pédagogique et un accompagnement professionnel adaptés aux besoins de l’aviation civile."
+msgstr ""
+
+#: template-parts/home/hero.php:50
+msgid "<strong>Aucun État laissé de côté.</strong> Ensemble, développons les compétences et construisons une aviation plus sûre, plus performante et durable."
+msgstr ""
+
+#: template-parts/home/hero.php:52
+msgid "Consulter le calendrier"
+msgstr ""
+
+#: template-parts/home/hero.php:56
+msgid "Découvrir nos formations et services"
+msgstr ""
+
+#: template-qui-sommes-nous.php
+msgid "Le siège de l’AFSAC – ICAO ASTC Tunis"
+msgstr ""

@@ -1,0 +1,39 @@
+/**
+ * Surcharges RTL pour l'arabe (AFSAC).
+ *
+ * Chargé conditionnellement par afsac_enqueue_rtl_styles() quand is_rtl().
+ * Base volontairement minimale : à compléter par le thème custom. On
+ * privilégie les propriétés logiques (margin-inline, padding-inline, text-align
+ * start/end) pour limiter les surcharges manuelles.
+ */
+
+/* Direction et alignement de base. */
+html[dir="rtl"] body {
+	direction: rtl;
+	text-align: right;
+}
+
+/* Le sélecteur de langue passe en flux inverse. */
+html[dir="rtl"] .afsac-language-switcher__list {
+	flex-direction: row-reverse;
+}
+
+/* Exemple de correction de flottants hérités (LTR -> RTL). */
+html[dir="rtl"] .alignleft {
+	float: right;
+	margin-inline-start: 0;
+	margin-inline-end: 1.5rem;
+}
+
+html[dir="rtl"] .alignright {
+	float: left;
+	margin-inline-end: 0;
+	margin-inline-start: 1.5rem;
+}
+
+/* Listes : indentation côté début logique. */
+html[dir="rtl"] ul,
+html[dir="rtl"] ol {
+	padding-inline-start: 1.5rem;
+	padding-inline-end: 0;
+}

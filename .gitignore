@@ -1,0 +1,43 @@
+# ===========================================================
+#  AFSAC — dépôt de code custom uniquement
+#  Principe : on ignore TOUT, puis on autorise explicitement
+#  le thème, le plugin métier et les maquettes.
+# ===========================================================
+
+# 1. Tout ignorer à la racine (core WordPress, wp-config.php, etc.)
+/*
+
+# 2. Sauf ces éléments
+!.gitignore
+!.gitattributes
+!CLAUDE.md
+!README.md
+!maquettes/
+!wp-content/
+
+# 3. Dans wp-content : tout ignorer (uploads, backups, languages, debug.log…)
+wp-content/*
+!wp-content/themes/
+!wp-content/plugins/
+
+# 4. Thèmes : uniquement le thème custom
+wp-content/themes/*
+!wp-content/themes/afsac/
+
+# 5. Plugins : uniquement le plugin métier
+wp-content/plugins/*
+!wp-content/plugins/afsac-core/
+
+# 6. Fichiers indésirables où qu'ils soient
+node_modules/
+vendor/
+*.log
+*.sql
+*.zip
+*.tar.gz
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/
