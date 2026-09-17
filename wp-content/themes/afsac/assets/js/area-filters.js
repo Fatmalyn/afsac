@@ -25,20 +25,35 @@
 	var rows     = Array.prototype.slice.call( wrap.querySelectorAll( '.afsac-course-row' ) );
 	var pageSize = parseInt( wrap.getAttribute( 'data-page-size' ), 10 ) || 10;
 
-	// Listes déroulantes de filtre. AUCUNE sur l'archive d'un domaine (client
-	// 18/08/2026 : « laisse juste la barre de recherche ») ; l'archive générique
-	// du CPT en a une, « Domaine », parce qu'elle couvre les 11 domaines OACI.
+	/*
+	 * Listes déroulantes de filtre. AUCUNE sur l'archive d'un domaine (client
+	 * 18/08/2026 : « laisse juste la barre de recherche ») ; l'archive générique
+	 * du CPT en a une, « Domaine », parce qu'elle couvre les 11 domaines OACI, et
+	 * le programme AVSEC en a une, « Type », parce que ses cours partagent tous le
+	 * même domaine.
+	 *
+	 * La valeur de `data-area-filter` nomme l'attribut `data-*` de la ligne sur
+	 * lequel filtrer (« area » → data-area, « kind » → data-kind) : ajouter un
+	 * filtre ne demande donc plus de toucher à match().
+	 */
 	var selects  = Array.prototype.slice.call( root.querySelectorAll( '[data-area-filter]' ) );
+	var keys     = selects.map( function ( s ) { return s.getAttribute( 'data-area-filter' ); } );
 	var sortEl   = root.querySelector( '[data-area-sort]' );
 	var search   = root.querySelector( '[data-area-search]' );
 	var countEl  = root.querySelector( '[data-area-count]' );
 	var noResult = root.querySelector( '[data-area-noresult]' );
 	var pager    = root.querySelector( '[data-area-pager]' );
 
-	var state = { area: '', q: '', sort: 'type', page: 1 };
+	// État initial = valeur des selects, pour respecter une option pré-sélectionnée
+	// côté serveur (le programme AVSEC arrive filtré via ?format=cours|atelier).
+	var state = { q: '', sort: 'type', page: 1 };
+	selects.forEach( function ( s ) { state[ s.getAttribute( 'data-area-filter' ) ] = s.value; } );
 
 	function match( row ) {
-		if ( state.area && row.dataset.area !== state.area ) { return false; }
+		for ( var i = 0; i < keys.length; i++ ) {
+			var k = keys[ i ];
+			if ( state[ k ] && row.dataset[ k ] !== state[ k ] ) { return false; }
+		}
 		if ( state.q && ( row.textContent || '' ).toLowerCase().indexOf( state.q ) === -1 ) { return false; }
 		return true;
 	}

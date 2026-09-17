@@ -12,8 +12,9 @@
  * Retour client (07/08/2026) : « Voir plus » DÉPLIAIT la liste sous la section ;
  * le client la veut sur une PAGE À PART, comme un domaine TRAINAIR PLUS. Les deux
  * boutons sont donc des liens vers ?famille=avsec&format=… — page servie par
- * archive-afsac_formation.php via template-parts/page-formations/avsec-liste.php.
- * Les listes repliées et avsec-catalogue.js ont disparu avec ce changement.
+ * archive-afsac_formation.php. Les listes repliées et avsec-catalogue.js ont
+ * disparu avec ce changement. Depuis le 04/09/2026, `format` ne choisit plus un
+ * gabarit : il pré-sélectionne le filtre « Type » de la liste.
  *
  * Retour client (07/08/2026, plus tard) : le texte de référence de l'OACI (ASTP,
  * ateliers) avait d'abord été posé dans une SECTION à part — « ça devient trop de

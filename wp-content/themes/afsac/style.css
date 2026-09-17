@@ -234,7 +234,11 @@ img { max-width: 100%; height: auto; display: block; }
 .afsac-topbar__contact { display: flex; gap: var(--afsac-sp-3); flex-wrap: wrap; }
 .afsac-topbar__link { display: inline-flex; align-items: center; gap: 0.45rem; color: rgba(255,255,255,0.85); }
 .afsac-topbar__link:hover { color: #fff; }
-.afsac-topbar__link .afsac-icon { width: 15px; height: 15px; opacity: 0.75; color: var(--afsac-blue-soft); }
+/* Le fond de la barre est passé au bleu OACI plein (#0054a4) avec la palette :
+   un pictogramme #459cdc à 0,75 d'opacité y est très peu lisible, et sur
+   téléphone il porte À LUI SEUL le sens du lien (le libellé est masqué). Blanc
+   franc, donc — et un poil plus grand quand il est seul (cf. § 12.5). */
+.afsac-topbar__link .afsac-icon { width: 15px; height: 15px; opacity: 0.9; color: var(--afsac-white); }
 .afsac-topbar__aside { display: flex; align-items: center; gap: var(--afsac-sp-3); }
 .afsac-topbar__links { display: flex; gap: var(--afsac-sp-2); }
 .afsac-topbar__menu { list-style: none; display: flex; gap: var(--afsac-sp-2); margin: 0; padding: 0; }
@@ -250,7 +254,13 @@ img { max-width: 100%; height: auto; display: block; }
 .afsac-language-switcher__link { display: inline-flex; align-items: center; gap: 0.4rem; color: rgba(255,255,255,0.6); text-transform: uppercase; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.05em; white-space: nowrap; }
 .afsac-language-switcher__link:hover { color: #fff; }
 .afsac-language-switcher__link { transition: color .2s ease; }
-.afsac-language-switcher__item.is-current .afsac-language-switcher__link { color: var(--afsac-orange); font-weight: 700; }
+/* La langue ACTIVE se marquait avec `--afsac-orange`. Depuis le réalignement de
+   la palette sur icao.int, cette variable vaut #0054a4 — c'est-à-dire EXACTEMENT
+   le fond de la barre (`--afsac-navy`, lui aussi neutralisé en bleu OACI) : le
+   code « FR » disparaissait purement et simplement, contraste 1:1. Sur une
+   surface bleue pleine, le repère lisible est le blanc opaque, l'inactif restant
+   en blanc translucide. */
+.afsac-language-switcher__item.is-current .afsac-language-switcher__link { color: var(--afsac-white); font-weight: 700; }
 .afsac-language-switcher__item.is-current .afsac-language-switcher__link { cursor: default; }
 
 /* =========================================================================
@@ -296,6 +306,9 @@ img { max-width: 100%; height: auto; display: block; }
 .afsac-action { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border: 1px solid var(--afsac-border); border-radius: 50%; background: #fff; color: var(--afsac-navy); cursor: pointer; transition: all var(--afsac-transition); }
 .afsac-action:hover { background: var(--afsac-sky); color: var(--afsac-blue); border-color: var(--afsac-sky-200); }
 .afsac-menu-toggle { display: none; }
+/* Ne servent qu'au tiroir mobile (réaffichés dans « max-width: 1150px »). */
+.afsac-nav-close { display: none; }
+.afsac-nav-foot { display: none; }
 
 .afsac-search-panel { background: var(--afsac-sky); border-bottom: 1px solid var(--afsac-border); padding-block: var(--afsac-sp-2); }
 .afsac-search-panel[hidden] { display: none; }
@@ -547,9 +560,22 @@ img { max-width: 100%; height: auto; display: block; }
 	/* transform:none — sinon le translateY(-50%) du panneau desktop décalerait
 	   la vidéo d'une demi-hauteur une fois l'élément remis dans le flux. */
 	.afsac-video-hero--panel .afsac-video-hero__stage { position: static; width: 100%; aspect-ratio: 16 / 9; transform: none;
-		/* Empilé, les 13 % rognés laissent une lisière de part et d'autre : on la
-		   remplit avec les navy des bords de la vidéo. */
+		/* Empilé, les 13 % rognés laissent une lisière : on la remplit avec les
+		   navy des bords de la vidéo (le plus sombre à droite, là où la lisière
+		   apparaît une fois le décalage supprimé — cf. le média juste après). */
 		background: linear-gradient(to right, var(--afsac-hero-seam) 0%, #0a2143 55%, #071e3e 100%); }
+
+	/* Le `translateX(6.5%)` du panneau de bureau recentre la BOÎTE de la vidéo
+	   après le rognage du filigrane (13 % à droite). Il est calculé pour un
+	   panneau de 46 % de large : empilé plein écran, ces 6,5 % valent 25 px sur
+	   un téléphone de 390 px, et c'est la COMPOSITION elle-même — qui, mesurée,
+	   est centrée dans le cadre — qui se retrouve décalée à droite d'autant.
+	   Sans le décalage, le globe et ses cinq libellés retombent pile sur l'axe
+	   de l'écran (vérifié au pixel : centre à 194,5 pour un écran de 390) et la
+	   lisière de 13 % passe entièrement à droite, où le dégradé du stage est
+	   déjà à sa teinte la plus sombre — la couture ne se voit pas.
+	   ⚠️ Le clip-path, lui, est CONSERVÉ : sans lui le filigrane réapparaît. */
+	.afsac-video-hero--panel .afsac-video-hero__media { transform: none; }
 	.afsac-video-hero--panel .afsac-video-hero__overlay { display: none; }
 	/* Empilé : plus de panneau à contourner, on revient à des marges normales. */
 	.afsac-video-hero--panel .afsac-video-hero__content { padding-inline: clamp(1.25rem, 4vw, 2.5rem); }
@@ -884,11 +910,13 @@ img { max-width: 100%; height: auto; display: block; }
 .afsac-site-footer a { color: var(--afsac-white-75); transition: color var(--afsac-transition); }
 .afsac-site-footer a:hover { color: var(--afsac-white); }
 
-/* A. Bande principale — grille unique : colonne marque + 4 colonnes liens.
- * La marque (logo + signature + réseaux) est fusionnée dans la grille (plus de
- * rangée séparée) : footer plus compact. Séparée de la bande doc par le filet
- * bas de .afsac-docband (même teinte --afsac-navy, pas de rupture de couleur). */
-.afsac-footer__grid { display: grid; grid-template-columns: 1.3fr repeat(4, 1fr); gap: 32px 40px; padding-block: 36px 40px; }
+/* A. Bande principale — grille unique : colonne marque + 3 colonnes liens.
+ * La marque (logo + réseaux) est fusionnée dans la grille (plus de rangée
+ * séparée) : footer plus compact. Séparée de la bande doc par le filet bas de
+ * .afsac-docband (même teinte --afsac-navy, pas de rupture de couleur).
+ * 08/09/2026 (demande client) : colonne « S'abonner » et signature sous le logo
+ * retirées ; la colonne marque s'élargit pour porter un logo plus grand. */
+.afsac-footer__grid { display: grid; grid-template-columns: 1.7fr repeat(3, 1fr); gap: 32px 40px; padding-block: 36px 40px; }
 .afsac-footer__heading { font-family: var(--afsac-font-body); font-weight: 600; font-size: 11px; line-height: 16px; letter-spacing: 1.98px; text-transform: uppercase; color: var(--afsac-blue-soft); margin: 0 0 14px; }
 
 /* Col marque. */
@@ -898,11 +926,15 @@ img { max-width: 100%; height: auto; display: block; }
  * `filter` : l'approche avait été essayée puis rejetée du temps du verrou bleu
  * sur blanc, où elle donnait un rectangle blanc plein. On garde l'affordance de
  * survol (opacité + micro-lift). */
-.afsac-footer__logo { display: inline-flex; align-items: center; padding: 0; background: none; border-radius: 0; box-shadow: none; opacity: 0.92; transition: opacity var(--afsac-transition), transform var(--afsac-transition); }
+/* Taille portée par le LIEN, pas par l'image : 76 px de haut (agrandi 44 → 76,
+ * demande client 08/09/2026), soit une largeur calculée d'après le ratio du
+ * fichier (variables posées en inline par columns.php : FR 451×85, EN 622×148),
+ * plafonnée à la colonne (mobile) — le ratio est conservé par aspect-ratio, donc
+ * aucune déformation, et la place est réservée avant le chargement (lazy). */
+.afsac-footer__logo { --afsac-logo-w: 451; --afsac-logo-h: 85; display: block; width: min(100%, calc(76px * var(--afsac-logo-w) / var(--afsac-logo-h))); aspect-ratio: var(--afsac-logo-w) / var(--afsac-logo-h); padding: 0; background: none; border-radius: 0; box-shadow: none; opacity: 0.92; transition: opacity var(--afsac-transition), transform var(--afsac-transition); }
 .afsac-footer__logo:hover, .afsac-footer__logo:focus-visible { opacity: 1; transform: translateY(-2px); }
-.afsac-footer__logo img { display: block; height: 44px; width: auto; max-width: min(260px, 100%); }
+.afsac-footer__logo img { display: block; width: 100%; height: 100%; }
 @media (prefers-reduced-motion: reduce) { .afsac-footer__logo, .afsac-footer__logo:hover { transition: none; transform: none; } }
-.afsac-footer__tagline { margin: 0; font-size: 12px; line-height: 1.55; color: var(--afsac-white-75); max-width: 34ch; }
 
 /* Col 1 — liens utiles (miroir du menu principal, rendu par wp_nav_menu). */
 .afsac-footer__menu, .afsac-footer__contact { list-style: none; margin: 0; padding: 0; }
@@ -922,29 +954,15 @@ img { max-width: 100%; height: auto; display: block; }
 /* Col 3 — adresse. */
 .afsac-footer__address { font-style: normal; font-size: 13px; line-height: 22px; color: var(--afsac-white-75); }
 
-/* Réseaux (dans la colonne marque) + abonnement (colonne 4). */
+/* Réseaux (dans la colonne marque). */
 .afsac-social__list { list-style: none; display: flex; gap: 8px; margin: 0; padding: 0; }
 .afsac-social__list a { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border: 1px solid var(--afsac-white-20); border-radius: 10px; color: var(--afsac-white); transition: background var(--afsac-transition), border-color var(--afsac-transition), transform var(--afsac-transition); }
 .afsac-social__list a:hover { background: var(--afsac-blue-accent); border-color: var(--afsac-blue-accent); transform: translateY(-2px); }
 .afsac-social__list .afsac-icon { width: 18px; height: 18px; }
-.afsac-footer__subscribe-text { margin: 0 0 16px; font-size: 13px; line-height: 1.6; color: var(--afsac-white-75); }
-.afsac-footer__subscribe-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--afsac-blue-accent); color: var(--afsac-white); padding: 10px 16px; border: none; border-radius: 6px; font-family: var(--afsac-font-body); font-weight: 600; font-size: 11px; letter-spacing: 1.54px; text-transform: uppercase; cursor: pointer; transition: background var(--afsac-transition); }
-.afsac-footer__subscribe-btn:hover { background: var(--afsac-blue-btn-600); color: var(--afsac-white); }
-.afsac-footer__subscribe-btn::after { content: "\203A"; font-weight: 400; font-size: 1.2em; line-height: 1; }
 
-/* B. Strip 3 cartes — sur #0d1f4a. Séparateurs = gap 1px laissant voir le fond 5 % du conteneur. */
-.afsac-footer__badges-band { background: var(--afsac-navy-darkest); } /* #0d1f4a (azure/6) */
-.afsac-footer__badges { list-style: none; margin: 0; padding: 0; display: flex; gap: 1px; background: var(--afsac-white-05); border: 1px solid var(--afsac-white-05); }
-.afsac-badge-inst { flex: 1; display: flex; align-items: center; justify-content: center; gap: 12px; padding: 13px 16px; background: var(--afsac-navy-darkest); text-align: center; } /* AUCUNE bordure : évite le double trait */
-.afsac-badge-inst__logo { width: 45px; height: auto; object-fit: contain; opacity: 0.9; flex: none; }
-.afsac-badge-inst__lines { display: flex; flex-direction: column; }
-.afsac-badge-inst__sup, .afsac-badge-inst__main { font-family: var(--afsac-font-body); font-weight: 600; font-size: 10.5px; letter-spacing: 1.89px; text-transform: uppercase; }
-.afsac-badge-inst--icao .afsac-badge-inst__sup, .afsac-badge-inst--icao .afsac-badge-inst__main { color: var(--afsac-white-70); }
-.afsac-badge-inst--trainair .afsac-badge-inst__main { font-family: var(--afsac-font-head); font-size: 18px; line-height: 27px; letter-spacing: 1.08px; text-transform: none; color: var(--afsac-blue-soft); }
-.afsac-badge-inst--avsec .afsac-badge-inst__sup { color: var(--afsac-white-60); }
-.afsac-badge-inst--avsec .afsac-badge-inst__main { font-family: var(--afsac-font-head); font-size: 16px; letter-spacing: 0.96px; text-transform: none; color: var(--afsac-white-85); }
 
-/* C. Barre copyright. */
+/* B. Barre copyright. (La bande de 3 badges institutionnels qui la précédait a
+ * été retirée le 08/09/2026, demande client.) */
 .afsac-footer__bottom { background: var(--afsac-navy-darkest); } /* #0d1f4a (azure/6) */
 .afsac-footer__bottom-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 16px; flex-wrap: wrap; } /* padding-inline 24px hérité de .afsac-container */
 .afsac-footer__copyright { margin: 0; font-size: 11px; color: var(--afsac-white-45); }
@@ -958,7 +976,6 @@ img { max-width: 100%; height: auto; display: block; }
 }
 @media (max-width: 600px) {
 	.afsac-footer__grid { grid-template-columns: 1fr; }
-	.afsac-footer__badges { flex-direction: column; }
 	.afsac-footer__bottom-inner { flex-direction: column; align-items: flex-start; }
 }
 
@@ -969,17 +986,39 @@ img { max-width: 100%; height: auto; display: block; }
 	.afsac-footer__grid { grid-template-columns: 1fr 1fr; }
 }
 
-@media (max-width: 980px) {
-	.afsac-topbar__contact .afsac-topbar__link span { display: none; }
+/* Bascule en TIROIR à 1150 px, et non à 980 px comme jusqu'ici.
+ *
+ * Mesuré au 20/08/2026 sur la version française : le menu horizontal fait
+ * 837 px (sept entrées en `white-space: nowrap`), auxquels s'ajoutent le logo
+ * (102 px), les boutons d'action (92 px), deux gouttières internes (48 px) et
+ * les marges du conteneur (48 px) — soit 1127 px NÉCESSAIRES. Entre 981 px et
+ * 1127 px, la barre débordait donc et TOUTE la page défilait horizontalement
+ * (79 px de trop à 1024 px : iPad en paysage, petits portables).
+ *
+ * 1150 px laisse une marge pour une traduction plus longue. Le seuil est
+ * répliqué dans assets/js/main.js (`min-width: 1151px`), qui referme le tiroir
+ * au passage en barre horizontale : les deux valeurs doivent rester jumelles.
+ *
+ * Les règles qui n'ont RIEN à voir avec la navigation (barre utilitaire,
+ * chiffres-clés) sont restées à 980 px, juste après ce bloc. */
+@media (max-width: 1150px) {
 	.afsac-menu-toggle { display: inline-flex; }
 
 	.afsac-primary-nav {
 		position: fixed; top: 0; inset-inline-end: 0;
-		width: min(330px, 86vw); height: 100vh;
+		width: min(330px, 86vw);
+		/* 100vh vaut la hauteur écran BARRES DÉPLIÉES sur mobile : le bas du
+		   tiroir (dernières entrées de menu) passait sous la barre d'URL et
+		   restait inatteignable. `dvh` suit la hauteur réellement visible ;
+		   la ligne `vh` reste en repli pour les navigateurs sans dvh. */
+		height: 100vh; height: 100dvh;
 		background: #fff; box-shadow: var(--afsac-shadow);
-		padding: var(--afsac-sp-5) var(--afsac-sp-3) var(--afsac-sp-3);
+		padding: var(--afsac-sp-3);
+		/* Encoche / barre de gestes : le contenu ne doit pas finir dessous. */
+		padding-bottom: calc(var(--afsac-sp-3) + env(safe-area-inset-bottom, 0px));
 		transform: translateX(100%); transition: transform var(--afsac-transition);
-		overflow-y: auto; z-index: 1050;
+		overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain;
+		z-index: 1050;
 	}
 	.afsac-primary-nav.is-open { transform: translateX(0); }
 	.afsac-primary-nav .afsac-menu { flex-direction: column; align-items: stretch; gap: 0; }
@@ -987,11 +1026,88 @@ img { max-width: 100%; height: auto; display: block; }
 	.afsac-primary-nav .afsac-menu a { padding: 0.9rem 0; font-size: 0.85rem; }
 	.afsac-primary-nav .sub-menu { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; border: 0; padding-inline-start: var(--afsac-sp-2); }
 	.afsac-primary-nav .menu-item > a::before { display: none; }
+	/* Le chevron « › » annonce un sous-menu déroulant. Trois entrées portent la
+	   classe manuelle `has-dropdown` SANS sous-menu réel : au doigt, le chevron
+	   promettait un dépliage qui n'arrive jamais. On ne le garde dans le tiroir
+	   que là où un `.sub-menu` existe vraiment. */
+	.afsac-primary-nav .afsac-menu .has-dropdown:not(.menu-item-has-children) > a::after { content: none; }
 
-	body.afsac-nav-open { overflow: hidden; }
+	/* Bouton de fermeture du tiroir (masqué au-dessus du point de rupture). */
+	.afsac-nav-close {
+		display: inline-flex; align-items: center; justify-content: center;
+		width: 44px; height: 44px; margin-inline-start: auto; margin-bottom: var(--afsac-sp-2);
+		border: 1px solid var(--afsac-border); border-radius: 50%;
+		background: #fff; color: var(--afsac-navy); cursor: pointer;
+		transition: background var(--afsac-transition), color var(--afsac-transition);
+	}
+	.afsac-nav-close:hover { background: var(--afsac-sky); color: var(--afsac-blue); }
+
+	/* --- Pied du tiroir : langue + contact (cf. header/nav.php) --------------
+	   Sur téléphone la barre utilitaire perd ses libellés (980 px) puis ses liens
+	   rapides (620 px) : ces deux rangées sont le seul accès confortable à la
+	   langue et aux coordonnées. `margin-block-start: auto` les pousse en bas du
+	   tiroir, ce qui occupe la moitié restée blanche sans tasser le menu. */
+	.afsac-nav-foot {
+		display: block;
+		margin-block-start: auto;
+		padding-block-start: var(--afsac-sp-3);
+	}
+	.afsac-nav-foot__label {
+		display: block; margin-block-end: 0.35rem;
+		font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+		color: var(--afsac-text-soft);
+	}
+	.afsac-nav-foot__lang { margin-block-end: var(--afsac-sp-2); }
+	/* Le sélecteur est peint pour la barre BLEUE : sur le fond blanc du tiroir,
+	   ses blancs translucides seraient illisibles. On le repeint en bleu OACI,
+	   avec une vraie hauteur de doigt. */
+	.afsac-nav-foot .afsac-language-switcher__link {
+		min-height: 44px; padding-inline: 0.75rem;
+		border: 1px solid var(--afsac-border); border-radius: 999px;
+		color: var(--afsac-navy); font-size: 0.82rem;
+	}
+	.afsac-nav-foot .afsac-language-switcher__list { gap: 0.5rem; }
+	.afsac-nav-foot .afsac-language-switcher__item:not(:first-child)::before { content: none; }
+	.afsac-nav-foot .afsac-language-switcher__item.is-current .afsac-language-switcher__link {
+		background: var(--afsac-accent); border-color: var(--afsac-accent); color: var(--afsac-white);
+	}
+	.afsac-nav-foot__link {
+		display: flex; align-items: center; gap: 0.6rem;
+		min-height: 44px; color: var(--afsac-navy);
+		font-size: 0.85rem; overflow-wrap: anywhere;
+	}
+	.afsac-nav-foot__link .afsac-icon { width: 17px; height: 17px; flex: none; color: var(--afsac-accent); }
+
+	/* Le tiroir devient une colonne : le menu garde sa hauteur naturelle, le pied
+	   descend au bas du panneau. Sans cela `margin-block-start: auto` n'a aucun
+	   effet — le tiroir est un bloc, pas un conteneur flex.
+	   `flex: none` partout : sur un écran court (320 × 658, ou un téléphone en
+	   paysage) la somme des enfants dépasse la hauteur du tiroir, et le
+	   `flex-shrink: 1` par défaut les ÉCRASAIT — la croix de fermeture tombait de
+	   44 à 24 px de haut. Les enfants gardent donc leur taille et c'est le tiroir
+	   qui défile (`overflow-y: auto`, déjà posé plus haut). */
+	.afsac-primary-nav { display: flex; flex-direction: column; }
+	.afsac-primary-nav > * { flex: none; }
+	.afsac-primary-nav .afsac-menu { flex: none; }
+
+	/* `position: fixed` (et pas seulement `overflow: hidden`, inopérant sur iOS
+	   Safari) : le `top` négatif est posé en JS, qui restaure ensuite la position
+	   de défilement à la fermeture. */
+	body.afsac-nav-open { position: fixed; width: 100%; overflow: hidden; }
+	/* ⚠️ Le voile est monté par main.js DANS `.afsac-mainbar`, et non dans
+	   <body> : cette barre est `position: sticky; z-index: 1000`, donc elle ouvre
+	   un contexte d'empilement dont le tiroir ne peut pas sortir. Comparer 1040 à
+	   1050 n'a de sens que si les deux éléments y sont FRÈRES — sinon le voile
+	   recouvre le tiroir et intercepte tous les appuis. */
 	.afsac-nav-overlay { position: fixed; inset: 0; background: rgba(6,20,37,0.55); opacity: 0; visibility: hidden; transition: opacity var(--afsac-transition); z-index: 1040; }
 	body.afsac-nav-open .afsac-nav-overlay { opacity: 1; visibility: visible; }
+}
 
+/* Reste de l'ancien palier 980 px : sans rapport avec le tiroir, donc laissé à
+   sa largeur d'origine (le libellé du téléphone et de l'e-mail tient encore à
+   1024 px, et les chiffres-clés n'ont pas à passer sur deux rangs si tôt). */
+@media (max-width: 980px) {
+	.afsac-topbar__contact .afsac-topbar__link span { display: none; }
 	.afsac-stats { grid-template-columns: repeat(2, 1fr); }
 	.afsac-stats__item:nth-child(3)::before { display: none; }
 }
@@ -1005,7 +1121,6 @@ img { max-width: 100%; height: auto; display: block; }
 	.afsac-hero__actions { flex-direction: column; }
 	.afsac-hero__actions .afsac-button { justify-content: center; }
 	.afsac-footer__grid { grid-template-columns: 1fr; gap: var(--afsac-sp-3); }
-	.afsac-footer__badges { grid-template-columns: 1fr; }
 	.afsac-footer__bottom-inner { justify-content: center; text-align: center; }
 	.afsac-stats__item + .afsac-stats__item::before { display: none; }
 }
@@ -1493,31 +1608,29 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 /* ===== Documentation — bande en tête du pied de page =====================
- * Téléchargement du programme COMPLET (un seul PDF : FR + EN + AR). Placée en
- * haut du <footer>, donc présente sur toutes les pages. Le dégradé se fond dans
- * le fond des colonnes (--afsac-navy-mid) : la bande « appartient » au footer.
- * Carte unique « 3-en-1 » (pile de feuilles) + bouton de téléchargement animé.
- * Propriétés logiques (inset-inline, padding-block…) → compatible RTL.
+ * Téléchargement de la brochure. Placée en haut du <footer>, donc présente sur
+ * toutes les pages. Même teinte que les colonnes (--afsac-navy) : la bande
+ * « appartient » au footer.
+ *
+ * DEPUIS LE 08/09/2026 (demande client) : TÉLÉCHARGEMENT DIRECT. La carte est
+ * un LIEN (le clic sert le PDF de la langue du site), sans fenêtre modale, sans
+ * champ e-mail, sans pastilles FR/EN. Propriétés logiques → compatible RTL.
  */
 .afsac-docband { position: relative; overflow: hidden; padding-block: clamp(2.25rem, 4vw, 3.5rem); background: var(--afsac-navy); border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); } /* même teinte que les sections sombres ; séparée par filets */
 /* Halo bleu décoratif côté texte (purement esthétique). */
 .afsac-docband::before { content: ""; position: absolute; inset-block-start: -34%; inset-inline-start: -6%; width: 540px; height: 540px; background: radial-gradient(circle, rgba(91,151,214,0.20), transparent 62%); pointer-events: none; }
-.afsac-docband__inner { position: relative; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+.afsac-docband__inner { position: relative; display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; } /* carte plus large que le texte : bouton « Télécharger » + titre sur une ligne */
 
 /* --- Colonne texte --- */
 .afsac-docband__eyebrow { color: var(--afsac-blue); }
 .afsac-docband__title { font-family: var(--afsac-font-head); font-weight: 400; font-size: clamp(1.6rem, 3.2vw, 2.35rem); line-height: 1.2; letter-spacing: -0.015em; color: var(--afsac-white); margin: 0.6rem 0 1rem; }
-.afsac-docband__text { font-family: var(--afsac-font-body); font-size: 0.9375rem; line-height: 1.75; color: var(--afsac-white-70); max-width: 48ch; margin: 0 0 1.5rem; }
-.afsac-docband__langs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0; padding: 0; list-style: none; }
-.afsac-docband__lang { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0.85rem; border: 1px solid var(--afsac-white-20); border-radius: 999px; background: var(--afsac-white-05); font-family: var(--afsac-font-body); font-size: 0.8125rem; line-height: 1; color: var(--afsac-white-75); }
-.afsac-docband__lang-code { font-weight: 700; letter-spacing: 0.06em; color: var(--afsac-blue); }
-.afsac-docband__lang[dir="rtl"] .afsac-docband__lang-name { font-family: var(--afsac-font-arabic); }
+.afsac-docband__text { font-family: var(--afsac-font-body); font-size: 0.9375rem; line-height: 1.75; color: var(--afsac-white-70); max-width: 48ch; margin: 0; }
 
 /* --- Carte de téléchargement (le lien couvre toute la carte) --- */
 .afsac-docband__card { position: relative; display: flex; align-items: center; gap: clamp(1rem, 2.5vw, 1.75rem); padding: clamp(1.25rem, 2.5vw, 1.75rem); background: rgba(255,255,255,0.045); border: 1px solid var(--afsac-white-10); border-radius: var(--afsac-radius-lg); text-decoration: none; box-shadow: 0 20px 50px rgba(3, 12, 26, 0.35); transition: transform var(--afsac-transition), border-color var(--afsac-transition), background var(--afsac-transition), box-shadow var(--afsac-transition); }
 .afsac-docband__card:hover, .afsac-docband__card:focus-visible { transform: translateY(-4px); background: rgba(255,255,255,0.07); border-color: var(--afsac-blue); box-shadow: 0 28px 60px rgba(3, 12, 26, 0.5); }
 
-/* Pile de feuilles « 3-en-1 » (FR/EN/AR réunis dans un seul PDF). */
+/* Pile de feuilles. */
 .afsac-docband__stack { position: relative; flex: none; width: 72px; height: 92px; }
 .afsac-docband__sheet { position: absolute; inset: 0; border-radius: 8px; border: 1px solid rgba(255,255,255,0.18); background: linear-gradient(160deg, #1a6fc0, #0054a4); transform-origin: bottom center; transition: transform var(--afsac-transition); }
 .afsac-docband__sheet--3 { transform: translate(10px, -8px) rotate(8deg); opacity: 0.45; }
@@ -1536,7 +1649,7 @@ img { max-width: 100%; height: auto; display: block; }
 .afsac-docband__card-meta { font-family: var(--afsac-font-body); font-size: 0.8125rem; color: var(--afsac-white-70); }
 .afsac-docband__cta { flex: none; display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.65rem 0.7rem 0.65rem 1.2rem; background: linear-gradient(135deg, var(--afsac-blue-accent), var(--afsac-blue-btn)); border-radius: 999px; color: var(--afsac-white); transition: background var(--afsac-transition); }
 .afsac-docband__card:hover .afsac-docband__cta, .afsac-docband__card:focus-visible .afsac-docband__cta { background: linear-gradient(135deg, #1366b4, var(--afsac-blue-btn)); }
-.afsac-docband__cta-label { font-family: var(--afsac-font-body); font-weight: 600; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.afsac-docband__cta-label { font-family: var(--afsac-font-body); font-weight: 600; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
 .afsac-docband__cta-icon { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; background: var(--afsac-white-20); }
 .afsac-docband__cta-icon svg { width: 18px; height: 18px; }
 .afsac-docband__card:hover .afsac-docband__cta-icon svg, .afsac-docband__card:focus-visible .afsac-docband__cta-icon svg { animation: afsac-docband-dive 0.7s ease; }
@@ -1568,8 +1681,9 @@ img { max-width: 100%; height: auto; display: block; }
 .afsac-partenaire:hover { transform: translateY(-4px); border-color: var(--afsac-blue-accent); box-shadow: var(--afsac-shadow); }
 .afsac-partenaire__name { font-family: var(--afsac-font-body); font-weight: 600; font-size: 0.875rem; letter-spacing: 0.03em; color: var(--afsac-ink); text-align: center; transition: color var(--afsac-transition); }
 .afsac-partenaire:hover .afsac-partenaire__name { color: var(--afsac-blue-accent); }
-.afsac-partenaire__logo { max-width: 100%; max-height: 52px; width: auto; object-fit: contain; filter: grayscale(1); opacity: 0.72; transition: filter .25s, opacity .25s; }
-.afsac-partenaire:hover .afsac-partenaire__logo { filter: grayscale(0); opacity: 1; }
+/* Logos en COULEUR partout, sans filtre gris ni atténuation (demande client du
+ * 08/09/2026 pour le bandeau de l'accueil ; la page Références l'était déjà). */
+.afsac-partenaire__logo { max-width: 100%; max-height: 52px; width: auto; object-fit: contain; filter: none; opacity: 1; }
 @keyframes afsac-marquee { to { transform: translateX(calc(-50% - 7px)); } } /* -50% (un groupe) - demi-gap : boucle sans saut */
 @media (prefers-reduced-motion: reduce) {
 	.afsac-partenaires__viewport { -webkit-mask-image: none; mask-image: none; }
@@ -1806,13 +1920,11 @@ img { max-width: 100%; height: auto; display: block; }
    invisible au survol (bleu sur bleu) : on force l'héritage depuis la pastille. */
 .afsac-fs-services .afsac-feature-card__icon svg { color: inherit; transition: color var(--afsac-transition); }
 .afsac-fs-services .afsac-feature-card:hover .afsac-feature-card__icon { background: var(--afsac-blue-accent); color: var(--afsac-white); transform: scale(1.08); }
-.afsac-fs-services .afsac-feature-card__link .afsac-arrow { transition: transform .18s ease; }
-.afsac-fs-services .afsac-feature-card:hover .afsac-feature-card__link .afsac-arrow { transform: translateX(4px); }
+/* (Plus de lien « En savoir plus » sur ces cartes depuis le 08/09/2026, demande client.) */
 
 @media (prefers-reduced-motion: reduce) {
 	.afsac-fs-services .afsac-feature-card__icon { animation: none !important; transition: none; }
-	.afsac-fs-services .afsac-feature-card::before,
-	.afsac-fs-services .afsac-feature-card__link .afsac-arrow { transition: none; }
+	.afsac-fs-services .afsac-feature-card::before { transition: none; }
 	.afsac-fs-services .afsac-feature-card:hover .afsac-feature-card__icon { transform: none; }
 }
 
@@ -2290,8 +2402,12 @@ img { max-width: 100%; height: auto; display: block; }
    supprimés). Sur l'ARCHIVE GÉNÉRIQUE du CPT : un select « Domaine » la précède,
    parce que cette page-là couvre les 11 domaines OACI. */
 .afsac-area-filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: var(--afsac-sp-2); }
-.afsac-area-filters__field { display: inline-flex; }
-.afsac-area-filters__select { padding: 9px 14px; border: 1px solid #c3d4dd; border-radius: 2px; background: #fff; font: inherit; font-size: 0.85rem; color: var(--afsac-text); cursor: pointer; }
+/* `min-width: 0` + `max-width: 100%` : un <select> se dimensionne sur sa plus
+   longue option (« Formation et développement des compétences »), largeur qu'un
+   élément flex ne réduit pas de lui-même — sur téléphone il dépassait la
+   gouttière droite de ~11 px. */
+.afsac-area-filters__field { display: inline-flex; min-width: 0; max-width: 100%; }
+.afsac-area-filters__select { max-width: 100%; padding: 9px 14px; border: 1px solid #c3d4dd; border-radius: 2px; background: #fff; font: inherit; font-size: 0.85rem; color: var(--afsac-text); cursor: pointer; }
 .afsac-area-filters__select:focus { outline: 2px solid var(--afsac-blue-accent); outline-offset: 1px; border-color: var(--afsac-blue-accent); }
 .afsac-area-filters__search { position: relative; flex: 1 1 220px; min-width: 180px; display: flex; align-items: center; }
 .afsac-area-filters__icon { position: absolute; inset-inline-start: 12px; width: 16px; height: 16px; color: var(--afsac-text-soft); pointer-events: none; }
@@ -2428,6 +2544,15 @@ img { max-width: 100%; height: auto; display: block; }
 .afsac-card__eyebrow { margin-bottom: var(--afsac-sp-2); }
 .afsac-card__dev { margin: 0; color: var(--afsac-ink); }
 .afsac-card__dev-detail { margin: 0.25rem 0 0; font-size: 0.8125rem; color: var(--afsac-text-soft); }
+
+/* Carte « Fiche descriptive » (PDF officiel du centre). Le bouton occupe toute
+   la largeur de la colonne : c'est la 2ᵉ action de la page après l'inscription,
+   et l'icône de téléchargement dit le format avant le clic. */
+.afsac-card__pdf-text { margin: 0 0 var(--afsac-sp-2); font-size: 0.8125rem; line-height: 1.5; color: var(--afsac-text-soft); }
+.afsac-card__pdf-cta { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%; }
+.afsac-card__pdf-cta::after { content: none; } /* le bouton télécharge, il ne navigue pas : pas de chevron « › » */
+.afsac-card__pdf-icon { flex: none; }
+.afsac-card__pdf-meta { margin: var(--afsac-sp-2) 0 0; font-size: 0.75rem; color: var(--afsac-text-soft); text-align: center; }
 
 /* Liste clé/valeur. */
 .afsac-spec-list { margin: 0; }
@@ -3437,7 +3562,16 @@ img { max-width: 100%; height: auto; display: block; }
 .afsac-news-intro__body > :first-child { margin-top: 0; }
 .afsac-news-intro__body > :last-child { margin-bottom: 0; }
 
-.afsac-news-list { background: var(--afsac-white); }
+/* `overflow-x: clip` : les lignes en quinconce entrent depuis la DROITE
+   (`translate3d(26px, …)`, plus bas). Tant qu'une ligne n'est pas révélée, ces
+   26 px dépassaient le bord du conteneur — la page entière gagnait 2 px de
+   défilement horizontal entre 900 et 1150 px, là où le conteneur (1180 px max)
+   touche presque les bords de l'écran.
+   `clip` et NON `hidden` : `hidden` ferait de la section une boîte de
+   défilement, et les 18 px de décalage VERTICAL de la même animation y
+   créeraient une barre de défilement interne. La marge de rognage laisse
+   respirer l'animation sans rien rendre défilable. */
+.afsac-news-list { background: var(--afsac-white); overflow-x: clip; overflow-clip-margin: 40px; }
 .afsac-news-list .afsac-container { max-width: 1180px; padding-block: var(--afsac-sp-3) clamp(3rem, 6vw, 5rem); }
 .afsac-news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--afsac-sp-4) var(--afsac-sp-3); }
 
@@ -3815,7 +3949,7 @@ select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible { outline
 .afsac-cta-band--accent .afsac-cta-band__text { color: rgba(13, 31, 74, 0.75); }
 
 /* =========================================================================
- * PAGE CONTACT — formulaire + coordonnées + carte Leaflet.
+ * PAGE CONTACT — formulaire + coordonnées + carte Google Maps (iframe).
  * ====================================================================== */
 .afsac-contact-body { background: var(--afsac-white); }
 .afsac-contact-body .afsac-container { max-width: 1180px; padding-block: var(--afsac-sp-3) clamp(3rem, 6vw, 5rem); }
@@ -3837,8 +3971,14 @@ select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible { outline
 .afsac-contact-info__item a { color: var(--afsac-blue-accent); }
 .afsac-contact-info__item a:hover { text-decoration: underline; }
 .afsac-contact-info__social { display: flex; flex-wrap: wrap; gap: 6px 16px; }
+/* Carte Google Maps (iframe). L'iframe n'a pas de ratio intrinsèque : la hauteur
+   est portée par le conteneur et l'iframe la remplit à 100 %. `display:block`
+   supprime l'espace de ligne de base sous un élément inline. */
 .afsac-contact-map { width: 100%; height: 360px; border: 1px solid #c3d4dd; border-radius: 6px; overflow: hidden; }
-.afsac-contact-map .leaflet-container { font-family: var(--afsac-font-body); }
+.afsac-contact-map__frame { display: block; width: 100%; height: 100%; border: 0; }
+.afsac-contact-map__link { margin: 10px 0 0; font-family: var(--afsac-font-body); font-size: 0.88rem; }
+.afsac-contact-map__link a { color: var(--afsac-blue-accent); }
+.afsac-contact-map__link a:hover { text-decoration: underline; }
 
 @media (max-width: 860px) {
 	.afsac-contact-grid { grid-template-columns: 1fr; gap: var(--afsac-sp-4); }
@@ -3914,162 +4054,6 @@ select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible { outline
 	.afsac-shorts__track { scroll-behavior: auto; }
 	.afsac-shorts__card, .afsac-shorts__play { transition: none; }
 	.afsac-shorts__card:hover, .afsac-shorts__card:focus-visible { transform: none; }
-}
-
-/* ===== Brochure sous formulaire — panneau « Recevoir la brochure » =========
- * Demande client (08/2026) : plus de téléchargement direct, on demande d'abord
- * l'e-mail. Un SEUL balisage (template-parts/shared/brochure-gate) pour deux
- * rendus :
- *   - sans JavaScript : panneau ordinaire à la suite de la carte du pied de
- *     page, atteint par l'ancre #afsac-brochure ;
- *   - avec JavaScript (html.afsac-js) : fenêtre modale masquée jusqu'au clic.
- * La bascule est ICI et nulle part ailleurs : si le script ne se charge pas, le
- * formulaire reste visible et utilisable — jamais de porte close.
- * Propriétés logiques (inset-inline, padding-inline…) → compatible RTL.
- */
-
-/* --- Repli sans JavaScript : panneau dans le flux -------------------------- */
-.afsac-bgate { margin-block: clamp(1.75rem, 4vw, 2.75rem) 0; }
-.afsac-bgate__backdrop, .afsac-bgate__close { display: none; }
-.afsac-bgate__dialog {
-	display: grid; grid-template-columns: 0.85fr 1.15fr; overflow: hidden;
-	background: var(--afsac-white); border-radius: var(--afsac-radius-lg);
-	box-shadow: 0 26px 60px rgba(3, 12, 26, 0.35);
-}
-
-/* --- Avec JavaScript : fenêtre modale ------------------------------------- */
-.afsac-js .afsac-bgate {
-	position: fixed; inset: 0; z-index: 1200; margin: 0;
-	display: none; align-items: center; justify-content: center;
-	padding: clamp(12px, 3vw, 32px);
-}
-/* `is-open` = ouverture par le script ; `:target` = filet de sécurité SANS
-   script. La classe .afsac-js est posée par l'anti-FOUC de wp_head, donc elle
-   est là même si assets/js/afsac-brochure.js ne se charge pas (404, erreur JS,
-   blocage) : sans cette règle :target, la carte du pied de page renverrait sur
-   un panneau resté display:none et la brochure deviendrait inaccessible.
-   L'ancre #afsac-brochure suffit alors à afficher le formulaire.
-   .afsac-bgate-js = « le script tourne » (posée par afsac-brochure.js) : le
-   filet est alors COUPÉ, sans quoi il rendrait la fermeture impossible. Toutes
-   les redirections du plugin finissent par #afsac-brochure, donc le panneau est
-   la cible du document ; or un history.replaceState() ne réévalue pas :target,
-   et la fenêtre resterait affichée après le clic sur « fermer ». */
-.afsac-js .afsac-bgate.is-open,
-.afsac-js:not(.afsac-bgate-js) .afsac-bgate:target { display: flex; }
-.afsac-js .afsac-bgate__backdrop { display: block; position: absolute; inset: 0; background: rgba(8, 16, 26, 0.78); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
-.afsac-js .afsac-bgate__dialog { position: relative; width: min(940px, 100%); max-height: 90vh; overflow: auto; }
-.afsac-js .afsac-bgate__close {
-	display: inline-flex; position: absolute; inset-block-start: 12px; inset-inline-end: 12px; z-index: 2;
-	align-items: center; justify-content: center; width: 38px; height: 38px; padding: 0;
-	border: 1px solid #c3d4dd; border-radius: 50%; background: var(--afsac-white);
-	color: var(--afsac-ink); cursor: pointer; transition: background var(--afsac-transition), border-color var(--afsac-transition);
-}
-.afsac-js .afsac-bgate__close:hover { background: var(--afsac-sky); border-color: var(--afsac-blue-accent); }
-.afsac-js .afsac-bgate__close svg { width: 18px; height: 18px; }
-/* Le fond ne défile plus derrière la fenêtre. */
-.afsac-bgate-open, .afsac-bgate-open body { overflow: hidden; }
-/* La fenêtre apparaît en fondu ; le repli sans JS n'a rien à animer. */
-.afsac-anim.afsac-js .afsac-bgate.is-open .afsac-bgate__dialog { animation: afsac-bgate-in 0.28s cubic-bezier(0.22, 1, 0.36, 1) both; }
-@keyframes afsac-bgate-in { from { opacity: 0; transform: translateY(14px) scale(0.985); } to { opacity: 1; transform: none; } }
-
-/* --- Volet gauche : ce que contient la brochure ---------------------------- */
-.afsac-bgate__aside {
-	position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center;
-	gap: 0.35rem; padding: clamp(1.75rem, 3vw, 2.5rem);
-	background: linear-gradient(155deg, var(--afsac-navy-card), var(--afsac-navy-deep));
-	color: var(--afsac-white);
-}
-.afsac-bgate__aside::before { content: ""; position: absolute; inset-block-start: -30%; inset-inline-end: -25%; width: 320px; height: 320px; background: radial-gradient(circle, rgba(255,255,255,0.18), transparent 65%); pointer-events: none; }
-/* Pile de feuilles, reprise de la carte du pied de page (même objet, même signe). */
-.afsac-bgate__stack { position: relative; flex: none; width: 62px; height: 80px; margin-bottom: 1.25rem; }
-.afsac-bgate__sheet { position: absolute; inset: 0; border-radius: 7px; border: 1px solid rgba(255,255,255,0.22); background: linear-gradient(160deg, #2f86d4, #0054a4); }
-.afsac-bgate__sheet--3 { transform: translate(9px, -7px) rotate(8deg); opacity: 0.4; }
-.afsac-bgate__sheet--2 { transform: translate(4px, -3px) rotate(4deg); opacity: 0.68; }
-.afsac-bgate__sheet--1 { display: flex; align-items: flex-end; justify-content: center; padding-bottom: 10px; border-color: rgba(255,255,255,0.32); }
-.afsac-bgate__sheet-tag { font-family: var(--afsac-font-body); font-weight: 700; font-size: 0.58rem; letter-spacing: 0.12em; color: var(--afsac-white); background: rgba(255,255,255,0.22); padding: 2px 7px; border-radius: 3px; }
-.afsac-bgate__aside-eyebrow { position: relative; margin: 0; font-family: var(--afsac-font-body); font-weight: 600; font-size: 0.6875rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.72); }
-.afsac-bgate__aside-title { position: relative; margin: 0.15rem 0 1.1rem; font-family: var(--afsac-font-head); font-weight: 400; font-size: clamp(1.3rem, 2.4vw, 1.65rem); line-height: 1.2; }
-.afsac-bgate__points { position: relative; list-style: none; margin: 0; padding: 0; display: grid; gap: 0.7rem; }
-.afsac-bgate__points li { display: flex; gap: 0.6rem; font-family: var(--afsac-font-body); font-size: 0.8125rem; line-height: 1.55; color: rgba(255,255,255,0.86); }
-.afsac-bgate__points svg { flex: none; width: 16px; height: 16px; margin-top: 0.18rem; color: var(--afsac-blue); }
-/* Pas de text-transform ici : size_format() renvoie « 2 Mo », que les
-   majuscules transformeraient en « 2 MO ». */
-.afsac-bgate__aside-meta { position: relative; margin: 1.25rem 0 0; font-family: var(--afsac-font-body); font-size: 0.75rem; letter-spacing: 0.06em; color: rgba(255,255,255,0.6); }
-
-/* --- Volet droit : le formulaire ------------------------------------------ */
-.afsac-bgate__main { padding: clamp(1.75rem, 3vw, 2.5rem); }
-.afsac-bgate__title { font-family: var(--afsac-font-head); font-weight: 400; font-size: clamp(1.35rem, 2.6vw, 1.75rem); line-height: 1.2; color: var(--afsac-navy-mid); margin: 0 0 0.5rem; }
-.afsac-bgate__text { font-family: var(--afsac-font-body); font-size: 0.875rem; line-height: 1.65; color: #546670; margin: 0 0 1.4rem; }
-.afsac-bgate__alert { border-radius: var(--afsac-radius); padding: 0.85rem 1rem; margin-bottom: 1.1rem; font-family: var(--afsac-font-body); font-size: 0.85rem; line-height: 1.55; }
-.afsac-bgate__alert--err { background: #fdf0ef; border: 1px solid #e8b5b2; color: #8a2019; }
-.afsac-bgate__alert p, .afsac-bgate__alert ul { margin: 0; }
-.afsac-bgate__alert ul { padding-inline-start: 1.15rem; }
-
-.afsac-bgate__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem 1rem; }
-.afsac-bgate__field { margin: 0; display: flex; flex-direction: column; gap: 0.3rem; }
-.afsac-bgate__field--full { grid-column: 1 / -1; }
-.afsac-bgate__field label { font-family: var(--afsac-font-body); font-weight: 600; font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--afsac-ink); }
-.afsac-bgate__field input {
-	width: 100%; padding: 0.7rem 0.85rem; border: 1px solid #c3d4dd; border-radius: var(--afsac-radius);
-	background: var(--afsac-white); font-family: var(--afsac-font-body); font-size: 0.9375rem; color: var(--afsac-ink);
-	transition: border-color var(--afsac-transition), box-shadow var(--afsac-transition);
-}
-.afsac-bgate__field input:focus { outline: none; border-color: var(--afsac-blue-accent); box-shadow: 0 0 0 3px rgba(0, 84, 164, 0.14); }
-/* Piège à robots : hors écran, mais PAS display:none (certains robots l'ignorent). */
-.afsac-bgate__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-
-/* Choix de l'édition : pastilles cliquables (radios masquées mais focalisables). */
-.afsac-bgate__editions { border: 0; margin: 1.2rem 0 0; padding: 0; }
-.afsac-bgate__editions legend { padding: 0; margin-bottom: 0.5rem; font-family: var(--afsac-font-body); font-weight: 600; font-size: 0.75rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--afsac-ink); }
-.afsac-bgate__editions-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.afsac-bgate__edition {
-	position: relative; display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.45rem 0.9rem;
-	border: 1px solid #c3d4dd; border-radius: 999px; background: var(--afsac-white); cursor: pointer;
-	font-family: var(--afsac-font-body); font-size: 0.8125rem; color: #546670;
-	transition: border-color var(--afsac-transition), background var(--afsac-transition), color var(--afsac-transition);
-}
-.afsac-bgate__edition input { position: absolute; opacity: 0; width: 1px; height: 1px; }
-.afsac-bgate__edition-code { font-weight: 700; letter-spacing: 0.06em; color: var(--afsac-blue-accent); }
-.afsac-bgate__edition:hover { border-color: var(--afsac-blue-accent); }
-.afsac-bgate__edition:has(input:checked) { background: var(--afsac-sky-200); border-color: var(--afsac-blue-accent); color: var(--afsac-ink); }
-.afsac-bgate__edition:has(input:focus-visible) { outline: 3px solid var(--afsac-blue); outline-offset: 2px; }
-.afsac-bgate__edition[dir="rtl"] .afsac-bgate__edition-name { font-family: var(--afsac-font-arabic); }
-
-.afsac-bgate__consent { display: flex; align-items: flex-start; gap: 0.6rem; margin: 1.2rem 0 1.4rem; font-family: var(--afsac-font-body); font-size: 0.78rem; line-height: 1.55; color: #546670; cursor: pointer; }
-.afsac-bgate__consent input { flex: none; margin-top: 0.15rem; width: 16px; height: 16px; accent-color: var(--afsac-blue-accent); }
-
-/* Le chevron « › » de .afsac-button ferait doublon avec l'icône de flèche. */
-.afsac-bgate__submit { width: 100%; justify-content: center; }
-.afsac-bgate__submit::after { content: none; }
-.afsac-bgate__submit svg { width: 17px; height: 17px; }
-.afsac-bgate__note { display: flex; align-items: center; justify-content: center; gap: 0.45rem; margin: 0.9rem 0 0; font-family: var(--afsac-font-body); font-size: 0.75rem; line-height: 1.5; color: #8c8f94; text-align: center; }
-.afsac-bgate__note svg { flex: none; width: 15px; height: 15px; }
-
-/* --- Écran de remerciement ------------------------------------------------ */
-.afsac-bgate__done { text-align: center; }
-.afsac-bgate__done-icon { display: inline-flex; align-items: center; justify-content: center; width: 54px; height: 54px; margin-bottom: 1rem; border-radius: 50%; background: var(--afsac-sky-200); color: var(--afsac-blue-accent); }
-.afsac-bgate__done-icon svg { width: 26px; height: 26px; }
-.afsac-bgate__done .afsac-bgate__text { max-width: 42ch; margin-inline: auto; }
-
-/* --- Responsive ----------------------------------------------------------- */
-@media (max-width: 820px) {
-	.afsac-bgate__dialog { grid-template-columns: 1fr; }
-	/* Le volet visuel devient un bandeau : sur un écran étroit, la place doit
-	   aller au formulaire, pas à l'illustration. */
-	.afsac-bgate__aside { flex-direction: row; align-items: center; gap: 1rem; padding: 1.1rem 1.25rem; }
-	.afsac-bgate__stack { width: 42px; height: 54px; margin: 0; }
-	.afsac-bgate__aside-title { margin: 0; font-size: 1.15rem; }
-	.afsac-bgate__points, .afsac-bgate__aside-meta { display: none; }
-	.afsac-js .afsac-bgate__close { inset-block-start: 8px; inset-inline-end: 8px; background: rgba(255,255,255,0.16); border-color: rgba(255,255,255,0.35); color: var(--afsac-white); }
-	.afsac-js .afsac-bgate__close:hover { background: rgba(255,255,255,0.3); }
-}
-@media (max-width: 560px) {
-	.afsac-bgate__grid { grid-template-columns: 1fr; }
-	.afsac-js .afsac-bgate { padding: 0; align-items: flex-end; }
-	.afsac-js .afsac-bgate__dialog { width: 100%; max-height: 94vh; border-end-end-radius: 0; border-end-start-radius: 0; }
-}
-@media (prefers-reduced-motion: reduce) {
-	.afsac-bgate__field input, .afsac-bgate__edition, .afsac-js .afsac-bgate__close { transition: none; }
 }
 
 /* =========================================================================
@@ -4243,4 +4227,411 @@ select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible { outline
 	.afsac-tour__foot { gap: 0.5rem; }
 	.afsac-tour__actions { gap: 0.3rem; }
 	.afsac-tour__btn { padding: 0.5rem 0.75rem; }
+}
+
+/* =========================================================================
+ * 12. TÉLÉPHONE — mise au point de l'affichage mobile
+ *
+ * Section placée EN DERNIER, volontairement : elle corrige des règles écrites
+ * plus haut, à spécificité égale. Ne rien ajouter après elle sans vérifier.
+ *
+ * Le gabarit était déjà responsive (aucune page ne défile horizontalement, tous
+ * les débordements relevés au diagnostic sont décoratifs et contenus par un
+ * `overflow: hidden`). Ce qui suit traite les défauts propres au TACTILE et aux
+ * écrans étroits : zoom automatique d'iOS sur les champs, cibles trop petites
+ * pour le doigt, texte justifié illisible en colonne étroite, rails de
+ * défilement amputés par leurs flèches, hauteur morte sous l'intro d'accueil.
+ * ====================================================================== */
+
+/* --- 12.1 Zoom automatique d'iOS sur les champs ---------------------------
+ * Safari iOS ZOOME la page dès qu'on touche un champ dont la taille de police
+ * est INFÉRIEURE À 16 px, et ne dézoome jamais ensuite : la page reste agrandie
+ * et se met à défiler horizontalement. C'est la cause n°1 d'un « site cassé sur
+ * mobile ». Les champs du thème étaient à 0,82–0,9 rem (13 à 14,4 px) et la
+ * barre de filtres du calendrier à 15 px : tous passent à 16 px sous le point de
+ * rupture. Cases à cocher et boutons radio n'affichent pas de texte (leur taille
+ * est pilotée ailleurs) : exclus.
+ *
+ * `!important` assumé — même convention que les garde-fous `prefers-reduced-
+ * motion` de cette feuille. Un sélecteur d'élément nu (0,0,1) perd contre
+ * `.afsac-contact__field textarea` (0,2,1) et contre la feuille de Fluent Forms,
+ * qu'aucune liste de classes du thème ne peut anticiper. Ici la règle doit
+ * gagner partout : sinon un seul champ oublié suffit à déclencher le zoom. */
+@media (max-width: 980px) {
+	input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]):not([type="hidden"]),
+	select,
+	textarea,
+	.afsac-field,
+	.afsac-field__input {
+		font-size: 16px !important;
+	}
+
+	/* Un <select> se dimensionne sur sa plus longue option (les 11 intitulés OACI
+	   vont jusqu'à « Formation et développement des compétences ») et un élément
+	   flex ne rétrécit pas sous sa largeur intrinsèque : sans ce plafond, la
+	   liste déroulante déborde de la gouttière. */
+	select { max-width: 100%; }
+}
+
+/* --- 12.2 Champs et filtres en pleine largeur sur téléphone ---------------
+ * Sous 640 px, deux champs côte à côte font 160 px chacun. Les largeurs
+ * planchers pensées pour le bureau sont neutralisées : un champ par ligne.
+ *
+ * `flex: none` corrige un défaut de longue date de la barre du calendrier : sous
+ * 640 px elle passe en `flex-direction: column`, ce qui fait basculer l'axe
+ * principal à la VERTICALE. Le `flex: 1` du champ de recherche — écrit pour une
+ * rangée — y devient donc `flex-basis: 0` EN HAUTEUR : le champ s'écrasait à
+ * 22 px au lieu de 50, désaligné des deux listes au-dessus. */
+@media (max-width: 640px) {
+	.afsac-field--select,
+	.afsac-calendar-filterbar select.afsac-field,
+	.afsac-calendar-filterbar .afsac-field--search,
+	.afsac-calendar-filterbar .afsac-field--icon:not(.afsac-field--search) {
+		flex: none;
+		min-width: 0;
+		width: 100%;
+		max-width: none;
+	}
+	.afsac-calendar-filterbar { gap: 10px; }
+
+	/* Trois onglets de programme dans 354 px : `flex: 1` ne suffit pas, la
+	   largeur mini-contenu des libellés dépasse et `flex-wrap: wrap` renvoyait
+	   « AVSEC » seul sur une deuxième ligne, en pleine largeur. Une grille de
+	   trois colonnes égales impose le partage ; le libellé se met sur deux
+	   lignes plutôt que de déborder. */
+	.afsac-calendar-tabs { display: grid; grid-template-columns: repeat(3, 1fr); }
+	.afsac-calendar-tab {
+		flex-wrap: wrap; justify-content: center; text-align: center;
+		gap: 4px 6px; padding: 12px 6px; min-width: 0;
+		font-size: 11px; line-height: 1.25; letter-spacing: 0.03em;
+	}
+
+	.afsac-area-filters__field,
+	.afsac-area-filters__search { flex: 1 1 100%; min-width: 0; }
+	.afsac-area-filters__select { width: 100%; }
+	.afsac-area-sort__select { min-width: 0; max-width: 100%; }
+
+	.afsac-inscription__field input,
+	.afsac-inscription__field select,
+	.afsac-contact__field input,
+	.afsac-contact__field select,
+	.afsac-contact__field textarea { width: 100%; max-width: 100%; }
+}
+
+/* --- 12.3 Texte justifié : à bannir en colonne étroite --------------------
+ * Le français justifié sur ~340 px produit des « rivières » : quatre ou cinq
+ * mots par ligne étirés jusqu'aux marges. `hyphens: auto` limite les dégâts sans
+ * les effacer. Sous 768 px on repasse au fer à gauche — valeur logique `start`,
+ * donc fer à DROITE en arabe. */
+@media (max-width: 768px) {
+	.afsac-hero-globe__lead,
+	.afsac-hero-globe__initiative,
+	.afsac-intro__body,
+	.afsac-pourquoi__slide-text,
+	.afsac-avsec-duo__text,
+	.afsac-avsec-duo__more-text,
+	.afsac-avsec-cadre__lead,
+	.afsac-avsec-cadre__text {
+		text-align: start;
+	}
+}
+
+/* --- 12.4 Titres : plus de mot (ni de « ? ») orphelin ---------------------
+ * « Pourquoi choisir l'AFSAC ? » renvoyait le point d'interrogation seul sur la
+ * deuxième ligne. `text-wrap: balance` égalise les lignes ; simplement ignoré
+ * par les navigateurs qui ne le connaissent pas. */
+@media (max-width: 768px) {
+	h1, h2, h3,
+	.afsac-video-hero__title,
+	.afsac-guide-hero__title { text-wrap: balance; }
+}
+
+/* --- 12.5 Cibles tactiles ------------------------------------------------
+ * Recommandation WCAG 2.5.8 / Apple HIG : 44 px. Plusieurs commandes étaient
+ * sous 20 px (puces de diaporama, pagination des cartes, barre utilitaire,
+ * sélecteur de langue). On AGRANDIT LA ZONE SENSIBLE sans toucher au dessin.
+ * Scopé aux pointeurs grossiers : rien ne change à la souris. */
+@media (hover: none) and (pointer: coarse) {
+
+	/* Puces du diaporama d'accueil : un ::after transparent élargit la frappe à
+	   la largeur de la puce PLUS la gouttière (pas de recouvrement entre voisines)
+	   et à 40 px en hauteur — gratuit, rien n'est empilé au-dessus. */
+	.afsac-slideshow__dot { position: relative; }
+	.afsac-slideshow__dot::after {
+		content: "";
+		position: absolute;
+		top: 50%; left: 50%;
+		width: calc(100% + 14px); height: 40px;
+		transform: translate(-50%, -50%);
+	}
+
+	/* Pagination du carrousel de formations : ce bouton a DÉJÀ un ::after (la
+	   barre de progression) et un `overflow: hidden` qui rognerait tout
+	   pseudo-élément. On agrandit donc le bouton lui-même — 24 × 40 px de zone
+	   sensible — et on ne peint le fond que dans la boîte de CONTENU : le
+	   rembourrage reste transparent, la puce garde ses 8 px de dessin.
+	   Le ::after de progression est replacé sur cette même boîte de contenu. */
+	.afsac-fgrid__dots { gap: 0.5rem; }
+	.afsac-fgrid__dot {
+		width: 24px; height: 40px;
+		padding: 16px 8px;
+		background-clip: content-box;
+		overflow: visible;
+	}
+	/* `background-clip` est REDÉCLARÉ ici : la puce active repose sur la
+	   propriété raccourcie `background`, qui remet le clip à `border-box` — le
+	   rembourrage transparent redevenait alors un gros rectangle gris. */
+	.afsac-fgrid__dot.is-active { width: 50px; background-clip: content-box; }
+	.afsac-fgrid__dot.is-active::after { inset-block: 16px; inset-inline: 8px; width: auto; }
+
+	/* Barre utilitaire, sélecteur de langue, liens du pied de page.
+	   Ces deux-là n'avaient QUE la hauteur : sous 980 px le libellé du téléphone
+	   et de l'e-mail est masqué, il ne reste que le pictogramme — 15 px de large
+	   pour le lien, 17 px pour un code de langue. La hauteur de 44 px ne servait
+	   à rien sur une colonne aussi fine ; on impose donc aussi la LARGEUR. */
+	.afsac-topbar__link,
+	.afsac-language-switcher__link { min-height: 44px; }
+	.afsac-topbar__contact .afsac-topbar__link,
+	.afsac-language-switcher__link { justify-content: center; min-width: 44px; }
+	.afsac-footer__menu a,
+	.afsac-footer__sub,
+	.afsac-footer__legal a,
+	.afsac-footer__tour { display: inline-flex; align-items: center; min-height: 40px; }
+
+	/* Coordonnées du pied de page ET du volet de la page Contact : un numéro de
+	   téléphone est le lien le plus susceptible d'être touché depuis un mobile,
+	   et il ne faisait que 17 à 20 px de haut. Idem pour les adresses e-mail. */
+	.afsac-footer__contact-item a,
+	.afsac-contact-info__item a[href^="tel:"],
+	.afsac-contact-info__item a[href^="mailto:"] { display: inline-flex; align-items: center; min-height: 40px; }
+
+	/* CTA autonomes (retour, saut d'ancre, « voir tout »…) : ce ne sont pas des
+	   liens en pleine phrase — l'exception « lien dans un texte » de la WCAG
+	   2.5.8 ne s'y applique donc pas — et ils plafonnaient entre 16 et 24 px.
+	   Seule la zone sensible grandit : ni le corps ni la couleur ne bougent. */
+	.afsac-formation-hero__back,
+	.afsac-formation-hero__jump,
+	.afsac-formation-context__link,
+	.afsac-formation-help__cta,
+	.afsac-formation-related__all,
+	.afsac-session-list__cta,
+	.afsac-area-hero__back,
+	.afsac-link { display: inline-flex; align-items: center; min-height: 40px; }
+
+	/* « ‹ Retour » est le seul de la liste dont le chevron est un ÉLÉMENT séparé
+	   (<span aria-hidden>) : passé en flex, l'espace blanc qui le séparait du mot
+	   disparaît — le lien s'affichait « ‹RETOUR ». Les autres portent un chevron
+	   ::after à marge, ou un texte d'un seul tenant : rien à compenser. */
+	.afsac-formation-hero__back { gap: 0.3em; }
+
+	/* Croix du guide flottant de l'accueil (26 px). */
+	.afsac-guide__close { width: 40px; height: 40px; }
+
+	/* Le champ de recherche du calendrier mesure 50 px, mais son <input> n'en
+	   occupait que 20 au centre : toucher la moitié haute ou basse de la boîte
+	   ne donnait pas le focus. L'input prend toute la hauteur. */
+	.afsac-field__input { align-self: stretch; }
+
+}
+
+/* --- 12.6 Rails à défilement horizontal -----------------------------------
+ * Shorts YouTube (page Contact) : les flèches, pensées pour la souris, encadrent
+ * la piste en flex et lui prenaient 100 px sur les 342 px disponibles — une
+ * carte et demie visible au lieu de deux. Sur téléphone on navigue au balayage,
+ * comme le fait déjà la lightbox pour ses propres flèches. Le sélecteur reprend
+ * mot pour mot celui qui les affiche : même spécificité, position plus tardive
+ * dans la feuille, donc il l'emporte. */
+@media (max-width: 700px) {
+	.afsac-js .afsac-shorts.is-scrollable .afsac-shorts__arrow { display: none; }
+	.afsac-shorts__rail { gap: 0; }
+}
+
+/* Inertie iOS, et le geste ne « fuit » pas vers la page derrière le rail. */
+.afsac-sessions__track,
+.afsac-shorts__track {
+	-webkit-overflow-scrolling: touch;
+	overscroll-behavior-x: contain;
+}
+
+/* --- 12.7 Accueil : le blanc mort sous le texte d'introduction ------------
+ * Les quatre blocs de discours sont empilés dans LA MÊME cellule de grille pour
+ * que la hauteur ne saute pas quand la photo tourne (au bureau, sur deux
+ * colonnes, le vide se loge à côté de l'image). Empilé sur téléphone, ce même
+ * mécanisme réservait la hauteur du bloc le plus long (489 px) sous le bloc
+ * affiché (299 px) : jusqu'à ~190 px de blanc, lu comme un défaut d'affichage.
+ * On rend donc la hauteur au bloc actif — les autres sortent du flux — le fondu
+ * enchaîné couvrant le changement de hauteur. */
+@media (max-width: 860px) {
+	.afsac-js .afsac-intro__blocks--rotating { display: block; position: relative; }
+	.afsac-js .afsac-intro__blocks--rotating .afsac-intro__block {
+		position: absolute; inset-block-start: 0; inset-inline: 0;
+	}
+	.afsac-js .afsac-intro__blocks--rotating .afsac-intro__block.is-active { position: static; }
+}
+
+/* --- 12.8 Filets de sécurité de mise en page ------------------------------
+ * Références de cours, URL et adresses e-mail sont des chaînes insécables : sur
+ * 342 px elles poussent leur conteneur. `anywhere` ne coupe qu'en dernier
+ * recours, après les points de césure normaux — le texte courant n'est pas
+ * haché. */
+@media (max-width: 768px) {
+	.afsac-entry-content,
+	.afsac-prose,
+	.entry-content,
+	.afsac-contact-aside,
+	.afsac-footer__contact { overflow-wrap: anywhere; }
+
+	/* Un tableau collé dans un contenu Gutenberg ne se plie pas : il défile dans
+	   sa propre boîte plutôt que d'élargir la page. */
+	.afsac-entry-content table,
+	.afsac-prose table,
+	.entry-content table { display: block; width: 100%; overflow-x: auto; }
+}
+
+/* --- 12.9 Gouttières et encoche ------------------------------------------
+ * Sous 400 px, 24 px de gouttière de chaque côté ne laissent que 342 px utiles :
+ * on resserre à 18 px. En paysage sur un téléphone à encoche, celle-ci mord dans
+ * la gouttière ; `env()` la compense (vaut 0 partout ailleurs). */
+@media (max-width: 400px) {
+	.afsac-container { padding-inline: 18px; }
+}
+/* Borné à 1024 px : le bureau est lui aussi « landscape », et il n'a ni encoche
+   ni besoin d'être touché par cette règle. */
+@media (orientation: landscape) and (max-width: 1024px) {
+	.afsac-container {
+		padding-inline-start: max(var(--afsac-sp-3), env(safe-area-inset-left, 0px));
+		padding-inline-end: max(var(--afsac-sp-3), env(safe-area-inset-right, 0px));
+	}
+}
+
+/* --- 12.10 Paysage sur petit écran ---------------------------------------
+ * Barre utilitaire + barre principale collantes = ~110 px. Sur un téléphone
+ * couché (~375 px de haut) c'est près d'un tiers de l'écran figé : l'en-tête
+ * reprend sa place dans le flux. */
+@media (max-height: 480px) and (orientation: landscape) and (max-width: 1024px) {
+	.afsac-mainbar { position: static; }
+}
+
+/* --- 12.11 Filigranes décoratifs -----------------------------------------
+ * Le mot « ICAO » en filigrane derrière le portrait du DG et derrière la section
+ * « Pourquoi nous choisir » est calibré pour une colonne large : sur téléphone
+ * il dépassait de 12 px à droite (page « Qui sommes-nous ») et de 55 px sur
+ * l'accueil. Purement décoratif : on le retire plutôt que de le rogner. */
+@media (max-width: 600px) {
+	.afsac-director__watermark,
+	.afsac-pourquoi__watermark { display: none; }
+}
+
+/* --- 12.12 Formations : hero et fiches de cours --------------------------
+ * Le hero « Formations & Services » porte systématiquement trois chiffres et
+ * deux CTA. Avec le flex générique, les chiffres se retrouvaient en 2 + 1 et
+ * les CTA gardaient des largeurs différentes sur un téléphone. Une grille
+ * compacte et des actions pleine largeur rendent le bloc immédiatement lisible
+ * sans changer sa composition sur tablette ou bureau.
+ *
+ * Les mêmes contraintes s'appliquent à la fiche d'un cours : son fil de
+ * contexte et ses informations clés doivent pouvoir revenir à la ligne plutôt
+ * que d'élargir la page lorsqu'un domaine ou une modalité est long.
+ */
+@media (max-width: 600px) {
+	/* Le tiroir ne doit pas laisser une tranche de la page visible à gauche :
+	   cela donne l'impression d'un menu trop étroit et distrait de la navigation. */
+	.afsac-primary-nav {
+		width: 100%;
+		max-width: none;
+		padding-inline: max(var(--afsac-sp-3), env(safe-area-inset-left, 0px));
+		padding-inline-end: max(var(--afsac-sp-3), env(safe-area-inset-right, 0px));
+	}
+
+	/* La zone basse du hero (qui évitait que la barre de chiffres ne recouvre le
+	   second bouton) est traitée en § 12.14, au seuil où les CTA s'empilent
+	   (768 px) : entre 601 et 768 px ils le sont DÉJÀ, le défaut s'y produisait
+	   donc aussi. La règle qui vivait ici réduisait de surcroît le rembourrage
+	   hérité de 44 à 36 px. */
+	.afsac-video-hero--panel .afsac-video-hero__actions {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		width: 100%;
+	}
+	.afsac-video-hero--panel .afsac-video-hero__actions .afsac-button { width: 100%; }
+
+	.afsac-video-hero--start .afsac-video-hero__stats {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 12px;
+		width: 100%;
+	}
+	.afsac-video-hero--start .afsac-video-hero__stats > div { min-width: 0; }
+	.afsac-video-hero--start .afsac-video-hero__stats span {
+		letter-spacing: 0.09em;
+		line-height: 1.35;
+	}
+	.afsac-video-hero--start .afsac-video-hero__actions { width: 100%; }
+	.afsac-video-hero--start .afsac-video-hero__actions .afsac-button { width: 100%; }
+
+	.afsac-formation-context__inner { flex-wrap: wrap; row-gap: 0.25rem; }
+	.afsac-formation-context__link { min-width: 0; overflow-wrap: anywhere; }
+	.afsac-formation-facts__item { min-width: 0; }
+	.afsac-formation-facts__value { overflow-wrap: anywhere; }
+	.afsac-formation-hero__actions .afsac-button { width: 100%; }
+}
+
+/* --- 12.13 Micro-typographie : plancher de 11 px sur téléphone -------------
+ * Plusieurs étiquettes descendent à 9,6–10,5 px : pastille « À la une » (0,6 rem)
+ * et catégorie d'une actualité, typologie d'un cours, badge « Short », durée
+ * d'un témoignage, libellés de la barre de chiffres. Calibrées pour une maquette
+ * large, ces valeurs deviennent difficiles à lire au bout du bras sur un écran
+ * de 5 pouces — d'autant qu'elles sont en CAPITALES très espacées, ce qui coûte
+ * encore en lisibilité.
+ *
+ * On ne touche qu'au corps (jamais à l'interlettrage ni au rembourrage) : le
+ * dessin des pastilles est conservé, elles s'élargissent simplement de 1 à 2 px.
+ * 11 px est le plancher retenu — en deçà, une capitale espacée n'est plus lue
+ * mais devinée. */
+@media (max-width: 768px) {
+	.afsac-nrow__flag,
+	.afsac-nrow__cat,
+	.afsac-course-row__type,
+	.afsac-shorts__badge,
+	.afsac-voices__tag,
+	.afsac-voices__item-dur,
+	.afsac-stats__label,
+	.afsac-video-hero__stats span,
+	.afsac-ahero__cat,
+	.afsac-share__label,
+	.afsac-prog__figs > div > span,
+	.afsac-about__step-tag,
+	.afsac-about__label-tag,
+	.afsac-about__cert-badge,
+	.afsac-about__cert-row dt,
+	.afsac-about__audit-badge span:not(.afsac-about__audit-ring) { font-size: 11px; }
+
+	/* Le cachet de date d'une actualité : le mois et l'année tombaient à 10,2 et
+	   9,6 px, empilés dans une pastille de 56 px — les deux lignes du bas
+	   devenaient une tache grise. */
+	.afsac-nrow__stamp i,
+	.afsac-nrow__stamp em { font-size: 11px; font-style: normal; }
+}
+
+/* --- 12.14 Accueil : le second CTA du hero rogné par le bas ---------------
+ * Le hero est en `overflow: hidden`. Sous 768 px les deux CTA s'empilent, le
+ * bloc de texte gagne donc la hauteur d'un bouton entier, alors que le
+ * rembourrage bas reste celui d'un hero à CTA côte à côte
+ * (`.afsac-video-hero--start` : clamp(2.75rem, 4.5vw, 4rem) = 44 px).
+ *
+ * Sur ces 44 px, 16 sont mangés par le `translateY(16px)` que porte
+ * `.afsac-reveal` tant qu'il n'est pas révélé : il ne restait que 28 px sous le
+ * bouton. Au moindre écart — « Découvrir nos formations et services » qui passe
+ * sur trois lignes, autre métrique de police — le bouton franchissait la coupe
+ * et se retrouvait tranché par la barre de chiffres blanche (signalé le
+ * 10/09/2026 sur téléphone).
+ *
+ * ⚠️ Les deux variantes sont nommées : `.afsac-video-hero--start ...` fait
+ * (0,2,0), une règle sur `.afsac-video-hero__content` seul (0,1,0) perdrait —
+ * la spécificité l'emporte sur l'ordre, même depuis la fin de la feuille. */
+@media (max-width: 768px) {
+	.afsac-video-hero--start .afsac-video-hero__content,
+	.afsac-video-hero--panel .afsac-video-hero__content {
+		padding-block-end: calc(clamp(4rem, 9vw, 8rem) + env(safe-area-inset-bottom, 0px));
+	}
 }

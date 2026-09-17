@@ -1095,6 +1095,10 @@ msgstr ""
 msgid "Rechercher"
 msgstr ""
 
+#: template-parts/header/nav.php:83
+msgid "Fermer le menu"
+msgstr ""
+
 #: template-parts/header/topbar.php:51
 msgid "Ouvrir le menu"
 msgstr ""
@@ -1321,6 +1325,7 @@ msgid "Catalogue digital complet 2026 : %1$s cours TRAINAIR PLUS sur les %2$s do
 msgstr ""
 
 #: template-parts/page-formations/catalogue-cta.php:51
+#: single-afsac_formation.php:428
 msgid "Télécharger le PDF"
 msgstr ""
 
@@ -3316,10 +3321,6 @@ msgid "Atout suivant"
 msgstr ""
 
 #: template-parts/home/pourquoi.php
-msgid ""
-msgstr ""
-
-#: template-parts/home/pourquoi.php
 msgid "Pourquoi choisir l’AFSAC ?"
 msgstr ""
 
@@ -3447,7 +3448,7 @@ msgstr ""
 msgid "Recevez le calendrier des sessions et nos actualités de formation."
 msgstr ""
 
-#: template-parts/footer
+#: template-parts/footer single-afsac_formation.php:431
 msgid "PDF · %s"
 msgstr ""
 
@@ -4361,10 +4362,6 @@ msgid "Tout le site part d’ici"
 msgstr ""
 
 #: functions.php
-msgid "Formations & services, catalogue, calendrier, références : chaque rubrique s’ouvre depuis ce menu, en <strong>français, anglais et arabe</strong>."
-msgstr ""
-
-#: functions.php
 msgid "Le catalogue des formations"
 msgstr ""
 
@@ -4466,4 +4463,152 @@ msgstr ""
 
 #: template-qui-sommes-nous.php
 msgid "Le siège de l’AFSAC – ICAO ASTC Tunis"
+msgstr ""
+
+#: template-contact.php:242
+msgid "Téléphones"
+msgstr ""
+
+#: template-contact.php:253
+msgid "E-mails"
+msgstr ""
+
+#: template-contact.php:323
+msgid "Ouvrir dans Google Maps"
+msgstr ""
+
+#: functions.php:1762
+msgid "Carte — lien d’intégration Google Maps (facultatif)"
+msgstr ""
+
+#: single-afsac_formation.php:422
+msgid "Fiche descriptive"
+msgstr ""
+
+#: single-afsac_formation.php:423
+msgid "Objectifs, contenu, public visé et conditions d’accès dans le document officiel du centre."
+msgstr ""
+
+#: includes/acf-fields.php:894
+msgid "Fiche descriptive (PDF)"
+msgstr ""
+
+#: includes/acf-fields.php:897
+msgid "PDF officiel du cours, proposé au téléchargement sur la fiche. Déposer l’édition correspondant à la langue de CETTE fiche."
+msgstr ""
+
+#: includes/avsec-helpers.php:53
+msgid "Inspecteurs nationaux, imagerie radioscopique et maintenance des équipements."
+msgstr ""
+
+#: functions.php:2170
+msgid "Formations & services, catalogue, calendrier, références : chaque rubrique s’ouvre depuis ce menu, en <strong>français et en anglais</strong>."
+msgstr ""
+
+#: includes/import-catalogue.php:1620
+msgid "langue « %s » inconnue (attendu fr / en) → ligne ignorée"
+msgstr ""
+
+#: archive-afsac_formation.php:186
+msgid "Type de formation"
+msgstr ""
+
+#: archive-afsac_formation.php:188
+msgid "Cours et ateliers"
+msgstr ""
+
+#: archive-afsac_formation.php:195
+msgid "%1$s (%2$d)"
+msgstr ""
+
+#: template-parts/footer/documentation.php
+msgid "Votre e-mail professionnel"
+msgstr ""
+
+#: template-parts/footer/documentation.php
+msgid "En téléchargeant, vous acceptez de recevoir la brochure et les informations d’AFSAC (RGPD, loi n° 63-2004). Vos données ne sont ni revendues ni cédées."
+msgstr ""
+
+#: functions.php
+msgid "Laissez votre e-mail : le téléchargement de la brochure démarre aussitôt, dans la langue du site."
+msgstr ""
+
+#: functions.php
+msgid "Un clic suffit : la brochure se télécharge aussitôt, dans la langue du site."
+msgstr ""
+
+#: includes/brochure.php
+msgid "Téléchargements directs"
+msgstr ""
+
+#: includes/brochure.php
+msgid "depuis le pied de page, sans e-mail (depuis le 08/09/2026)"
+msgstr ""
+
+#: includes/brochure.php
+msgid "Téléchargements directs par édition"
+msgstr ""
+
+#: includes/messaging.php
+msgid "Reçue le %1$s depuis le site %2$s."
+msgstr ""
+
+#: includes/messaging.php
+msgid "E-mail automatique envoyé par le site %s. Pour répondre à cette personne, utilisez simplement « Répondre » : son adresse est déjà renseignée."
+msgstr ""
+
+#: includes/messaging.php
+msgid "Ouvrir la fiche dans l’administration"
+msgstr ""
+
+#: includes/messaging.php
+msgid "Cet e-mail vous a été envoyé automatiquement suite à votre demande sur %s."
+msgstr ""
+
+#: includes/messaging.php
+msgid "mail() du serveur (aucun plugin SMTP)"
+msgstr ""
+
+#: includes/lead-admin.php
+msgid "Envoi des e-mails"
+msgstr ""
+
+#: includes/lead-admin.php
+msgid "Aucun envoi enregistré pour cette fiche (fiche antérieure à la version 0.5.3, ou aucun destinataire réglé)."
+msgstr ""
+
+#: includes/lead-admin.php
+msgid "Notification interne"
+msgstr ""
+
+#: includes/lead-admin.php
+msgid "Confirmation au demandeur"
+msgstr ""
+
+#: includes/lead-admin.php
+msgid "Destinataire"
+msgstr ""
+
+#: includes/lead-admin.php
+msgid "Résultat"
+msgstr ""
+
+#: includes/lead-admin.php
+msgid "Remis au serveur d’envoi"
+msgstr ""
+
+#: includes/lead-admin.php
+msgid "cause non transmise par le serveur"
+msgstr ""
+
+#: includes/lead-admin.php
+msgid "Échec"
+msgstr ""
+
+#: includes/lead-admin.php
+msgid "Expéditeur demandé par le site : %1$s · canal : %2$s"
+msgstr ""
+
+#: includes/lead-admin.php
+msgid "« Remis au serveur d’envoi » : le site a bien confié le message ; s’il n’arrive pas, regardez le courrier indésirable ou la quarantaine du destinataire. « Échec » : la cause exacte, à corriger dans WP Mail SMTP."
 msgstr ""

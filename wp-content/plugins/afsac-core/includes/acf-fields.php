@@ -389,10 +389,10 @@ function afsac_register_acf_group_temoignage() {
 					'name'          => 'afsac_temoignage_langue',
 					'type'          => 'select',
 					'instructions'  => __( 'Langue du témoignage (badge). Optionnel.', 'afsac' ),
+					// « AR » retiré le 03/09/2026 (demande client) : aucun témoignage ne le portait.
 					'choices'       => array(
 						'FR' => 'FR',
 						'EN' => 'EN',
-						'AR' => 'AR',
 					),
 					'allow_null'    => 1,
 					'multiple'      => 0,
@@ -881,6 +881,23 @@ function afsac_register_acf_group_formation() {
 					'min'          => 0,
 					'max'          => 5,
 					'step'         => 0.5,
+				),
+				/*
+				 * Fiche descriptive officielle (PDF fourni par le centre). Le champ est
+				 * PAR POST, donc par langue : la fiche française est portée par le post
+				 * FR, l'anglaise par le post EN. Aucune édition arabe n'est publiée
+				 * (demande client). Renvoie un ID : l'URL, le poids et le type MIME sont
+				 * relus à l'affichage, ce qui survit à un remplacement du média.
+				 */
+				array(
+					'key'           => 'field_afsac_formation_fiche_pdf',
+					'label'         => __( 'Fiche descriptive (PDF)', 'afsac' ),
+					'name'          => 'afsac_fiche_pdf',
+					'type'          => 'file',
+					'instructions'  => __( 'PDF officiel du cours, proposé au téléchargement sur la fiche. Déposer l’édition correspondant à la langue de CETTE fiche.', 'afsac' ),
+					'return_format' => 'id',
+					'library'       => 'all',
+					'mime_types'    => 'pdf',
 				),
 			),
 		)

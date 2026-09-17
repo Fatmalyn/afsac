@@ -3,10 +3,12 @@
  * Template Name: Références & Témoignages
  *
  * Page « Références & Témoignages ». Refonte 08/2026 (demande client) : la page
- * ne conserve QUE TROIS sections, dans cet ordre —
- *   1. Nos partenaires  → bandeau de logos défilant, IDENTIQUE à l'accueil
+ * ne conserve QUE TROIS sections, dans cet ordre (témoignages remontés en tête
+ * le 08/09/2026, demande client) —
+ *   1. Témoignages      → cartes vidéo (CPT afsac_temoignage), lecture en modale,
+ *                         DIRECTEMENT sous le hero.
+ *   2. Nos partenaires  → bandeau de logos défilant, IDENTIQUE à l'accueil
  *                         (part partagé template-parts/shared/partners-marquee).
- *   2. Témoignages      → cartes vidéo (CPT afsac_temoignage), lecture en modale.
  *   3. Nos références   → un bandeau défilant par niveau de coopération
  *                         (CPT afsac_reference) ; les fiches sans logo sont
  *                         écartées.
@@ -39,7 +41,11 @@ if ( function_exists( 'rank_math_the_breadcrumbs' ) ) {
 	}
 }
 
-// HERO — hero clair partagé (charte OACI blanc + bleu), comme les autres pages internes.
+// HERO — bandeau VIDÉO « REFERENCES » livré par le client le 02/09/2026 : la page
+// rejoint les six autres pages à hero vidéo (cf. video-hero.php) et n'utilise donc
+// plus le hero clair guide-hero. Le plan est lumineux (ciel + fuselage) et porte
+// déjà le mot « REFERENCES » en incrustation à gauche : voile renforcé (`dim`)
+// pour qu'il passe en ambiance derrière le H1.
 $afsac_hero_eyebrow = function_exists( 'get_field' ) ? (string) get_field( 'afsac_page_eyebrow' ) : '';
 if ( '' === $afsac_hero_eyebrow ) {
 	$afsac_hero_eyebrow = __( 'Références · Témoignages', 'afsac' );
@@ -49,12 +55,17 @@ if ( '' === $afsac_hero_chapo ) {
 	$afsac_hero_chapo = __( 'Partenaires institutionnels, paroles de participants et institutions qui se forment avec l’AFSAC.', 'afsac' );
 }
 get_template_part(
-	'template-parts/shared/guide-hero',
+	'template-parts/shared/video-hero',
 	null,
 	array(
-		'eyebrow' => $afsac_hero_eyebrow,
-		'title'   => __( 'Les autorités, aéroports et compagnies qui se forment avec l’AFSAC', 'afsac' ),
-		'chapo'   => $afsac_hero_chapo,
+		'layout'    => 'overlay',
+		'align'     => 'start',
+		'dim'       => true,
+		'video_src' => get_theme_file_uri( 'assets/video/references.mp4' ),
+		'poster'    => get_theme_file_uri( 'assets/images/references-hero-poster.jpg' ),
+		'eyebrow'   => $afsac_hero_eyebrow,
+		'title'     => __( 'Les autorités, aéroports et compagnies qui se forment avec l’AFSAC', 'afsac' ),
+		'lead'      => $afsac_hero_chapo,
 	)
 );
 
@@ -96,25 +107,9 @@ $afsac_initials = static function ( $label ) {
 <main id="primary" class="afsac-refs">
 
 	<?php
-	/* 1. NOS PARTENAIRES — bandeau de logos, strictement le même qu'en accueil. */
-	get_template_part(
-		'template-parts/shared/partners-marquee',
-		null,
-		array(
-			'eyebrow' => __( 'Ils nous font confiance', 'afsac' ),
-			'title'   => __( 'Nos partenaires', 'afsac' ),
-			'lead'    => __( 'Organisations internationales, autorités de l’aviation civile et opérateurs avec lesquels l’AFSAC conduit ses programmes de formation.', 'afsac' ),
-			'id'      => 'partenaires',
-			'class'   => 'afsac-partenaires--page',
-			// Deux lignes à sens opposés (demande client du 11/08/2026).
-			'rows'    => 2,
-		)
-	);
-	?>
-
-	<?php
 	/*
-	 * 2. TÉMOIGNAGES — cartes vidéo (demande client : la vidéo prime sur le texte).
+	 * 1. TÉMOIGNAGES — directement sous le hero (demande client du 08/09/2026) —
+	 * cartes vidéo (demande client : la vidéo prime sur le texte).
 	 * Source : CPT afsac_temoignage + champs ACF (auteur / fonction / organisation /
 	 * citation / langue / durée / URL vidéo). Le bouton de lecture n'apparaît que
 	 * si une URL vidéo est renseignée.
@@ -493,6 +488,25 @@ $afsac_initials = static function ( $label ) {
 
 	$afsac_row_index = 0;
 	?>
+	<?php
+	/* 2. NOS PARTENAIRES — bandeau de logos, strictement le même qu'en accueil.
+	   Placé APRÈS les témoignages depuis le 08/09/2026 (demande client :
+	   « témoignages direct sous le hero »). */
+	get_template_part(
+		'template-parts/shared/partners-marquee',
+		null,
+		array(
+			'eyebrow' => __( 'Ils nous font confiance', 'afsac' ),
+			'title'   => __( 'Nos partenaires', 'afsac' ),
+			'lead'    => __( 'Organisations internationales, autorités de l’aviation civile et opérateurs avec lesquels l’AFSAC conduit ses programmes de formation.', 'afsac' ),
+			'id'      => 'partenaires',
+			'class'   => 'afsac-partenaires--page',
+			// Deux lignes à sens opposés (demande client du 11/08/2026).
+			'rows'    => 2,
+		)
+	);
+	?>
+
 	<section class="afsac-refs-list" id="references">
 		<div class="afsac-container">
 			<?php

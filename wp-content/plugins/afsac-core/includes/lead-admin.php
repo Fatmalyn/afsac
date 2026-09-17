@@ -213,10 +213,7 @@ function afsac_lead_render_value( $mode, $value ) {
 				. ' <span style="color:#8c8f94;">(#' . absint( $post_id ) . ')</span>';
 
 		case 'date':
-			$ts = strtotime( $value );
-			return $ts
-				? esc_html( wp_date( 'j F Y à H:i', $ts ) )
-				: esc_html( $value );
+			return esc_html( afsac_lead_datetime( $value ) );
 
 		case 'edition':
 			$file = function_exists( 'afsac_brochure_file' ) ? afsac_brochure_file( $value ) : null;
@@ -231,6 +228,22 @@ function afsac_lead_render_value( $mode, $value ) {
 		default:
 			return esc_html( $value );
 	}
+}
+
+/**
+ * Date/heure d'une méta « Y-m-d H:i:s » écrite par current_time( 'mysql' ),
+ * donc DÉJÀ en heure locale du site.
+ *
+ * strtotime() la lirait en UTC (fuseau PHP de WordPress) et wp_date() la
+ * décalerait ensuite vers le fuseau du site : +2 h affichées à tort. On la
+ * parse dans le fuseau du site pour obtenir le bon horodatage.
+ *
+ * @param string $value Méta brute.
+ * @return string Date lisible, ou la valeur brute si illisible.
+ */
+function afsac_lead_datetime( $value ) {
+	$dt = date_create_immutable( (string) $value, wp_timezone() );
+	return $dt ? wp_date( 'j F Y à H:i', $dt->getTimestamp() ) : (string) $value;
 }
 
 /**
@@ -258,6 +271,8 @@ function afsac_lead_render_metabox( $post ) {
 		echo '</tbody></table>';
 	}
 
+	afsac_lead_render_mail_log( (array) get_post_meta( $post->ID, $prefix . 'mail_log', true ) );
+
 	$email = (string) get_post_meta( $post->ID, $prefix . 'email', true );
 	if ( $email && is_email( $email ) ) {
 		$subject = sprintf(
@@ -269,6 +284,73 @@ function afsac_lead_render_metabox( $post ) {
 			. esc_url( 'mailto:' . $email . '?subject=' . rawurlencode( $subject ) ) . '">'
 			. esc_html__( 'Répondre à cette personne', 'afsac' ) . '</a></p>';
 	}
+}
+
+/**
+ * Section « Envoi des e-mails » : le journal écrit par messaging.php à la
+ * création du lead (plugin 0.5.3+).
+ *
+ * « Remis au serveur d'envoi » = wp_mail() a rendu true : le site a bien confié
+ * le message au canal d'envoi (WP Mail SMTP ou mail()). Ce n'est PAS une preuve
+ * de réception : un message remis peut encore finir en indésirable ou en
+ * quarantaine chez le destinataire. « Échec » porte la cause exacte renvoyée
+ * par le canal d'envoi (mot de passe SMTP, expéditeur refusé…).
+ *
+ * @param array $log Entrées du journal (vide si fiche antérieure à 0.5.3).
+ * @return void
+ */
+function afsac_lead_render_mail_log( $log ) {
+	echo '<h2 style="font-size:14px;margin:18px 0 6px;padding:0;">' . esc_html__( 'Envoi des e-mails', 'afsac' ) . '</h2>';
+
+	$log = array_values( array_filter( $log, 'is_array' ) );
+	if ( ! $log ) {
+		echo '<p style="margin:0 0 4px;color:#8c8f94;">'
+			. esc_html__( 'Aucun envoi enregistré pour cette fiche (fiche antérieure à la version 0.5.3, ou aucun destinataire réglé).', 'afsac' )
+			. '</p>';
+		return;
+	}
+
+	$kinds = array(
+		'notification' => __( 'Notification interne', 'afsac' ),
+		'confirmation' => __( 'Confirmation au demandeur', 'afsac' ),
+	);
+
+	echo '<table class="widefat striped" style="margin-bottom:4px;"><thead><tr>'
+		. '<th style="width:16em;">' . esc_html__( 'E-mail', 'afsac' ) . '</th>'
+		. '<th>' . esc_html__( 'Destinataire', 'afsac' ) . '</th>'
+		. '<th>' . esc_html__( 'Résultat', 'afsac' ) . '</th>'
+		. '<th style="width:11em;">' . esc_html__( 'Date', 'afsac' ) . '</th>'
+		. '</tr></thead><tbody>';
+	foreach ( $log as $entry ) {
+		$kind = isset( $entry['kind'] ) && isset( $kinds[ $entry['kind'] ] ) ? $kinds[ $entry['kind'] ] : (string) ( isset( $entry['kind'] ) ? $entry['kind'] : '' );
+		$ok   = ! empty( $entry['ok'] );
+		if ( $ok ) {
+			$result = '<strong style="color:#1a7f37;">&#10004; ' . esc_html__( 'Remis au serveur d’envoi', 'afsac' ) . '</strong>';
+		} else {
+			$error  = isset( $entry['error'] ) && '' !== $entry['error'] ? (string) $entry['error'] : __( 'cause non transmise par le serveur', 'afsac' );
+			$result = '<strong style="color:#b32d2e;">&#10008; ' . esc_html__( 'Échec', 'afsac' ) . '</strong>'
+				. '<div style="white-space:pre-wrap;font-family:Consolas,Monaco,monospace;font-size:12px;margin-top:4px;">' . esc_html( $error ) . '</div>';
+		}
+		echo '<tr><td>' . esc_html( $kind ) . '</td>'
+			. '<td>' . esc_html( isset( $entry['to'] ) ? (string) $entry['to'] : '' ) . '</td>'
+			. '<td>' . $result . '</td>' // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- échappé ci-dessus.
+			. '<td>' . esc_html( isset( $entry['at'] ) ? afsac_lead_datetime( $entry['at'] ) : '' ) . '</td></tr>';
+	}
+	echo '</tbody></table>';
+
+	$last = end( $log );
+	echo '<p style="margin:4px 0 0;font-size:12px;color:#646970;">'
+		. esc_html(
+			sprintf(
+				/* translators: 1: adresse d'expéditeur demandée par le site, 2: canal d'envoi (WP Mail SMTP…). */
+				__( 'Expéditeur demandé par le site : %1$s · canal : %2$s', 'afsac' ),
+				isset( $last['from'] ) ? (string) $last['from'] : '—',
+				isset( $last['via'] ) ? (string) $last['via'] : '—'
+			)
+		)
+		. '<br>'
+		. esc_html__( '« Remis au serveur d’envoi » : le site a bien confié le message ; s’il n’arrive pas, regardez le courrier indésirable ou la quarantaine du destinataire. « Échec » : la cause exacte, à corriger dans WP Mail SMTP.', 'afsac' )
+		. '</p>';
 }
 
 /**

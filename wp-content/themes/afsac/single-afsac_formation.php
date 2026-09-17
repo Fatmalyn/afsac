@@ -51,6 +51,17 @@ while ( have_posts() ) :
 	$afsac_certificat   = $afsac_has_acf ? (bool) get_field( 'afsac_certificat', $afsac_id ) : false;
 	$afsac_cert_label   = $afsac_has_acf ? (string) get_field( 'afsac_certificat_intitule', $afsac_id ) : '';
 
+	/*
+	 * Fiche descriptive officielle (PDF). Le champ ne stocke qu'un ID : l'URL et le
+	 * poids sont relus ici, ce qui reste juste même si le média est remplacé. Le
+	 * champ est par post, donc par langue — la fiche FR ne propose que l'édition
+	 * française, la fiche EN que l'anglaise (aucune édition arabe publiée).
+	 */
+	$afsac_pdf_id   = $afsac_has_acf ? (int) get_field( 'afsac_fiche_pdf', $afsac_id ) : 0;
+	$afsac_pdf_url  = $afsac_pdf_id ? (string) wp_get_attachment_url( $afsac_pdf_id ) : '';
+	$afsac_pdf_path = $afsac_pdf_id ? (string) get_attached_file( $afsac_pdf_id ) : '';
+	$afsac_pdf_size = ( '' !== $afsac_pdf_path && file_exists( $afsac_pdf_path ) ) ? size_format( (int) filesize( $afsac_pdf_path ) ) : '';
+
 	// --- Taxonomies du cours. ---
 	$afsac_langues   = get_the_terms( $afsac_id, 'afsac_langue' );
 	$afsac_modalites = get_the_terms( $afsac_id, 'afsac_modalite' );
@@ -405,6 +416,23 @@ while ( have_posts() ) :
 						</div>
 					<?php endif; ?>
 
+					<?php /* a bis) Fiche descriptive officielle (PDF fourni par le centre). */ ?>
+					<?php if ( '' !== $afsac_pdf_url ) : ?>
+						<div class="afsac-card afsac-card--pdf">
+							<span class="afsac-eyebrow afsac-card__eyebrow"><?php esc_html_e( 'Fiche descriptive', 'afsac' ); ?></span>
+							<p class="afsac-card__pdf-text"><?php esc_html_e( 'Objectifs, contenu, public visé et conditions d’accès dans le document officiel du centre.', 'afsac' ); ?></p>
+							<a class="afsac-button afsac-card__pdf-cta" href="<?php echo esc_url( $afsac_pdf_url ); ?>" download>
+								<svg class="afsac-card__pdf-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+									<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" />
+								</svg>
+								<?php esc_html_e( 'Télécharger le PDF', 'afsac' ); ?>
+							</a>
+							<?php if ( '' !== $afsac_pdf_size ) : ?>
+								<p class="afsac-card__pdf-meta"><?php echo esc_html( sprintf( /* translators: %s: poids du fichier, ex. « 793 KB ». */ __( 'PDF · %s', 'afsac' ), $afsac_pdf_size ) ); ?></p>
+							<?php endif; ?>
+						</div>
+					<?php endif; ?>
+
 					<?php /* b) Informations sur le cours */ ?>
 					<?php if ( $afsac_has_info ) : ?>
 						<div class="afsac-card">
@@ -526,6 +554,8 @@ while ( have_posts() ) :
 					'post__not_in'   => array( $afsac_id ),
 					'orderby'        => 'rand',
 					'no_found_rows'  => true,
+					// Même jeu que la page du domaine : TRAINAIR PLUS des deux langues.
+					'afsac_trainair_bilingue' => true,
 					'tax_query'      => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query -- Archive d'un domaine, volume borné.
 						array(
 							'taxonomy' => 'afsac_area',

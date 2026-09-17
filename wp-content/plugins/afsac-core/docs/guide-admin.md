@@ -34,7 +34,7 @@ vous n'êtes prisonnier ni du design, ni du prestataire.
 
 - **WordPress standard** (pas de technologie exotique) : n'importe quel
   intégrateur WordPress peut reprendre la main.
-- **Multilingue** français / anglais, avec la structure arabe prévue (sens de
+- **Multilingue** français / anglais, avec le socle RTL conservé (sens de
   lecture droite-à-gauche déjà géré dans les feuilles de style). Chaque page a
   sa version par langue, et les balises `hreflang` sont émises automatiquement
   pour que Google serve la bonne langue au bon pays.
@@ -247,9 +247,16 @@ langue du visiteur, page d'origine, horodatage du consentement RGPD.
 
 **Messages** — idem pour le formulaire de contact.
 
-**Téléchargements** — qui a demandé la brochure. Depuis août 2026, la brochure ne
-se télécharge plus d'un simple clic : le visiteur laisse d'abord son nom, son
-e-mail et son organisation. C'est ce qui rend le suivi possible.
+**Téléchargements** — le suivi de la brochure. **Depuis le 8 septembre 2026, la
+brochure se télécharge d'un simple clic**, sans e-mail ni formulaire : le bouton
+du pied de page sert directement le PDF de la langue de la page consultée (site
+en français → brochure française, site en anglais → brochure anglaise). Le
+chiffre **« Téléchargements directs »** en haut de l'écran compte ces clics,
+édition par édition, sans aucune donnée personnelle.
+
+Les fiches et chiffres ci-dessous datent de la période (août – début septembre
+2026) où le visiteur laissait son e-mail ; ils restent consultables et
+exportables, mais ne s'alimentent plus.
 
 En haut de la liste, quatre chiffres répondent d'un coup d'œil :
 
@@ -284,8 +291,95 @@ empêche l'adresse du fichier de circuler et fausser le comptage.
 - *E-mail(s) de notification* : les adresses internes qui reçoivent les leads,
   **séparées par des virgules**. ⚠️ Tant que c'est vide, tout part sur l'adresse
   d'administration du site — un bandeau d'avertissement le rappelle.
+  Réglé le 09/09/2026 sur **managerit@afsactunisie.com** (inscriptions ET
+  messages de contact).
 - *Nom / e-mail de l'expéditeur* : l'identité des e-mails envoyés par le site.
+  Réglé sur « AFSAC – ICAO ASTC Tunis » / **icao@afsac-training.com** (la boîte
+  OVH qui sert à l'envoi, voir ci-dessous). Le nom sert aussi de préfixe aux
+  sujets (« [AFSAC – ICAO ASTC Tunis] Nouvelle inscription — … »).
 - *Webhook CRM* : à remplir le jour où vous branchez un CRM.
+
+⚠️ Ces réglages vivent dans la base de données : ils sont à reporter sur chaque
+copie du site (site de test, production) dans le même écran.
+
+**Savoir si un e-mail est parti : la section « Envoi des e-mails »**
+
+Depuis la version 0.5.3 du plugin, chaque fiche (Inscriptions, Messages) se
+termine par une section **« Envoi des e-mails »** : pour la notification interne
+et pour la confirmation au demandeur, elle indique **« Remis au serveur
+d'envoi »** ou **« Échec »** avec la cause exacte, plus l'expéditeur utilisé et
+le canal (WP Mail SMTP ou mail() du serveur).
+
+- *Remis au serveur d'envoi* : le site a fait son travail. Si le message
+  n'arrive pas, il est chez le destinataire — courrier indésirable, ou
+  quarantaine Microsoft 365 pour managerit@ (security.microsoft.com →
+  Quarantaine).
+- *Échec* : lire la cause. `535 … authentication failed` = mot de passe SMTP
+  faux ; `553 … sender address rejected` = expéditeur non autorisé (voir
+  ci-dessous) ; `Could not instantiate mail function` = aucun plugin SMTP actif.
+
+**Pourquoi les e-mails arrivent en spam, et comment y remédier**
+
+Depuis septembre 2026 les e-mails sont mis en forme (bandeau bleu, tableau des
+champs, bouton vers la fiche). Mais la présentation ne suffit pas : un e-mail
+envoyé « à la sauvage » par le serveur web, avec une adresse d'expéditeur que
+personne n'a autorisée, est rejeté ou classé en spam par Gmail et Microsoft.
+
+La solution est de faire partir les e-mails du site par le **serveur SMTP d'OVH,
+avec la boîte icao@afsac-training.com**, via le plugin gratuit **WP Mail SMTP**.
+Le domaine afsac-training.com autorise OVH à émettre pour lui (SPF
+`include:mx.ovh.com`) : les e-mails partent donc « signés » et arrivent en
+boîte de réception.
+
+⚠️ Deux règles à respecter, sinon rien ne part :
+- l'**adresse d'expéditeur doit être la boîte qui s'authentifie** :
+  icao@afsac-training.com. OVH refuse d'envoyer un message « De :
+  managerit@afsactunisie.com » (ou no-reply@…) avec le compte icao@ — c'est la
+  cause nº 1 des envois qui échouent en silence ;
+- ne PAS mettre une adresse @afsactunisie.com en expéditeur : la messagerie de
+  ce domaine est chez Microsoft 365 et son SPF n'autorise que Microsoft
+  (`include:spf.protection.outlook.com -all`) → spam garanti.
+
+Le **destinataire** des notifications, lui, reste managerit@afsactunisie.com
+(réglé dans AFSAC Réglages) : recevoir n'a rien à voir avec envoyer.
+
+**Marche à suivre (WP Mail SMTP + OVH, ~10 minutes)**
+
+1. *Extensions → Ajouter* : chercher **WP Mail SMTP** (éditeur WPForms) →
+   Installer → Activer. Fermer l'assistant si besoin et aller dans
+   *WP Mail SMTP → Réglages*.
+2. Bloc **De (From)** :
+   - *From Email* : **icao@afsac-training.com** → cocher **Force From Email** ;
+   - *From Name* : **AFSAC – ICAO ASTC Tunis** → cocher **Force From Name**.
+3. Mailer : **Other SMTP (Autre SMTP)** :
+   - SMTP Host : `ssl0.ovh.net` ; Encryption : **SSL** ; SMTP Port : **465**
+     (ou TLS + 587, les deux marchent) ; Auto TLS : ON ;
+   - Authentication : ON ; SMTP Username : `icao@afsac-training.com` ;
+     SMTP Password : le mot de passe **de la boîte mail** (celui du webmail
+     OVH, pas celui du client OVH). En cas de doute, le réinitialiser depuis
+     l'espace client OVH → *Web Cloud → E-mails → afsac-training.com →
+     icao@ → Modifier le mot de passe*.
+   - Enregistrer.
+4. **Vérifier** : *WP Mail SMTP → Outils → Test d'e-mail* → envoyer vers une
+   adresse Gmail.
+   - Cadre **vert** : le message doit arriver en boîte de réception, expéditeur
+     « AFSAC – ICAO ASTC Tunis <icao@afsac-training.com> ».
+   - Cadre **rouge** : lire le message d'erreur (aussi dans *Outils → Debug
+     Events*). `535 … authentication failed` = mot de passe faux ;
+     `553 … sender address rejected` / `not owned by user` = l'expéditeur n'est
+     pas icao@ (revoir l'étape 2) ; `Connection timed out` = le port est bloqué,
+     essayer TLS + 587.
+5. Envoyer un vrai message depuis le formulaire de contact du site : la
+   notification arrive sur managerit@ (vérifier aussi *Courrier indésirable*
+   et la *quarantaine* Microsoft 365 la première fois, puis marquer
+   « Pas indésirable » pour apprendre au filtre) et le bouton « Répondre » vise
+   bien le visiteur.
+
+⚠️ Ces réglages vivent dans la base du serveur : **chaque nouvel import Duplicator
+les efface** (la base locale remplace celle du serveur). Après chaque import,
+réactiver WP Mail SMTP et ressaisir le mot de passe — ou demander à l'intégrateur
+de poser les réglages en constantes dans wp-config.php, qui survivent aux
+imports.
 
 ---
 
@@ -318,11 +412,11 @@ et un lien « En savoir plus » optionnel. Ces cartes alimentent la page
   qui détermine la mise en page. Le modifier casse l'affichage.
 
 **Le PDF du programme (proposé dans le pied de page de tout le site)** :
-Pages → **Accueil** → encadré « Brochure — programme de formation ». Trois
-fichiers possibles : *Français*, *English*, *العربية* — le visiteur choisit son
-édition dans le formulaire, et celle de la langue du site lui est proposée par
-défaut. Le champ *Programme complet — PDF (FR · EN · AR)* sert si vous préférez
-un fichier unique regroupant les trois langues.
+Pages → **Accueil** → encadré « Brochure — programme de formation ». Deux
+fichiers : *Français* et *English*. Le visiteur ne choisit plus : la page en
+français sert la brochure française, la page en anglais la brochure anglaise.
+Si l'un des deux manque, c'est le champ *Programme complet — PDF* (fichier
+unique) qui est servi, sinon l'autre édition.
 
 Remplacer un fichier suffit : les liens déjà envoyés continuent de fonctionner et
 pointent vers la nouvelle version. Si **aucun** PDF n'est chargé, la bande
@@ -451,13 +545,14 @@ puis ré-importer le même fichier.
 
 - [ ] **Adresse(s) e-mail** qui doivent recevoir les demandes d'inscription et
       les messages de contact.
-- [ ] **Service d'envoi d'e-mails en production** (SMTP) : indispensable pour que
-      les e-mails ne partent pas en spam. À prévoir à la mise en ligne.
+- [ ] **Service d'envoi d'e-mails** (SMTP) : indispensable pour que les e-mails
+      ne partent pas en spam, sur le site de test comme en production. Marche à
+      suivre détaillée en 2.6 (WP Mail SMTP + SMTP OVH, boîte icao@afsac-training.com).
 - [ ] **Visuels des cours** : fournir des affiches / photos exploitables pour
       remplacer les scans de fiches.
-- [ ] **PDF du programme** consolidé FR · EN · AR.
-- [ ] **Arabe** : le socle technique est prêt (RTL) ; reste à décider du périmètre
-      à traduire et à fournir les textes.
+- [ ] **PDF du programme** consolidé FR · EN.
+- [x] **Arabe** : écarté à la demande du client (03/09/2026). Le site n'est publié
+      qu'en français et en anglais ; le socle RTL reste en place si la décision change.
 - [ ] **CRM** : y a-t-il un outil à brancher ? (le point d'entrée est déjà prévu)
 - [ ] **Comptes utilisateurs** : qui doit avoir accès, et avec quel rôle ?
 - [ ] **Formation de l'équipe** : prévoir une session de prise en main d'1 h avec

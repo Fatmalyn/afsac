@@ -1,7 +1,10 @@
 <?php
 /**
- * Footer — bande de badges institutionnels + barre basse
- * (copyright + liens légaux du Customizer).
+ * Footer — barre basse (copyright + liens légaux du Customizer).
+ *
+ * La bande de badges institutionnels (ICAO Member State / TRAINAIR PLUS /
+ * Regional AVSEC Training Centre) qui précédait cette barre a été RETIRÉE le
+ * 08/09/2026 à la demande du client : ne pas la remettre.
  *
  * @package AFSAC\Theme
  */
@@ -12,29 +15,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $afsac_legal = afsac_get_legal_links();
 ?>
-<?php /* B. Strip 3 cartes (séparateurs = gap 1px sur fond 5 % du conteneur). */ ?>
-<div class="afsac-footer__badges-band">
-	<div class="afsac-container">
-		<ul class="afsac-footer__badges">
-			<li class="afsac-badge-inst afsac-badge-inst--icao">
-				<span class="afsac-badge-inst__lines">
-					<span class="afsac-badge-inst__sup">ICAO · OACI</span>
-					<span class="afsac-badge-inst__main"><?php esc_html_e( 'Member State', 'afsac' ); ?></span>
-				</span>
-			</li>
-			<li class="afsac-badge-inst afsac-badge-inst--trainair">
-				<span class="afsac-badge-inst__main">TRAINAIR PLUS</span>
-			</li>
-			<li class="afsac-badge-inst afsac-badge-inst--avsec">
-				<span class="afsac-badge-inst__lines">
-					<span class="afsac-badge-inst__sup"><?php esc_html_e( 'Regional', 'afsac' ); ?></span>
-					<span class="afsac-badge-inst__main"><?php esc_html_e( 'AVSEC Training Centre', 'afsac' ); ?></span>
-				</span>
-			</li>
-		</ul>
-	</div>
-</div>
-
 <?php /* Barre du bas. */ ?>
 <div class="afsac-footer__bottom">
 	<div class="afsac-container afsac-footer__bottom-inner">

@@ -791,8 +791,8 @@ msgid "Annexe OACI"
 msgstr "ICAO Annex"
 
 #: template-catalogue.php
-msgid "Tous les cours AVSEC"
-msgstr "All AVSEC courses"
+msgid "Tous le programme AVSEC"
+msgstr "All AVSEC program"
 
 #: template-parts/page-formations/avsec-showcase.php
 msgid "Par langue"
@@ -1260,6 +1260,10 @@ msgstr "Write to us"
 msgid "Rechercher"
 msgstr "Search"
 
+#: template-parts/header/nav.php:83
+msgid "Fermer le menu"
+msgstr "Close menu"
+
 #: template-parts/header/topbar.php:51
 msgid "Ouvrir le menu"
 msgstr "Open menu"
@@ -1418,6 +1422,7 @@ msgid "Catalogue digital complet 2026 : %1$s cours TRAINAIR PLUS sur les %2$s do
 msgstr "Complete 2026 digital catalogue: %1$s TRAINAIR PLUS courses across the %2$s ICAO areas, AVSEC training in French and English, plus consulting and audit services."
 
 #: template-parts/page-formations/catalogue-cta.php:51
+#: single-afsac_formation.php:428
 msgid "Télécharger le PDF"
 msgstr "Download the PDF"
 
@@ -4537,7 +4542,7 @@ msgstr "Follow us"
 msgid "Recevez le calendrier des sessions et nos actualités de formation."
 msgstr "Get our session calendar and training news."
 
-#: template-parts/footer
+#: template-parts/footer single-afsac_formation.php:431
 msgid "PDF · %s"
 msgstr "PDF · %s"
 
@@ -4574,9 +4579,6 @@ msgstr "National programmes, quality control and certification systems."
 
 msgid "Inspection & contrôle"
 msgstr "Inspection & oversight"
-
-msgid "Inspecteurs nationaux et interprétation de l’imagerie radioscopique."
-msgstr "National inspectors and X-ray image interpretation."
 
 msgid "Risques, crises & menace interne"
 msgstr "Risk, crisis & insider threat"
@@ -5735,9 +5737,6 @@ msgstr "First time here? In under a minute, here is where to find a course, the 
 msgid "Tout le site part d’ici"
 msgstr "Everything starts from this menu"
 
-msgid "Formations & services, catalogue, calendrier, références : chaque rubrique s’ouvre depuis ce menu, en <strong>français, anglais et arabe</strong>."
-msgstr "Training & services, catalogue, calendar, references: every section opens from this menu, in <strong>French, English and Arabic</strong>."
-
 msgid "Le catalogue des formations"
 msgstr "The training catalogue"
 
@@ -5893,3 +5892,151 @@ msgstr "This request is not a payment commitment: nothing is invoiced before AFS
 #: template-qui-sommes-nous.php
 msgid "Le siège de l’AFSAC – ICAO ASTC Tunis"
 msgstr "AFSAC – ICAO ASTC Tunis headquarters"
+
+#: template-contact.php:242
+msgid "Téléphones"
+msgstr "Phone numbers"
+
+#: template-contact.php:253
+msgid "E-mails"
+msgstr "Emails"
+
+#: template-contact.php:323
+msgid "Ouvrir dans Google Maps"
+msgstr "Open in Google Maps"
+
+#: functions.php:1762
+msgid "Carte — lien d’intégration Google Maps (facultatif)"
+msgstr "Map — Google Maps embed link (optional)"
+
+#: single-afsac_formation.php:422
+msgid "Fiche descriptive"
+msgstr "Descriptive sheet"
+
+#: single-afsac_formation.php:423
+msgid "Objectifs, contenu, public visé et conditions d’accès dans le document officiel du centre."
+msgstr "Objectives, content, target population and entry requirements in the centre’s official document."
+
+#: includes/acf-fields.php:894
+msgid "Fiche descriptive (PDF)"
+msgstr "Descriptive sheet (PDF)"
+
+#: includes/acf-fields.php:897
+msgid "PDF officiel du cours, proposé au téléchargement sur la fiche. Déposer l’édition correspondant à la langue de CETTE fiche."
+msgstr "Official course PDF, offered for download on the course page. Upload the edition matching the language of THIS page."
+
+#: includes/avsec-helpers.php:53
+msgid "Inspecteurs nationaux, imagerie radioscopique et maintenance des équipements."
+msgstr "National inspectors, X-ray image interpretation and security equipment maintenance."
+
+#: functions.php:2170
+msgid "Formations & services, catalogue, calendrier, références : chaque rubrique s’ouvre depuis ce menu, en <strong>français et en anglais</strong>."
+msgstr "Training & services, catalogue, calendar, references: every section opens from this menu, in <strong>French and English</strong>."
+
+#: includes/import-catalogue.php:1620
+msgid "langue « %s » inconnue (attendu fr / en) → ligne ignorée"
+msgstr "unknown language “%s” (expected fr / en) → row skipped"
+
+#: archive-afsac_formation.php:186
+msgid "Type de formation"
+msgstr "Type of training"
+
+#: archive-afsac_formation.php:188
+msgid "Cours et ateliers"
+msgstr "Courses and workshops"
+
+#: archive-afsac_formation.php:195
+msgid "%1$s (%2$d)"
+msgstr "%1$s (%2$d)"
+
+#: template-parts/footer/documentation.php
+msgid "Votre e-mail professionnel"
+msgstr "Your work e-mail"
+
+#: template-parts/footer/documentation.php
+msgid "En téléchargeant, vous acceptez de recevoir la brochure et les informations d’AFSAC (RGPD, loi n° 63-2004). Vos données ne sont ni revendues ni cédées."
+msgstr "By downloading, you agree to receive the brochure and information from AFSAC (GDPR, Law No. 63-2004). Your data is never sold or shared."
+
+#: functions.php
+msgid "Laissez votre e-mail : le téléchargement de la brochure démarre aussitôt, dans la langue du site."
+msgstr "Leave your e-mail: the brochure download starts right away, in the site language."
+
+#: functions.php
+msgid "Un clic suffit : la brochure se télécharge aussitôt, dans la langue du site."
+msgstr "One click is all it takes: the brochure downloads right away, in the site language."
+
+#: includes/brochure.php
+msgid "Téléchargements directs"
+msgstr "Direct downloads"
+
+#: includes/brochure.php
+msgid "depuis le pied de page, sans e-mail (depuis le 08/09/2026)"
+msgstr "from the footer, no e-mail required (since 08/09/2026)"
+
+#: includes/brochure.php
+msgid "Téléchargements directs par édition"
+msgstr "Direct downloads by edition"
+
+#: includes/messaging.php
+msgid "Reçue le %1$s depuis le site %2$s."
+msgstr "Received on %1$s from the website %2$s."
+
+#: includes/messaging.php
+msgid "E-mail automatique envoyé par le site %s. Pour répondre à cette personne, utilisez simplement « Répondre » : son adresse est déjà renseignée."
+msgstr "Automatic e-mail sent by the website %s. To reply to this person, simply use “Reply”: their address is already filled in."
+
+#: includes/messaging.php
+msgid "Ouvrir la fiche dans l’administration"
+msgstr "Open the record in the admin"
+
+#: includes/messaging.php
+msgid "Cet e-mail vous a été envoyé automatiquement suite à votre demande sur %s."
+msgstr "This e-mail was sent to you automatically following your request on %s."
+
+#: includes/messaging.php
+msgid "mail() du serveur (aucun plugin SMTP)"
+msgstr "server mail() (no SMTP plugin)"
+
+#: includes/lead-admin.php
+msgid "Envoi des e-mails"
+msgstr "E-mail delivery"
+
+#: includes/lead-admin.php
+msgid "Aucun envoi enregistré pour cette fiche (fiche antérieure à la version 0.5.3, ou aucun destinataire réglé)."
+msgstr "No sending recorded for this record (record older than version 0.5.3, or no recipient configured)."
+
+#: includes/lead-admin.php
+msgid "Notification interne"
+msgstr "Internal notification"
+
+#: includes/lead-admin.php
+msgid "Confirmation au demandeur"
+msgstr "Confirmation to the requester"
+
+#: includes/lead-admin.php
+msgid "Destinataire"
+msgstr "Recipient"
+
+#: includes/lead-admin.php
+msgid "Résultat"
+msgstr "Result"
+
+#: includes/lead-admin.php
+msgid "Remis au serveur d’envoi"
+msgstr "Handed over to the sending server"
+
+#: includes/lead-admin.php
+msgid "cause non transmise par le serveur"
+msgstr "cause not reported by the server"
+
+#: includes/lead-admin.php
+msgid "Échec"
+msgstr "Failed"
+
+#: includes/lead-admin.php
+msgid "Expéditeur demandé par le site : %1$s · canal : %2$s"
+msgstr "Sender requested by the site: %1$s · channel: %2$s"
+
+#: includes/lead-admin.php
+msgid "« Remis au serveur d’envoi » : le site a bien confié le message ; s’il n’arrive pas, regardez le courrier indésirable ou la quarantaine du destinataire. « Échec » : la cause exacte, à corriger dans WP Mail SMTP."
+msgstr "“Handed over to the sending server”: the site did hand the message over; if it does not arrive, check the recipient’s junk folder or quarantine. “Failed”: the exact cause, to be fixed in WP Mail SMTP."

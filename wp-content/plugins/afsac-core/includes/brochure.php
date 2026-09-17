@@ -6,6 +6,16 @@
  * clic. Le visiteur laisse son e-mail, AFSAC sait donc QUI la demande et COMBIEN
  * de personnes l'ont réellement téléchargée.
  *
+ * Demande client (08/09/2026) : TÉLÉCHARGEMENT DIRECT, EN UN CLIC, sans e-mail
+ * ni formulaire. Le thème ne pose plus qu'un lien vers le point de
+ * téléchargement direct (afsac_brochure_direct_url(), section 5b), qui sert le
+ * PDF de l'ÉDITION DE LA LANGUE DE NAVIGATION et incrémente un compteur ANONYME
+ * par édition (option afsac_brochure_direct_counts), affiché dans l'écran
+ * Téléchargements. Tout le circuit « e-mail → fiche → jeton » ci-dessous est
+ * CONSERVÉ (les fiches existantes restent consultables, et il suffit de
+ * rebrancher le formulaire côté thème pour le rouvrir), mais plus rien ne
+ * l'appelle depuis le site.
+ *
  * Deux compteurs DISTINCTS, c'est le cœur de la traçabilité :
  *   - `demandes`         : nombre de fois où la personne a rempli le formulaire ;
  *   - `telechargements`  : nombre de fois où le PDF a réellement été servi.
@@ -327,7 +337,20 @@ function afsac_brochure_redirect_url( $url, $state, $args = array() ) {
 }
 
 /**
- * Stocke erreurs + valeurs saisies en transient et redirige (PRG).
+ * Le formulaire a-t-il été envoyé en arrière-plan par le script du thème ?
+ *
+ * Dans ce cas le handler répond en JSON (wp_send_json_*) au lieu de rediriger :
+ * la page n'est pas rechargée et le thème affiche lui-même le résultat.
+ *
+ * @return bool
+ */
+function afsac_brochure_is_ajax() {
+	return ! empty( $_POST['afsac_ajax'] ); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- simple choix du format de réponse, nonce vérifié par l'appelant.
+}
+
+/**
+ * Stocke erreurs + valeurs saisies en transient et redirige (PRG), ou répond
+ * en JSON si le formulaire a été envoyé en arrière-plan.
  *
  * @param string $url    Référent.
  * @param array  $errors Messages d'erreur.
@@ -335,6 +358,9 @@ function afsac_brochure_redirect_url( $url, $state, $args = array() ) {
  * @return void
  */
 function afsac_brochure_fail( $url, $errors, $old ) {
+	if ( afsac_brochure_is_ajax() ) {
+		wp_send_json_error( array( 'errors' => array_values( (array) $errors ) ) );
+	}
 	$token = wp_generate_password( 16, false );
 	set_transient(
 		'afsac_dlform_' . $token,
@@ -416,6 +442,9 @@ function afsac_brochure_handle_submit() {
 	// 2) Honeypot + 3) time-trap : on simule un succès pour ne pas renseigner les robots.
 	$ts = isset( $_POST['afsac_ts'] ) ? absint( $_POST['afsac_ts'] ) : 0;
 	if ( ! empty( $_POST['afsac_website'] ) || ( $ts > 0 && ( time() - $ts ) < 3 ) ) {
+		if ( afsac_brochure_is_ajax() ) {
+			wp_send_json_success( array() );
+		}
 		wp_safe_redirect( afsac_brochure_redirect_url( $referer, 'ok' ) );
 		exit;
 	}
@@ -435,19 +464,15 @@ function afsac_brochure_handle_submit() {
 		$key = afsac_brochure_default_key();
 	}
 
-	// 5) Validation serveur.
+	/*
+	 * 5) Validation serveur. Depuis le 08/09/2026, SEUL L'E-MAIL est requis :
+	 * nom, organisation et pays sont enregistrés s'ils sont fournis (formulaires
+	 * tiers), la case RGPD n'est plus exigée — le consentement est donné par la
+	 * mention affichée sous le bouton, et horodaté ci-dessous comme avant.
+	 */
 	$errors = array();
-	if ( '' === $f['nom'] ) {
-		$errors[] = __( 'Votre nom est requis.', 'afsac' );
-	}
 	if ( '' === $f['email'] || ! is_email( $f['email'] ) ) {
 		$errors[] = __( 'Une adresse e-mail valide est requise : c’est elle qui reçoit le lien de téléchargement.', 'afsac' );
-	}
-	if ( '' === $f['organisation'] ) {
-		$errors[] = __( 'Votre organisation est requise.', 'afsac' );
-	}
-	if ( ! $consent ) {
-		$errors[] = __( 'Vous devez accepter le traitement de vos données (RGPD).', 'afsac' );
 	}
 	if ( '' === $key ) {
 		$errors[] = __( 'La brochure n’est pas disponible pour le moment. Merci de nous contacter.', 'afsac' );
@@ -545,6 +570,10 @@ function afsac_brochure_handle_submit() {
 	 */
 	do_action( 'afsac_brochure_created', $lead_id, $data );
 
+	if ( afsac_brochure_is_ajax() ) {
+		wp_send_json_success( array( 'download_url' => $data['download_url'] ) );
+	}
+
 	wp_safe_redirect( afsac_brochure_redirect_url( $referer, 'ok', array( 'dl' => $token ) ) );
 	exit;
 }
@@ -580,6 +609,20 @@ function afsac_brochure_handle_download() {
 		update_post_meta( $lead, AFSAC_DL_META . 'downloaded_at', current_time( 'mysql' ) );
 	}
 
+	afsac_brochure_send_file( $file );
+}
+add_action( 'admin_post_afsac_brochure_download', 'afsac_brochure_handle_download' );
+add_action( 'admin_post_nopriv_afsac_brochure_download', 'afsac_brochure_handle_download' );
+
+/**
+ * Envoie un PDF de brochure en pièce jointe, par tranches, puis termine.
+ *
+ * Commun au lien à jeton et au téléchargement direct.
+ *
+ * @param array<string,mixed> $file Fichier (cf. afsac_brochure_files()).
+ * @return void
+ */
+function afsac_brochure_send_file( $file ) {
 	nocache_headers();
 	header( 'Content-Type: application/pdf' );
 	header( 'Content-Disposition: attachment; filename="' . rawurlencode( $file['filename'] ) . '"' );
@@ -602,8 +645,66 @@ function afsac_brochure_handle_download() {
 	}
 	exit;
 }
-add_action( 'admin_post_afsac_brochure_download', 'afsac_brochure_handle_download' );
-add_action( 'admin_post_nopriv_afsac_brochure_download', 'afsac_brochure_handle_download' );
+
+/* -------------------------------------------------------------------------
+ * 5b. Téléchargement DIRECT (sans e-mail) — demande client du 08/09/2026
+ * ---------------------------------------------------------------------- */
+
+/**
+ * URL de téléchargement direct d'une édition (lien de la bande du pied de page).
+ *
+ * On ne pointe pas sur le fichier lui-même : passer par admin-post.php permet
+ * de servir le PDF en pièce jointe (jamais ouvert dans l'onglet) et de COMPTER
+ * chaque téléchargement, sans aucune donnée personnelle.
+ *
+ * @param string $key Clé d'édition (« fr », « en », « all »).
+ * @return string
+ */
+function afsac_brochure_direct_url( $key ) {
+	return add_query_arg(
+		array(
+			'action'  => 'afsac_brochure_direct',
+			'edition' => sanitize_key( $key ),
+		),
+		admin_url( 'admin-post.php' )
+	);
+}
+
+/**
+ * Compteurs anonymes de téléchargements directs, par édition.
+ *
+ * @return array<string,int> Clé d'édition => total.
+ */
+function afsac_brochure_direct_counts() {
+	$counts = get_option( 'afsac_brochure_direct_counts', array() );
+	return is_array( $counts ) ? array_map( 'intval', $counts ) : array();
+}
+
+/**
+ * Sert le PDF de l'édition demandée (ou de la langue de navigation) et compte.
+ *
+ * @return void
+ */
+function afsac_brochure_handle_direct() {
+	$key  = isset( $_GET['edition'] ) ? sanitize_key( wp_unslash( $_GET['edition'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- lien public, aucune donnée modifiée hors un compteur.
+	$file = afsac_brochure_file( $key );
+	if ( ! $file ) {
+		$key  = afsac_brochure_default_key();
+		$file = afsac_brochure_file( $key );
+	}
+	if ( ! $file ) {
+		wp_safe_redirect( home_url( '/' ) );
+		exit;
+	}
+
+	$counts         = afsac_brochure_direct_counts();
+	$counts[ $key ] = ( isset( $counts[ $key ] ) ? $counts[ $key ] : 0 ) + 1;
+	update_option( 'afsac_brochure_direct_counts', $counts, false );
+
+	afsac_brochure_send_file( $file );
+}
+add_action( 'admin_post_afsac_brochure_direct', 'afsac_brochure_handle_direct' );
+add_action( 'admin_post_nopriv_afsac_brochure_direct', 'afsac_brochure_handle_direct' );
 
 /* -------------------------------------------------------------------------
  * 6. Statistiques
@@ -778,7 +879,11 @@ function afsac_telechargement_dashboard() {
 	$stats = afsac_brochure_stats();
 	$taux  = $stats['personnes'] > 0 ? round( $stats['convertis'] / $stats['personnes'] * 100 ) : 0;
 
+	$direct       = afsac_brochure_direct_counts();
+	$direct_total = array_sum( $direct );
+
 	$tiles = array(
+		array( __( 'Téléchargements directs', 'afsac' ), number_format_i18n( $direct_total ), __( 'depuis le pied de page, sans e-mail (depuis le 08/09/2026)', 'afsac' ) ),
 		array( __( 'Personnes', 'afsac' ), number_format_i18n( $stats['personnes'] ), __( 'fiches uniques (1 e-mail = 1 fiche)', 'afsac' ) ),
 		array( __( 'Téléchargements', 'afsac' ), number_format_i18n( $stats['telechargements'] ), __( 'PDF réellement servis', 'afsac' ) ),
 		array( __( 'Formulaires envoyés', 'afsac' ), number_format_i18n( $stats['demandes'] ), __( 'demandes, ré-envois compris', 'afsac' ) ),
@@ -808,7 +913,16 @@ function afsac_telechargement_dashboard() {
 		$parts[] = sprintf( '%s : %s', $file ? $file['name'] : $key, number_format_i18n( $total ) );
 	}
 
+	$direct_parts = array();
+	foreach ( $direct as $key => $total ) {
+		$file           = afsac_brochure_file( $key );
+		$direct_parts[] = sprintf( '%s : %s', $file ? $file['name'] : $key, number_format_i18n( $total ) );
+	}
+
 	echo '<p style="margin:4px 0 12px;">';
+	if ( $direct_parts ) {
+		echo '<span style="color:#546670;">' . esc_html__( 'Téléchargements directs par édition', 'afsac' ) . ' — ' . esc_html( implode( ' · ', $direct_parts ) ) . '</span><br>';
+	}
 	if ( $parts ) {
 		echo '<span style="color:#546670;">' . esc_html__( 'Éditions demandées', 'afsac' ) . ' — ' . esc_html( implode( ' · ', $parts ) ) . '</span> &nbsp; ';
 	}

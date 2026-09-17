@@ -67,9 +67,9 @@ function afsac_get_area_accent_color( $term ) {
 }
 
 /**
- * Nombre de cours publiés rattachés à un domaine, sous-domaines INCLUS, dans la
- * langue courante. Reproduit le filtrage Polylang implicite des requêtes front
- * (les termes et les formations sont déjà spécifiques à la langue courante).
+ * Nombre de cours publiés rattachés à un domaine, sous-domaines INCLUS : ceux de
+ * la langue courante PLUS les cours TRAINAIR PLUS de toutes les langues — le même
+ * jeu que l'archive du domaine (cf. trainair-bilingue.php).
  *
  * @param WP_Term|int $term Terme (domaine) ou ID.
  * @return int Nombre de cours (0 si aucun / terme invalide).
@@ -89,6 +89,7 @@ function afsac_get_area_course_count( $term ) {
 			'no_found_rows'          => false,
 			'update_post_meta_cache' => false,
 			'update_post_term_cache' => false,
+			AFSAC_TRAINAIR_BILINGUE  => true,
 			'tax_query'              => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query -- Comptage par domaine sur une page d'index (mise en cache objet WP).
 				array(
 					'taxonomy'         => 'afsac_area',

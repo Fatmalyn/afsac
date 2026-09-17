@@ -40,7 +40,7 @@ function afsac_avsec_themes() {
 			'label' => __( 'Sûreté aéroportuaire', 'afsac' ),
 			'desc'  => __( 'Personnel, superviseurs, côté ville et programme de sûreté d’aéroport.', 'afsac' ),
 			'color' => '#0054a4',
-			'keys'  => array( 'avsec-formation-base', 'avsec-superviseurs', 'avsec-psa', 'avsec-landside' ),
+			'keys'  => array( 'avsec-formation-base', 'avsec-superviseurs', 'avsec-psa', 'avsec-landside-security' ),
 		),
 		'cadre-national' => array(
 			'label' => __( 'Cadre national & réglementaire', 'afsac' ),
@@ -50,9 +50,9 @@ function afsac_avsec_themes() {
 		),
 		'inspection'     => array(
 			'label' => __( 'Inspection & contrôle', 'afsac' ),
-			'desc'  => __( 'Inspecteurs nationaux et interprétation de l’imagerie radioscopique.', 'afsac' ),
+			'desc'  => __( 'Inspecteurs nationaux, imagerie radioscopique et maintenance des équipements.', 'afsac' ),
 			'color' => '#0054a4',
-			'keys'  => array( 'avsec-inspecteurs', 'avsec-imagerie' ),
+			'keys'  => array( 'avsec-inspecteurs', 'avsec-imagerie', 'avsec-maintenance-equipements-surete', 'avsec-recyclage-inspecteurs' ),
 		),
 		'risques'        => array(
 			'label' => __( 'Risques, crises & menace interne', 'afsac' ),
@@ -70,7 +70,7 @@ function afsac_avsec_themes() {
 			'label' => __( 'Facteurs humains & encadrement', 'afsac' ),
 			'desc'  => __( 'Culture de sûreté, détection comportementale, instructeurs et responsables.', 'afsac' ),
 			'color' => '#1a6fc0',
-			'keys'  => array( 'avsec-culture-surete', 'avsec-behaviour-detection', 'avsec-instructeurs', 'avsec-responsables' ),
+			'keys'  => array( 'avsec-culture-surete', 'avsec-behaviour-detection', 'avsec-instructeurs', 'avsec-recyclage-instructeurs', 'avsec-responsables' ),
 		),
 	);
 }
@@ -96,6 +96,38 @@ function afsac_avsec_workshop_keys() {
 		'avsec-psa',
 		'avsec-pnfsac',
 	);
+}
+
+/**
+ * Clés des cours qui composent le PROGRAMME du centre (brochures 2026).
+ *
+ * La famille `afsac_famille = AVSEC` ne suffit pas à répondre à « qu'est-ce que
+ * le centre dispense ? » : elle rassemble deux choses que le client distingue.
+ *
+ *   1. Le PROGRAMME — les cours des brochures « Programme des Formations
+ *      AVSEC/OACI 2026 » (FR) et « Aviation Security Annual Training Program
+ *      2026 » (EN). C'est l'offre du centre, celle qu'on affiche sur la page
+ *      « Cours & ateliers AVSEC » et qu'on peut réserver.
+ *   2. Le CATALOGUE de sûreté de l'OACI — d'autres cours AVSEC du catalogue
+ *      mondial (Master of Science in Aviation Security, Catering Security…),
+ *      présents dans le tableur du client. Ils restent consultables dans le
+ *      catalogue et la recherche, mais le centre ne les programme pas.
+ *
+ * Le dataset de `afsac_import_courses()` (seed-formations.php) EST la liste du
+ * programme : on la dérive plutôt que de la recopier, pour qu'ajouter un cours
+ * au seed suffise à l'ajouter au programme.
+ *
+ * @return string[] Clés `_afsac_import_key` du programme.
+ */
+function afsac_avsec_programme_keys() {
+	static $keys = null;
+	if ( null !== $keys ) {
+		return $keys;
+	}
+	$keys = function_exists( 'afsac_import_courses' )
+		? array_values( array_filter( wp_list_pluck( afsac_import_courses(), 'key' ) ) )
+		: array();
+	return $keys;
 }
 
 /**
@@ -196,11 +228,15 @@ function afsac_avsec_kind_of( $key, $title = '' ) {
 }
 
 /**
- * Toutes les fiches AVSEC publiées dans la langue courante, prêtes à l'affichage.
+ * Les cours du PROGRAMME AVSEC publiés dans la langue courante, prêts à l'affichage.
  *
  * Le filtre porte sur la FAMILLE (et non sur la langue Polylang) : c'est le seul
  * critère qui sépare proprement AVSEC de TRAINAIR PLUS, et le slug de famille
  * étant lui-même traduit, l'ensemble retourné est déjà cohérent avec la langue.
+ *
+ * S'y ajoute le filtre du PROGRAMME (cf. afsac_avsec_programme_keys) : les cours
+ * de sûreté du catalogue mondial que le centre ne dispense pas sont écartés de
+ * cette liste — ils restent visibles dans le catalogue et la recherche.
  *
  * Tri : thématique (ordre de afsac_avsec_themes), puis cours avant ateliers,
  * puis titre — les fiches sans thématique ferment la liste.
@@ -227,11 +263,18 @@ function afsac_avsec_get_courses() {
 		)
 	);
 
-	$order = array_keys( afsac_avsec_themes() );
-	$items = array();
+	$order     = array_keys( afsac_avsec_themes() );
+	$programme = afsac_avsec_programme_keys();
+	$items     = array();
 
 	foreach ( $query->posts as $post ) {
-		$key   = (string) get_post_meta( $post->ID, '_afsac_import_key', true );
+		$key = (string) get_post_meta( $post->ID, '_afsac_import_key', true );
+
+		// Hors programme du centre (cours de sûreté du catalogue mondial) : écarté.
+		if ( ! empty( $programme ) && ! in_array( $key, $programme, true ) ) {
+			continue;
+		}
+
 		$theme = afsac_avsec_theme_of_key( $key );
 		$duree = function_exists( 'get_field' )
 			? (string) get_field( 'afsac_duree', $post->ID )

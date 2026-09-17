@@ -225,3 +225,70 @@ function afsac_get_next_sessions_map( array $formation_ids ) {
 
 	return $result;
 }
+
+/**
+ * Formations qui ont une SESSION À VENIR, dans l'ordre chronologique.
+ *
+ * Le miroir de afsac_get_next_sessions_map() : celle-ci part d'une liste de
+ * formations et cherche leur prochaine session ; celle-ci part des sessions pour
+ * répondre à « quels cours sont réellement programmés, et dans quel ordre ? ».
+ *
+ * C'est ce que réclame la section « Consulter nos formations à venir » de
+ * l'accueil : elle listait les fiches les plus RÉCEMMENT CRÉÉES, ce qui n'a rien
+ * à voir — le client y voyait des cours sans aucune date (demande du 04/09/2026).
+ *
+ * La formation est résolue dans la LANGUE COURANTE : la relation stocke l'ID
+ * canonique (FR), l'afficher tel quel donnerait des titres français sur le site
+ * anglais. Une formation n'apparaît qu'une fois, à la date de sa session la plus
+ * proche, même si elle revient plusieurs fois dans l'année.
+ *
+ * @param int $limit Nombre maximum de formations retournées (0 = pas de limite).
+ * @return int[] IDs de formation, de la session la plus proche à la plus lointaine.
+ */
+function afsac_formations_with_upcoming_session( $limit = 0 ) {
+	$sessions = get_posts(
+		array(
+			'post_type'      => 'afsac_session',
+			'post_status'    => 'publish',
+			'posts_per_page' => -1,
+			'orderby'        => 'meta_value',
+			'meta_key'       => 'afsac_date_debut', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
+			'order'          => 'ASC',
+		)
+	);
+
+	$today = (int) current_time( 'Ymd' );
+	$out   = array();
+
+	foreach ( $sessions as $session ) {
+		if ( 'archive' === get_post_meta( $session->ID, 'afsac_statut', true ) ) {
+			continue;
+		}
+
+		$debut = (int) get_post_meta( $session->ID, 'afsac_date_debut', true );
+		$fin   = (int) get_post_meta( $session->ID, 'afsac_date_fin', true );
+		$ref   = $fin > 0 ? $fin : $debut;
+		if ( $ref > 0 && $ref < $today ) {
+			continue;
+		}
+
+		$formation = function_exists( 'afsac_get_session_formation_localized' )
+			? afsac_get_session_formation_localized( $session->ID )
+			: null;
+		if ( ! $formation instanceof WP_Post || 'publish' !== $formation->post_status ) {
+			continue;
+		}
+
+		$fid = (int) $formation->ID;
+		if ( isset( $out[ $fid ] ) ) {
+			continue; // Déjà retenue à une date plus proche.
+		}
+		$out[ $fid ] = $fid;
+
+		if ( $limit > 0 && count( $out ) >= $limit ) {
+			break;
+		}
+	}
+
+	return array_values( $out );
+}

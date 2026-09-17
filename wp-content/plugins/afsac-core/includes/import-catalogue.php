@@ -59,10 +59,17 @@ const AFSAC_IMPORT_REPORT_OPTION = 'afsac_import_last_report';
  * @return array<string,string> code => libellé.
  */
 function afsac_import_ref_langues_fiche() {
+	/*
+	 * Langues de la FICHE = langues Polylang du site, et rien d'autre. « ar » a été
+	 * retiré le 03/09/2026 avec le reste de l'arabe : il était accepté ici alors que
+	 * Polylang ne connaît que fr/en, si bien qu'une ligne « ar » produisait une fiche
+	 * sans langue au lieu d'être refusée. Elle est désormais rejetée avec un message.
+	 * (Les libellés arabes des AUTRES listes restent acceptés à la saisie : ils
+	 * servent à lire un tableur rempli en arabe, pas à créer du contenu arabe.)
+	 */
 	return array(
 		'fr' => 'Français',
 		'en' => 'English',
-		'ar' => 'العربية',
 	);
 }
 
@@ -1611,7 +1618,7 @@ function afsac_import_row_formation( $row, $opts, &$stats ) {
 	if ( '' !== $lang_raw && '' === $lang ) {
 		$res['messages'][] = sprintf(
 			/* translators: %s: valeur saisie dans langue_fiche. */
-			__( 'langue « %s » inconnue (attendu fr / en / ar) → ligne ignorée', 'afsac' ),
+			__( 'langue « %s » inconnue (attendu fr / en) → ligne ignorée', 'afsac' ),
 			$lang_raw
 		);
 		return $res;

@@ -3,7 +3,9 @@
  * Formations & Services — section « Services » (portefeuille de services).
  *
  * Données : CPT afsac_service (langue courante, ordre menu_order puis date).
- * Le titre = titre du post ; description + icône + lien via ACF. L'icône stocke
+ * Le titre = titre du post ; description + icône via ACF. Le champ ACF « lien »
+ * (afsac_service_lien) existe encore mais n'est PLUS affiché : le client a
+ * demandé le retrait du « En savoir plus » le 08/09/2026. L'icône stocke
  * un slug résolu en tracé SVG par le registre interne ci-dessous (mêmes tracés
  * et même enveloppe qu'auparavant : aucun changement visuel). Aucun service
  * publié → la section ne s'affiche pas (état vide discret).
@@ -69,8 +71,6 @@ if ( ! $afsac_services_q->have_posts() ) {
 				$afsac_sid  = get_the_ID();
 				$afsac_desc = function_exists( 'get_field' ) ? (string) get_field( 'afsac_service_description', $afsac_sid ) : '';
 				$afsac_ico  = function_exists( 'get_field' ) ? (string) get_field( 'afsac_service_icone', $afsac_sid ) : '';
-				$afsac_lien = function_exists( 'get_field' ) ? (string) get_field( 'afsac_service_lien', $afsac_sid ) : '';
-				$afsac_url  = ( '' !== $afsac_lien ) ? $afsac_lien : get_permalink( $afsac_sid );
 				$afsac_path = isset( $afsac_service_icons[ $afsac_ico ] ) ? $afsac_service_icons[ $afsac_ico ] : '';
 				?>
 				<article class="afsac-feature-card afsac-reveal">
@@ -81,7 +81,7 @@ if ( ! $afsac_services_q->have_posts() ) {
 					<?php if ( '' !== $afsac_desc ) : ?>
 						<p class="afsac-feature-card__text"><?php echo esc_html( $afsac_desc ); ?></p>
 					<?php endif; ?>
-					<a class="afsac-feature-card__link" href="<?php echo esc_url( $afsac_url ); ?>"><?php esc_html_e( 'En savoir plus', 'afsac' ); ?> <span class="afsac-arrow" aria-hidden="true">›</span></a>
+					<?php /* Plus de lien « En savoir plus » (demande client 08/09/2026) : la carte est purement informative. */ ?>
 				</article>
 			<?php endwhile; ?>
 		</div>

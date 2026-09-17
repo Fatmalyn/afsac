@@ -2,13 +2,18 @@
 /**
  * Archive du CPT formation : catalogue.
  *
- * Deux rendus :
- *   1. ?famille=avsec[&format=cours|atelier] — PAGE DE LISTE AVSEC dédiée
- *      (template-parts/page-formations/avsec-liste.php), pendant AVSEC de
- *      l'archive de domaine TRAINAIR PLUS. C'est la cible des deux « Voir plus »
- *      du catalogue depuis la demande client du 07/08/2026.
- *   2. tout le reste — même page que l'archive d'un domaine OACI : bandeau
- *      clair, barre de recherche seule, lignes riches, tri et pagination client.
+ * UN SEUL rendu, partagé avec l'archive d'un domaine OACI : bandeau clair,
+ * barre de recherche, lignes riches, tri et pagination client. Il sert aussi
+ * bien ?famille=trainair que ?famille=avsec ; seule change la liste déroulante
+ * de filtre — « Domaine » d'ordinaire, « Type » (cours certifiant / atelier
+ * OACI) sur le programme AVSEC, dont tous les cours partagent un domaine.
+ *
+ * ⚠️ AVSEC avait jusqu'au 04/09/2026 un gabarit à part (une grille de cartes à
+ * onglets, sans recherche ni tri). Le client a demandé « la même démarche que
+ * TRAINAIR PLUS » : ce gabarit — template-parts/page-formations/avsec-liste.php,
+ * dont c'était l'unique appelant — a été supprimé. Les deux « Voir plus » du
+ * catalogue pointent toujours sur ?famille=avsec&format=cours|atelier : le
+ * paramètre pré-sélectionne désormais le filtre « Type ».
  *
  * ⚠️ Le rendu générique était resté le GABARIT D'ORIGINE (titre nu +
  * .afsac-grid + template-parts/card-formation.php), jamais repris par les
@@ -19,9 +24,10 @@
  * été supprimé.
  *
  * Le filtre de famille / langue est posé en amont sur la requête principale
- * (afsac_formation_archive_filter, functions.php) ; le volet AVSEC, lui, passe par
- * les helpers afsac_avsec_*() du plugin, seuls capables de trier par typologie —
- * elle est dérivée de `_afsac_import_key`, et n'existe pas en taxonomie.
+ * (afsac_formation_archive_filter, functions.php), qui restreint aussi AVSEC aux
+ * cours du PROGRAMME du centre. La typologie cours/atelier, elle, est dérivée de
+ * `_afsac_import_key` par le plugin (afsac_avsec_kind_of) : elle n'existe pas en
+ * taxonomie et voyage jusqu'aux lignes via `data-kind`.
  *
  * @package AFSAC\Theme
  */
@@ -38,26 +44,15 @@ $afsac_format  = isset( $_GET['format'] ) ? sanitize_key( wp_unslash( $_GET['for
 $afsac_langue  = isset( $_GET['langue'] ) ? sanitize_key( wp_unslash( $_GET['langue'] ) ) : '';
 // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
-if ( 'avsec' === $afsac_famille && function_exists( 'afsac_avsec_get_courses' ) ) {
-
-	if ( function_exists( 'rank_math_the_breadcrumbs' ) ) {
-		ob_start();
-		rank_math_the_breadcrumbs();
-		$afsac_crumbs = trim( ob_get_clean() );
-		if ( '' !== $afsac_crumbs ) {
-			echo '<div class="afsac-breadcrumb"><div class="afsac-container">' . $afsac_crumbs . '</div></div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Sortie Rank Math déjà assainie.
-		}
-	}
-
-	get_template_part(
-		'template-parts/page-formations/avsec-liste',
-		null,
-		array( 'format' => $afsac_format )
-	);
-
-	get_footer();
-	return;
-}
+/*
+ * AVSEC n'a plus de gabarit à part. Jusqu'au 04/09/2026 `?famille=avsec` rendait
+ * une grille de cartes à onglets (template-parts/page-formations/avsec-liste),
+ * sans recherche ni tri : le client a demandé « la même démarche que TRAINAIR
+ * PLUS ». Le programme AVSEC passe donc par ce gabarit générique, avec un filtre
+ * « Type » (cours certifiant / atelier OACI) à la place du filtre « Domaine » —
+ * inutile ici puisque tous ses cours relèvent du même domaine de sûreté.
+ */
+$afsac_is_avsec = ( 'avsec' === $afsac_famille );
 
 if ( function_exists( 'rank_math_the_breadcrumbs' ) ) {
 	ob_start();
@@ -117,6 +112,12 @@ if ( '' === trim( $afsac_intro ) ) {
 }
 $afsac_intro = trim( wp_strip_all_tags( $afsac_intro ) );
 
+// Chapô du programme AVSEC : il portait la distinction cours / atelier, que le
+// filtre reprend. Repli seulement — une description saisie sur le terme gagne.
+if ( $afsac_is_avsec && '' === $afsac_intro ) {
+	$afsac_intro = __( 'Deux formats, deux finalités : le cours qualifie une personne, l’atelier produit un document de référence.', 'afsac' );
+}
+
 $afsac_back = function_exists( 'afsac_get_catalogue_url' ) ? afsac_get_catalogue_url() : '';
 
 // Prochaines sessions batchées, comme sur l'archive d'un domaine (1 requête).
@@ -159,6 +160,7 @@ $afsac_next_map = function_exists( 'afsac_get_next_sessions_map' ) ? afsac_get_n
 				 * ne renverrait aucun résultat.
 				 */
 				$afsac_domains = array();
+				$afsac_kinds   = array(); // Typologie AVSEC : slug => nombre de cours.
 
 				ob_start();
 				while ( have_posts() ) :
@@ -170,6 +172,10 @@ $afsac_next_map = function_exists( 'afsac_get_next_sessions_map' ) ? afsac_get_n
 					if ( '' !== $afsac_args['area_slug'] ) {
 						$afsac_domains[ $afsac_args['area_slug'] ] = $afsac_args['area_name'];
 					}
+					if ( ! empty( $afsac_args['kind'] ) ) {
+						$afsac_k = $afsac_args['kind'];
+						$afsac_kinds[ $afsac_k ] = isset( $afsac_kinds[ $afsac_k ] ) ? $afsac_kinds[ $afsac_k ] + 1 : 1;
+					}
 
 					get_template_part( 'template-parts/course-row', null, $afsac_args );
 				endwhile;
@@ -177,10 +183,37 @@ $afsac_next_map = function_exists( 'afsac_get_next_sessions_map' ) ? afsac_get_n
 
 				// Tri alphabétique sur le libellé traduit, pas sur le slug.
 				natcasesort( $afsac_domains );
+
+				// Libellés de la typologie AVSEC, avec le compte réellement affiché.
+				$afsac_kind_labels = array(
+					'cours'   => __( 'Cours certifiants', 'afsac' ),
+					'atelier' => __( 'Ateliers OACI', 'afsac' ),
+				);
 				?>
 
 				<div class="afsac-area-filters afsac-reveal">
-					<?php if ( count( $afsac_domains ) > 1 ) : ?>
+					<?php if ( $afsac_is_avsec && count( $afsac_kinds ) > 1 ) : ?>
+						<label class="afsac-area-filters__field">
+							<span class="screen-reader-text"><?php esc_html_e( 'Type de formation', 'afsac' ); ?></span>
+							<select class="afsac-area-filters__select" data-area-filter="kind">
+								<option value=""><?php esc_html_e( 'Cours et ateliers', 'afsac' ); ?></option>
+								<?php foreach ( $afsac_kind_labels as $afsac_kslug => $afsac_klabel ) : ?>
+									<?php if ( empty( $afsac_kinds[ $afsac_kslug ] ) ) { continue; } ?>
+									<?php /* ?format=cours|atelier pré-sélectionne le filtre : les boutons du catalogue pointent dessus depuis le 07/08/2026. */ ?>
+									<option value="<?php echo esc_attr( $afsac_kslug ); ?>"<?php selected( $afsac_format, $afsac_kslug ); ?>>
+										<?php
+										printf(
+											/* translators: 1: type de formation, 2: nombre de cours. */
+											esc_html__( '%1$s (%2$d)', 'afsac' ),
+											esc_html( $afsac_klabel ),
+											(int) $afsac_kinds[ $afsac_kslug ]
+										);
+										?>
+									</option>
+								<?php endforeach; ?>
+							</select>
+						</label>
+					<?php elseif ( count( $afsac_domains ) > 1 ) : ?>
 						<label class="afsac-area-filters__field">
 							<span class="screen-reader-text"><?php esc_html_e( 'Domaine OACI', 'afsac' ); ?></span>
 							<select class="afsac-area-filters__select" data-area-filter="area">

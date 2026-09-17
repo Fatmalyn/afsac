@@ -61,13 +61,13 @@ function afsac_seed_post_articles() {
 			'image' => 'afsac-cours-reunion-institutionnelle.png',
 			'fr'    => array(
 				'title'   => 'Renforcement des compétences AVSEC : une nouvelle certification OACI',
-				'excerpt' => 'Le programme de sûreté de l’aviation civile (AVSEC) s’enrichit d’un nouveau parcours certifiant, disponible en français, anglais et arabe.',
-				'content' => "<!-- wp:paragraph --><p>Le programme <strong>AVSEC</strong> de sûreté de l’aviation civile s’enrichit d’un nouveau parcours certifiant, aligné sur l’Annexe 17 de la Convention de Chicago.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>La formation est proposée en français, en anglais et en arabe, afin de couvrir l’ensemble des publics de la région.</p><!-- /wp:paragraph -->",
+				'excerpt' => 'Le programme de sûreté de l’aviation civile (AVSEC) s’enrichit d’un nouveau parcours certifiant, disponible en français et en anglais.',
+				'content' => "<!-- wp:paragraph --><p>Le programme <strong>AVSEC</strong> de sûreté de l’aviation civile s’enrichit d’un nouveau parcours certifiant, aligné sur l’Annexe 17 de la Convention de Chicago.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>La formation est proposée en français et en anglais, afin de couvrir l’ensemble des publics de la région.</p><!-- /wp:paragraph -->",
 			),
 			'en'    => array(
 				'title'   => 'Strengthening AVSEC skills: a new ICAO certification',
-				'excerpt' => 'The civil aviation security (AVSEC) programme adds a new certified track, available in French, English and Arabic.',
-				'content' => "<!-- wp:paragraph --><p>The civil aviation security <strong>AVSEC</strong> programme adds a new certified track, aligned with Annex 17 to the Chicago Convention.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>The course is delivered in French, English and Arabic to serve all audiences across the region.</p><!-- /wp:paragraph -->",
+				'excerpt' => 'The civil aviation security (AVSEC) programme adds a new certified track, available in French and English.',
+				'content' => "<!-- wp:paragraph --><p>The civil aviation security <strong>AVSEC</strong> programme adds a new certified track, aligned with Annex 17 to the Chicago Convention.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>The course is delivered in French and English to serve all audiences across the region.</p><!-- /wp:paragraph -->",
 			),
 		),
 		array(

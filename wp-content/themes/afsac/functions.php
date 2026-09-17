@@ -143,8 +143,34 @@ if ( ! defined( 'ABSPATH' ) ) {
  *          #afsac-brochure : le panneau restait affiché par le filet de sécurité
  *          CSS `:target`, qu'un history.replaceState() ne suffit pas à lever.
  *          Le filet n'est désormais posé que si le script n'a pas démarré.
+ * 0.52.0 — Demande client du 08/09/2026, pied de page :
+ *         1. bande de badges institutionnels (ICAO Member State / TRAINAIR PLUS /
+ *            Regional AVSEC Training Centre) RETIRÉE ;
+ *         2. colonne marque : plus de signature sous le logo, logo agrandi
+ *            (44 → 76 px) ; colonne « S'abonner » (texte + « Nous écrire »)
+ *            SUPPRIMÉE — la grille passe à 1 + 3 colonnes ;
+ *         3. brochure : PLUS DE FENÊTRE MODALE. La carte est un formulaire d'une
+ *            ligne (e-mail + « Télécharger ») envoyé en arrière-plan ; l'édition
+ *            suit la LANGUE DU SITE (FR → brochure FR, EN → brochure EN), plus
+ *            de pastilles ni de sélecteur. Seul l'e-mail est requis (plugin
+ *            0.5.0) ; traçabilité conservée (CPT afsac_telechargement, jeton).
+ *            template-parts/shared/brochure-gate.php supprimé.
+ * 0.53.0 — Demande client du 08/09/2026 (suite) : brochure en TÉLÉCHARGEMENT
+ *          DIRECT. Plus de champ e-mail : la carte du pied de page est un lien
+ *          qui sert le PDF de la langue du site en un clic (point de
+ *          téléchargement direct du plugin, compteur anonyme par édition).
+ *          assets/js/afsac-brochure.js supprimé (plus rien à piloter).
+ * 0.54.0 — Demande client du 08/09/2026 : page Formations & Services, cartes du
+ *          portefeuille de services SANS lien « En savoir plus » (cartes
+ *          informatives ; le champ ACF « lien » du CPT afsac_service subsiste
+ *          mais n'est plus lu par le gabarit).
+ * 0.54.1 — Demande client du 08/09/2026 : page Références & Témoignages, la
+ *          section « Témoignages » passe DIRECTEMENT sous le hero ; le bandeau
+ *          « Nos partenaires » descend entre les témoignages et les références.
+ * 0.54.2 — Demande client du 08/09/2026 : logos des partenaires en COULEUR sur
+ *          l'accueil (filtre grayscale + opacité 0,72 retirés du bandeau).
  */
-define( 'AFSAC_THEME_VERSION', '0.42.1' );
+define( 'AFSAC_THEME_VERSION', '0.56.0' );
 
 /**
  * Réglages du thème (supports, menus, i18n).
@@ -215,10 +241,16 @@ add_action( 'wp_head', 'afsac_anim_no_fouc', 1 );
  * @return void
  */
 function afsac_enqueue_assets() {
-	// Polices Google : Source Serif 4 (titres), Inter (corps), Cairo (arabe RTL).
+	/*
+	 * Polices Google : Source Serif 4 (titres), Inter (corps).
+	 *
+	 * Cairo (police arabe) a été retirée le 03/09/2026 avec le reste de l'arabe :
+	 * plus aucun contenu ne l'utilisait, elle pesait sur chaque page. La remettre
+	 * ici si une langue RTL est un jour rétablie.
+	 */
 	wp_enqueue_style(
 		'afsac-fonts',
-		'https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,600&family=Inter:wght@400;500;600;700&family=Cairo:wght@400;600;700&display=swap',
+		'https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,600&family=Inter:wght@400;500;600;700&display=swap',
 		array(),
 		null
 	);
@@ -226,7 +258,11 @@ function afsac_enqueue_assets() {
 	// Feuille principale (toujours chargée, y compris en RTL).
 	wp_enqueue_style( 'afsac-style', get_stylesheet_uri(), array( 'afsac-fonts' ), AFSAC_THEME_VERSION );
 
-	// Surcharges RTL ajoutées EN COMPLÉMENT (pas en remplacement) pour l'arabe.
+	/*
+	 * Surcharges RTL ajoutées EN COMPLÉMENT (pas en remplacement). Aucune langue
+	 * RTL n'est active depuis le retrait de l'arabe : la condition ne se déclenche
+	 * plus, le fichier est CONSERVÉ car CLAUDE.md impose de prévoir le RTL.
+	 */
 	if ( is_rtl() ) {
 		wp_enqueue_style(
 			'afsac-rtl',
@@ -269,15 +305,11 @@ function afsac_enqueue_assets() {
 
 	/*
 	 * Recherche / tri / pagination client. Sert l'archive d'un domaine OACI ET
-	 * l'archive générique du CPT (même shell `.afsac-area`, mêmes lignes). Le
-	 * volet AVSEC (?famille=avsec) a son propre balisage sans `[data-area-rows]` :
-	 * le script y sortirait immédiatement, on évite quand même de le charger.
+	 * l'archive générique du CPT — programme AVSEC compris depuis le 04/09/2026 :
+	 * il utilise désormais le même shell `.afsac-area` que TRAINAIR PLUS, avec un
+	 * filtre « Type » au lieu du filtre « Domaine ».
 	 */
-	$afsac_is_avsec = is_post_type_archive( 'afsac_formation' )
-		&& isset( $_GET['famille'] ) // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Filtre de lecture.
-		&& 'avsec' === sanitize_key( wp_unslash( $_GET['famille'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-
-	if ( is_tax( 'afsac_area' ) || ( is_post_type_archive( 'afsac_formation' ) && ! $afsac_is_avsec ) ) {
+	if ( is_tax( 'afsac_area' ) || is_post_type_archive( 'afsac_formation' ) ) {
 		wp_enqueue_script(
 			'afsac-area-filters',
 			get_template_directory_uri() . '/assets/js/area-filters.js',
@@ -290,8 +322,9 @@ function afsac_enqueue_assets() {
 	/*
 	 * Page calendrier : filtrage / tri / pagination client (jumeau d'area-filters).
 	 * La VUE CARTE a été supprimée (demande client) : Leaflet et calendar-map.js
-	 * ne sont donc plus chargés ici. La page contact garde sa propre carte, avec
-	 * son propre enqueue de Leaflet (voir plus bas) — ne pas confondre.
+	 * ne sont donc plus chargés ici. Depuis le 02/09/2026, la page contact non
+	 * plus : sa carte est un iframe Google Maps. Plus AUCUNE page n'utilise
+	 * Leaflet — si une carte revient un jour, tout est à recréer.
 	 */
 	if ( is_page_template( 'template-calendrier.php' ) ) {
 		wp_enqueue_script(
@@ -303,37 +336,23 @@ function afsac_enqueue_assets() {
 		);
 	}
 
-	// Page contact : carte Leaflet (marqueur unique, sans clé API) + tampon anti-spam.
+	/*
+	 * Page contact : tampon anti-spam du formulaire (time-trap).
+	 *
+	 * Leaflet + OpenStreetMap ont été DÉPOSÉS le 02/09/2026 (demande client : carte
+	 * Google Maps). La carte est désormais un simple <iframe> d'intégration Google,
+	 * sans clé API ni JavaScript — d'où la disparition des deux CDN unpkg et du
+	 * localize lat/lng. Le script conserve UNIQUEMENT l'horodatage du formulaire,
+	 * qui vivait dans l'ancien contact-map.js : le retirer aurait fait rejeter
+	 * tous les envois côté serveur.
+	 */
 	if ( is_page_template( 'template-contact.php' ) ) {
-		wp_enqueue_style(
-			'leaflet',
-			'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css',
-			array(),
-			'1.9.4'
-		);
 		wp_enqueue_script(
-			'leaflet',
-			'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js',
+			'afsac-contact',
+			get_template_directory_uri() . '/assets/js/contact.js',
 			array(),
-			'1.9.4',
-			true
-		);
-		wp_enqueue_script(
-			'afsac-contact-map',
-			get_template_directory_uri() . '/assets/js/contact-map.js',
-			array( 'leaflet' ),
 			AFSAC_THEME_VERSION,
 			true
-		);
-		$afsac_contact_coords = function_exists( 'afsac_contact_coords' ) ? afsac_contact_coords() : array();
-		wp_localize_script(
-			'afsac-contact-map',
-			'afsacContactMap',
-			array(
-				'lat'   => isset( $afsac_contact_coords['lat'] ) ? $afsac_contact_coords['lat'] : '',
-				'lng'   => isset( $afsac_contact_coords['lng'] ) ? $afsac_contact_coords['lng'] : '',
-				'label' => get_bloginfo( 'name' ),
-			)
 		);
 	}
 
@@ -382,20 +401,6 @@ function afsac_enqueue_assets() {
 	wp_register_script(
 		'afsac-tour',
 		get_template_directory_uri() . '/assets/js/afsac-tour.js',
-		array(),
-		AFSAC_THEME_VERSION,
-		true
-	);
-
-	/*
-	 * Panneau « Recevoir la brochure » (e-mail demandé avant le PDF). La bande
-	 * Documentation vit dans le pied de page, donc sur TOUTES les pages : le
-	 * script est enfilé partout et sort de lui-même si le panneau n'est pas rendu
-	 * (aucun PDF téléversé). Le formulaire fonctionne sans lui.
-	 */
-	wp_enqueue_script(
-		'afsac-brochure',
-		get_template_directory_uri() . '/assets/js/afsac-brochure.js',
 		array(),
 		AFSAC_THEME_VERSION,
 		true
@@ -527,6 +532,10 @@ function afsac_area_archive_query( $query ) {
 		$query->set( 'posts_per_page', -1 );
 		$query->set( 'orderby', 'title' );
 		$query->set( 'order', 'ASC' );
+		// Cours TRAINAIR PLUS des deux langues (demande client 16/09/2026, plugin).
+		if ( defined( 'AFSAC_TRAINAIR_BILINGUE' ) ) {
+			$query->set( AFSAC_TRAINAIR_BILINGUE, true );
+		}
 	}
 
 }
@@ -566,17 +575,47 @@ function afsac_formation_archive_filter( $query ) {
 	/*
 	 * Le rendu générique pagine CÔTÉ CLIENT (area-filters.js) : il lui faut donc
 	 * tout le jeu d'un coup, sinon la recherche ne porterait que sur les 10 lignes
-	 * de la page courante. Le volet AVSEC garde sa requête propre.
+	 * de la page courante.
 	 *
-	 * ⚠️ Poids mesuré le 18/08/2026 : FR = 81 lignes / 203 Ko et 60 lignes pour
-	 * ?famille=trainair, mais **EN = 358 lignes / 605 Ko** — les ~600 cours sans
-	 * langue Polylang remontent tous côté anglais (cf. la note du même sujet dans
-	 * afsac_build_course_card). Pas de troncature : mieux vaut une page lourde
-	 * qu'un catalogue amputé en silence. Si ça devient gênant, la sortie est le
+	 * ⚠️ Poids mesuré le 16/09/2026, TRAINAIR PLUS bilingue : ?famille=trainair =
+	 * 346 lignes / ~690 Ko dans les deux langues, la liste complète = 367 lignes
+	 * / ~740 Ko en FR. Pas de troncature : mieux vaut une page lourde qu'un
+	 * catalogue amputé en silence. Si ça devient gênant, la sortie est le
 	 * passage en AJAX/serveur, déjà signalé en tête d'area-filters.js.
 	 */
-	if ( 'avsec' !== $afsac_f ) {
-		$query->set( 'posts_per_page', -1 );
+	$query->set( 'posts_per_page', -1 );
+
+	/*
+	 * Hors AVSEC, les cours TRAINAIR PLUS s'affichent dans les DEUX langues
+	 * (demande client 16/09/2026) : le plugin élargit la requête et étend les
+	 * termes de famille / langue ci-dessous à leurs traductions. AVSEC, traduit
+	 * fiche à fiche, reste filtré par langue.
+	 */
+	if ( 'avsec' !== $afsac_f && defined( 'AFSAC_TRAINAIR_BILINGUE' ) ) {
+		$query->set( AFSAC_TRAINAIR_BILINGUE, true );
+	}
+
+	/*
+	 * ?famille=avsec = le PROGRAMME du centre, pas toute la famille AVSEC : les
+	 * cours de sûreté du catalogue mondial OACI (Master of Science in Aviation
+	 * Security, Catering Security…) en sont écartés, comme le faisait déjà
+	 * l'ancien volet via afsac_avsec_get_courses(). La liste des clés vit dans le
+	 * plugin (afsac_avsec_programme_keys), dérivée du seed.
+	 */
+	if ( 'avsec' === $afsac_f && function_exists( 'afsac_avsec_programme_keys' ) ) {
+		$afsac_prog_keys = afsac_avsec_programme_keys();
+		if ( ! empty( $afsac_prog_keys ) ) {
+			$query->set(
+				'meta_query', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
+				array(
+					array(
+						'key'     => '_afsac_import_key',
+						'value'   => $afsac_prog_keys,
+						'compare' => 'IN',
+					),
+				)
+			);
+		}
 	}
 
 	$afsac_clauses = array();
@@ -724,6 +763,76 @@ function afsac_get_contact() {
 }
 
 /**
+ * Assainit le réglage « carte » : accepte une URL d'intégration Google Maps OU le
+ * bloc <iframe> complet copié depuis « Partager → Intégrer une carte », dont on ne
+ * garde que le src. Toute autre valeur est rejetée (chaîne vide) : on ne veut pas
+ * d'un iframe arbitraire dans la page.
+ *
+ * @param string $value Saisie brute du Customizer.
+ * @return string URL d'intégration, ou '' si la saisie n'en contient pas.
+ */
+function afsac_sanitize_map_embed( $value ) {
+	$value = trim( (string) $value );
+	if ( '' === $value ) {
+		return '';
+	}
+	// Bloc <iframe ... src="..."> collé tel quel : on en extrait l'URL.
+	if ( preg_match( '#src\s*=\s*(["\x27])(.+?)\1#i', $value, $m ) ) {
+		$value = $m[2];
+	}
+	$value = esc_url_raw( $value );
+	// Seules les URL d'intégration Google Maps sont acceptées.
+	$host = wp_parse_url( $value, PHP_URL_HOST );
+	if ( ! $host || ! preg_match( '#(^|\.)google\.[a-z.]+$#i', $host ) ) {
+		return '';
+	}
+	return $value;
+}
+
+/**
+ * URL à poser dans le src de l'iframe de la carte (page Contact).
+ *
+ * Deux sources, dans cet ordre : le lien d'intégration saisi au Customizer
+ * (épinglage exact), sinon une requête construite sur l'ADRESSE — c'est Google
+ * qui géolocalise, donc la carte suit automatiquement tout changement d'adresse.
+ * La langue de l'interface suit celle de la page (utile sur les pages EN).
+ *
+ * @return string URL d'intégration, jamais vide.
+ */
+function afsac_map_embed_src() {
+	$explicit = get_theme_mod( 'afsac_map_embed', '' );
+	if ( '' !== $explicit ) {
+		return $explicit;
+	}
+
+	$contact = afsac_get_contact();
+	// L'adresse est saisie sur plusieurs lignes : Google veut une requête à plat.
+	$query = trim( preg_replace( '/\s*\R\s*/u', ', ', (string) $contact['address'] ) );
+
+	return add_query_arg(
+		array(
+			'q'      => rawurlencode( $query ),
+			'hl'     => substr( (string) get_locale(), 0, 2 ),
+			'z'      => 16,
+			'output' => 'embed',
+		),
+		'https://www.google.com/maps'
+	);
+}
+
+/**
+ * URL « ouvrir dans Google Maps » (nouvel onglet, itinéraire possible).
+ *
+ * @return string
+ */
+function afsac_map_place_url() {
+	$contact = afsac_get_contact();
+	$query   = trim( preg_replace( '/\s*\R\s*/u', ', ', (string) $contact['address'] ) );
+
+	return 'https://www.google.com/maps/search/?api=1&query=' . rawurlencode( $query );
+}
+
+/**
  * Liens vers les réseaux sociaux (Customizer). Une entrée n'est présente que si
  * son URL est renseignée : aucun lien mort (#) n'est jamais rendu.
  *
@@ -797,10 +906,10 @@ function afsac_hero_stats() {
 	return apply_filters(
 		'afsac_hero_stats',
 		array(
-			array( 'value' => '45+', 'label' => __( 'Années d’expertise', 'afsac' ) ),
-			array( 'value' => '483', 'label' => __( 'Cours OACI', 'afsac' ) ),
-			array( 'value' => '48',  'label' => __( 'États accompagnés', 'afsac' ) ),
-			array( 'value' => '2',   'label' => __( 'Langues FR / EN', 'afsac' ) ),
+			array( 'value' => '20+', 'label' => __( 'Années d’expertise', 'afsac' ) ),
+			array( 'value' => '500+', 'label' => __( 'Cours OACI', 'afsac' ) ),
+			array( 'value' => '193',  'label' => __( 'États accompagnés', 'afsac' ) ),
+			array( 'value' => '5',   'label' => __( 'Langues ', 'afsac' ) ),
 		)
 	);
 }
@@ -941,16 +1050,27 @@ function afsac_course_photo_pool() {
 	 * c'est un panoramique 2.94:1 dont le centre n'est que du ciel, il rendait une
 	 * carte sur quatre comme un aplat gris. Le fichier reste disponible pour un
 	 * usage bandeau.
+	 *
+	 * ⚠️ AUCUNE AFFICHE DE COURS ici. Les quatre `formation-tp-*.webp` en ont été
+	 * retirées le 04/09/2026 : ce sont les affiches du client pour des cours
+	 * PRÉCIS, titre et dates incrustés dans l'image (« FORMATION DE CONCEPTEUR DE
+	 * COURS (TDC FR) — 14-25 SEP. 2026 »). Servies en repli, elles annonçaient un
+	 * cours et des dates qui contredisaient la carte : sur le calendrier, « Sûreté
+	 * du fret et de la poste, 7-11 sept. » s'affichait sous l'affiche du TDC. Un
+	 * visuel de repli doit rester NEUTRE. Les fichiers restent dans le thème pour
+	 * un usage nominatif.
 	 */
 	$pool  = array();
 	$files = array(
-		'formation-tp-1.webp',
-		'formation-tp-2.webp',
-		'formation-tp-3.webp',
-		'formation-tp-4.webp',
 		'intro-slide-1.webp',
 		'intro-slide-2.webp',
 		'intro-slide-3.webp',
+		'intro-photo-02.webp',
+		'intro-photo-04.webp',
+		'intro-photo-05.webp',
+		'intro-photo-08.webp',
+		'intro-photo-10.webp',
+		'intro-photo-12.webp',
 	);
 	foreach ( $files as $file ) {
 		if ( file_exists( get_theme_file_path( 'assets/images/' . $file ) ) ) {
@@ -1345,7 +1465,12 @@ function afsac_build_course_row_args( $post_id, $next = null ) {
 		$t = get_the_terms( $post_id, $tax );
 		return ( $t && ! is_wp_error( $t ) ) ? $t : array();
 	};
-	$langs = $terms( 'afsac_langue' );
+	/*
+	 * Langue d'animation : indispensable depuis que les listes mêlent cours
+	 * français et anglais (TRAINAIR PLUS bilingue). Le plugin la traduit et la
+	 * déduit de la langue de la fiche quand le terme manque.
+	 */
+	$langs = function_exists( 'afsac_formation_langue_terms' ) ? afsac_formation_langue_terms( $post_id ) : $terms( 'afsac_langue' );
 	$mods  = $terms( 'afsac_modalite' );
 	$types = $terms( 'afsac_type' );
 	$areas = $terms( 'afsac_area' );
@@ -1418,6 +1543,15 @@ function afsac_build_course_row_args( $post_id, $next = null ) {
 		'has_session' => $has_sess,
 		'loc_slug'    => $loc_slug,
 		'reduced'     => function_exists( 'get_field' ) ? (bool) get_field( 'afsac_tarif_reduit', $post_id ) : false,
+		/*
+		 * Typologie AVSEC (« cours » certifiant / « atelier » OACI). Elle n'existe
+		 * pas en taxonomie : elle est dérivée de la clé d'import par le plugin,
+		 * seule source du classement. Vide hors AVSEC — le filtre correspondant
+		 * n'est proposé que sur le programme AVSEC.
+		 */
+		'kind'        => function_exists( 'afsac_avsec_kind_of' ) && 'avsec' === ( function_exists( 'afsac_formation_programme' ) ? afsac_formation_programme( $post_id ) : '' )
+			? afsac_avsec_kind_of( (string) get_post_meta( $post_id, '_afsac_import_key', true ), get_the_title( $post_id ) )
+			: '',
 	);
 }
 
@@ -1695,6 +1829,14 @@ function afsac_customize_register( $wp_customize ) {
 	$afsac_add( 'afsac_email_training', __( 'Email — formation (training)', 'afsac' ), $defaults['email_training'], 'sanitize_email', 'email' );
 	$afsac_add( 'afsac_email_bespoke', __( 'Email — sur-mesure (bespoke)', 'afsac' ), $defaults['email_bespoke'], 'sanitize_email', 'email' );
 	$afsac_add( 'afsac_address', __( 'Adresse (une ligne par retour à la ligne)', 'afsac' ), $defaults['address'], 'sanitize_textarea_field', 'textarea' );
+	/*
+	 * Carte de la page Contact. Laissé VIDE, le lieu est déduit de l'adresse
+	 * ci-dessus — il n'y a donc rien à régler pour que la carte fonctionne. On ne
+	 * le renseigne que pour épingler le lieu AU MÈTRE : Google Maps → la fiche du
+	 * centre → Partager → Intégrer une carte. Le collage du <iframe> entier est
+	 * accepté (le src en est extrait), c'est ce que le client aura sous la main.
+	 */
+	$afsac_add( 'afsac_map_embed', __( 'Carte — lien d’intégration Google Maps (facultatif)', 'afsac' ), '', 'afsac_sanitize_map_embed', 'textarea' );
 
 	// Réseaux sociaux (vide = icône masquée).
 	$afsac_add( 'afsac_social_linkedin', __( 'Réseau social — LinkedIn (URL)', 'afsac' ), '', 'esc_url_raw', 'url' );
@@ -2094,7 +2236,7 @@ function afsac_tour_steps() {
 			'target' => '.afsac-primary-nav .afsac-menu, .afsac-primary-nav, .afsac-menu-toggle',
 			'place'  => 'bottom',
 			'title'  => __( 'Tout le site part d’ici', 'afsac' ),
-			'text'   => __( 'Formations & services, catalogue, calendrier, références : chaque rubrique s’ouvre depuis ce menu, en <strong>français, anglais et arabe</strong>.', 'afsac' ),
+			'text'   => __( 'Formations & services, catalogue, calendrier, références : chaque rubrique s’ouvre depuis ce menu, en <strong>français et en anglais</strong>.', 'afsac' ),
 		),
 		array(
 			'id'     => 'catalogue',
@@ -2121,7 +2263,7 @@ function afsac_tour_steps() {
 			'target' => '.afsac-docband__card, .afsac-docband',
 			'place'  => 'top',
 			'title'  => __( 'Le programme complet en PDF', 'afsac' ),
-			'text'   => __( 'Laissez votre e-mail : nous vous envoyons le lien de téléchargement de la brochure, dans la langue de votre choix.', 'afsac' ),
+			'text'   => __( 'Un clic suffit : la brochure se télécharge aussitôt, dans la langue du site.', 'afsac' ),
 		),
 		array(
 			'id'     => 'contact',

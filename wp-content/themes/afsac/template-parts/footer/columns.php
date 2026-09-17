@@ -1,11 +1,14 @@
 <?php
 /**
- * Footer — grille unique : colonne de marque (logo + signature + réseaux) puis
- * Liens utiles / Contact / Adresse / S'abonner. Fond marine (--afsac-navy),
- * identique aux autres sections sombres du site (hero stats, « pourquoi »).
+ * Footer — grille unique : colonne de marque (logo + réseaux) puis
+ * Liens utiles / Contact / Adresse. Fond marine (--afsac-navy), identique aux
+ * autres sections sombres du site (hero stats, « pourquoi »).
  *
  * Le logo est la version BLANCHE du verrou OACI (WebP à canal alpha) : posée
- * directement sur le bleu, sans pastille claire (demande client).
+ * directement sur le bleu, sans pastille claire (demande client). Depuis le
+ * 08/09/2026 (demande client) : PLUS de signature sous le logo, logo agrandi,
+ * et la colonne « S'abonner » (texte + bouton « Nous écrire ») est SUPPRIMÉE.
+ * Ne pas les remettre.
  *
  * La colonne « Liens utiles » est un MIROIR du menu principal (afsac_primary) :
  * le client veut exactement les mêmes entrées en haut et en bas. Polylang sert
@@ -24,10 +27,6 @@ $afsac_emails  = $afsac_contact['emails'];
 $afsac_email_1 = array_shift( $afsac_emails ); // Email principal (contact).
 $afsac_socials = afsac_get_social_links();
 
-// Destination du bouton « S'abonner » : page Contact (langue courante) ; pas de
-// page newsletter dédiée. Polylang-aware via le helper (jamais de slug en dur).
-$afsac_subscribe_url = function_exists( 'afsac_get_contact_url' ) ? afsac_get_contact_url() : home_url( '/' );
-
 // Correspondance clé réseau -> nom d'icône du thème (afsac_icon()).
 $afsac_social_icons = array(
 	'linkedin' => 'linkedin',
@@ -39,11 +38,19 @@ $afsac_social_icons = array(
 ?>
 <div class="afsac-container afsac-footer__grid">
 
-	<?php /* Colonne marque : logo blanc + signature + réseaux. */ ?>
+	<?php /* Colonne marque : logo blanc + réseaux. */ ?>
 	<div class="afsac-footer__col afsac-footer__brand">
-		<?php /* Verrou BLANC de la langue courante (même helper que l'en-tête). */ ?>
-		<?php $afsac_flogo = afsac_logo_centre( true ); ?>
-		<a class="afsac-footer__logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+		<?php
+		/*
+		 * Verrou BLANC de la langue courante (même helper que l'en-tête). Le lien
+		 * porte le ratio du fichier (variables CSS) : c'est LUI qui est dimensionné
+		 * (76 px de haut, réduit sur mobile sans déformation), l'image le remplit.
+		 * Ainsi la place est réservée avant même le chargement de l'image (pas de
+		 * saut de mise en page, logo différent en FR et en EN).
+		 */
+		$afsac_flogo = afsac_logo_centre( true );
+		?>
+		<a class="afsac-footer__logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" style="--afsac-logo-w:<?php echo (int) $afsac_flogo['width']; ?>;--afsac-logo-h:<?php echo (int) $afsac_flogo['height']; ?>">
 			<img
 				src="<?php echo esc_url( $afsac_flogo['url'] ); ?>"
 				alt="<?php esc_attr_e( 'Centre Régional de Formation à la Sûreté de l’Aviation de l’OACI — Tunis, Tunisie', 'afsac' ); ?>"
@@ -52,7 +59,6 @@ $afsac_social_icons = array(
 				loading="lazy" decoding="async"
 			>
 		</a>
-		<p class="afsac-footer__tagline"><?php esc_html_e( 'Programmes TRAINAIR PLUS sur les 11 domaines OACI et formations AVSEC — en français et en anglais.', 'afsac' ); ?></p>
 		<?php if ( ! empty( $afsac_socials ) ) : ?>
 			<ul class="afsac-social__list" aria-label="<?php esc_attr_e( 'Suivez-nous', 'afsac' ); ?>">
 				<?php foreach ( $afsac_socials as $afsac_social ) : ?>
@@ -131,16 +137,6 @@ $afsac_social_icons = array(
 		<address class="afsac-footer__address">
 			<?php echo nl2br( esc_html( $afsac_contact['address'] ) ); ?>
 		</address>
-	</div>
-
-	<?php /* Colonne 4 : abonnement (CTA vers la page contact). */ ?>
-	<div class="afsac-footer__col">
-		<h2 class="afsac-footer__heading"><?php esc_html_e( 'S’abonner', 'afsac' ); ?></h2>
-		<p class="afsac-footer__subscribe-text"><?php esc_html_e( 'Recevez le calendrier des sessions et nos actualités de formation.', 'afsac' ); ?></p>
-		<?php /* Placeholder : remplacer par le formulaire newsletter (Fluent Forms) à venir. */ ?>
-		<a class="afsac-footer__subscribe-btn" href="<?php echo esc_url( $afsac_subscribe_url ); ?>">
-			<?php esc_html_e( 'Nous écrire', 'afsac' ); ?>
-		</a>
 	</div>
 
 </div>

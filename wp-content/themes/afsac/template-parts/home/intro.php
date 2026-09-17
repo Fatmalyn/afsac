@@ -48,10 +48,7 @@ $afsac_blocks = array(
 				'file' => 'assets/images/intro-photo-01.webp',
 				'alt'  => __( 'Participants et équipe de l’AFSAC réunis dans le hall du Centre régional de formation à la sûreté de l’aviation de l’OACI de Tunis', 'afsac' ),
 			),
-			array(
-				'file' => 'assets/images/intro-photo-02.webp',
-				'alt'  => __( 'Stagiaires déployant le drapeau de l’OACI à l’ouverture d’une session de formation', 'afsac' ),
-			),
+			
 		),
 	),
 	array(

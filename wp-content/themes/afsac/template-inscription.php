@@ -146,7 +146,7 @@ $afsac_paiements   = array(
 
 	<div class="afsac-inscription__subbar">
 		<div class="afsac-container afsac-inscription__subbar-inner">
-			<span class="afsac-inscription__subbar-prog">TRAINAIR PLUS — Electronic Management System</span>
+			<span class="afsac-inscription__subbar-prog"></span>
 			<span class="afsac-inscription__subbar-sep" aria-hidden="true">·</span>
 			<span class="afsac-inscription__subbar-title"><?php esc_html_e( 'Inscription du participant', 'afsac' ); ?></span>
 			<?php if ( $afsac_f_link ) : ?>

@@ -32,6 +32,19 @@ if ( ! $afsac_cat_link ) {
 $afsac_per_page = 4;
 $afsac_want     = 12;
 
+/*
+ * D'ABORD LES COURS RÉELLEMENT PROGRAMMÉS, dans l'ordre du calendrier — la
+ * section s'intitule « formations à venir », elle doit tenir cette promesse.
+ *
+ * Elle listait jusqu'au 04/09/2026 les fiches les plus RÉCEMMENT CRÉÉES : la
+ * vitrine montrait donc des cours sans aucune date (les deux « Recyclage »,
+ * dispensés à la demande, y trônaient le lendemain de leur création). Le client
+ * l'a relevé le jour même.
+ */
+$afsac_dated = function_exists( 'afsac_formations_with_upcoming_session' )
+	? afsac_formations_with_upcoming_session( $afsac_want )
+	: array();
+
 // Deux requêtes (IDs seulement) pour garantir un mélange AVSEC / TRAINAIR PLUS.
 $afsac_q_base = array(
 	'post_type'           => 'afsac_formation',
@@ -43,14 +56,24 @@ $afsac_q_base = array(
 	'fields'              => 'ids',
 	'posts_per_page'      => $afsac_want,
 );
+/*
+ * Le terme est ciblé par SLUG de la langue courante, jamais par nom : « AVSEC »
+ * s'appelle pareil en français et en anglais, si bien qu'un filtre par nom
+ * retenait les DEUX termes et faisait remonter des fiches françaises sur
+ * l'accueil anglais (constaté le 04/09/2026). Le plugin résout le bon slug.
+ */
+$afsac_fam_slug = function_exists( 'afsac_avsec_famille_slug' )
+	? afsac_avsec_famille_slug()
+	: 'avsec';
+
 $afsac_ids_avsec = ( new WP_Query( array_merge( $afsac_q_base, array(
-	'tax_query' => array( array( 'taxonomy' => 'afsac_famille', 'field' => 'name', 'terms' => 'AVSEC', 'operator' => 'IN' ) ),
+	'tax_query' => array( array( 'taxonomy' => 'afsac_famille', 'field' => 'slug', 'terms' => array( $afsac_fam_slug ), 'operator' => 'IN' ) ),
 ) ) ) )->posts;
 $afsac_ids_tp = ( new WP_Query( array_merge( $afsac_q_base, array(
-	'tax_query' => array( array( 'taxonomy' => 'afsac_famille', 'field' => 'name', 'terms' => 'AVSEC', 'operator' => 'NOT IN' ) ),
+	'tax_query' => array( array( 'taxonomy' => 'afsac_famille', 'field' => 'slug', 'terms' => array( $afsac_fam_slug ), 'operator' => 'NOT IN' ) ),
 ) ) ) )->posts;
 
-if ( ! empty( $afsac_ids_avsec ) || ! empty( $afsac_ids_tp ) ) :
+if ( ! empty( $afsac_dated ) || ! empty( $afsac_ids_avsec ) || ! empty( $afsac_ids_tp ) ) :
 
 	/*
 	 * Le constructeur de carte a été SORTI d'ici : afsac_build_course_card()
@@ -58,19 +81,30 @@ if ( ! empty( $afsac_ids_avsec ) || ! empty( $afsac_ids_tp ) ) :
 	 * catalogue. Dupliquer cette trentaine de lignes garantissait qu'un jour les
 	 * deux copies divergent.
 	 */
+	// Les cours datés ne repassent pas dans le complément : une carte, une fois.
+	$afsac_ids_avsec = array_values( array_diff( $afsac_ids_avsec, $afsac_dated ) );
+	$afsac_ids_tp    = array_values( array_diff( $afsac_ids_tp, $afsac_dated ) );
+
 	$afsac_cards_avsec = array_map( 'afsac_build_course_card', $afsac_ids_avsec );
 	$afsac_cards_tp    = array_map( 'afsac_build_course_card', $afsac_ids_tp );
 
-	// Sélection équilibrée (~moitié/moitié, puis on complète avec la famille la plus fournie).
-	$afsac_take_a = min( count( $afsac_cards_avsec ), (int) ceil( $afsac_want / 2 ) );
-	$afsac_take_t = min( count( $afsac_cards_tp ), $afsac_want - $afsac_take_a );
-	$afsac_take_a = min( count( $afsac_cards_avsec ), $afsac_want - $afsac_take_t );
+	/*
+	 * Complément : il n'est tiré que si le calendrier ne suffit pas à remplir les
+	 * 12 cartes. Il garde alors l'entrelacement AVSEC / TRAINAIR PLUS d'origine,
+	 * pour qu'une vitrine à court de sessions montre quand même les deux offres.
+	 */
+	$afsac_reste  = max( 0, $afsac_want - count( $afsac_dated ) );
+	$afsac_take_a = min( count( $afsac_cards_avsec ), (int) ceil( $afsac_reste / 2 ) );
+	$afsac_take_t = min( count( $afsac_cards_tp ), $afsac_reste - $afsac_take_a );
+	$afsac_take_a = min( count( $afsac_cards_avsec ), $afsac_reste - $afsac_take_t );
 	$afsac_sel_a  = array_slice( $afsac_cards_avsec, 0, $afsac_take_a );
 	$afsac_sel_t  = array_slice( $afsac_cards_tp, 0, $afsac_take_t );
 
+	// Les cours programmés ouvrent la série, dans l'ordre du calendrier.
+	$afsac_cards = array_map( 'afsac_build_course_card', $afsac_dated );
+
 	// Entrelacement AVSEC / TRAINAIR PLUS pour un mélange visible sur chaque page.
-	$afsac_cards = array();
-	$afsac_maxn  = max( count( $afsac_sel_a ), count( $afsac_sel_t ) );
+	$afsac_maxn = max( count( $afsac_sel_a ), count( $afsac_sel_t ) );
 	for ( $afsac_n = 0; $afsac_n < $afsac_maxn; $afsac_n++ ) {
 		if ( isset( $afsac_sel_a[ $afsac_n ] ) ) {
 			$afsac_cards[] = $afsac_sel_a[ $afsac_n ];

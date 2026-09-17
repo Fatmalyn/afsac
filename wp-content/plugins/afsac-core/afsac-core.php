@@ -3,7 +3,7 @@
  * Plugin Name:       AFSAC Core
  * Plugin URI:        https://afsac.local
  * Description:        Logique métier du site AFSAC : types de contenu (formation, session, témoignage, référence), taxonomies et relations. Toute la logique métier vit ici, jamais dans le thème.
- * Version:           0.4.1
+ * Version:           0.5.3
  * Requires at least: 6.5
  * Requires PHP:      8.0
  * Author:            AFSAC
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Constantes du plugin.
  */
-define( 'AFSAC_CORE_VERSION', '0.4.1' );
+define( 'AFSAC_CORE_VERSION', '0.5.3' );
 define( 'AFSAC_CORE_FILE', __FILE__ );
 define( 'AFSAC_CORE_PATH', plugin_dir_path( __FILE__ ) );
 define( 'AFSAC_CORE_URL', plugin_dir_url( __FILE__ ) );
@@ -50,6 +50,7 @@ function afsac_core_load_includes() {
 	require_once AFSAC_CORE_PATH . 'includes/pricing.php';
 	require_once AFSAC_CORE_PATH . 'includes/area-helpers.php';
 	require_once AFSAC_CORE_PATH . 'includes/avsec-helpers.php';
+	require_once AFSAC_CORE_PATH . 'includes/trainair-bilingue.php';
 	require_once AFSAC_CORE_PATH . 'includes/schema.php';
 	require_once AFSAC_CORE_PATH . 'includes/seed-terms.php';
 	require_once AFSAC_CORE_PATH . 'includes/seed-posts.php';

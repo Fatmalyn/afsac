@@ -38,7 +38,19 @@ $afsac_areas = function_exists( 'afsac_get_area_domains' ) ? afsac_get_area_doma
 $afsac_domains = count( $afsac_areas );
 $afsac_courses = function_exists( 'afsac_get_hub_field' ) ? (int) afsac_get_hub_field( 'afsac_course_count' ) : 0;
 
-// 1. HERO — illustration partagée + overlay éditorial (sur-titre / titre / chapô).
+/*
+ * 1. HERO — bandeau VIDÉO (demande client 02/09/2026).
+ *
+ * C'est l'ANCIEN bandeau de la page Contact — la variante nº 1 du bandeau
+ * « calendrier » (monde pointé + avion + calendrier flottant) — que le client a
+ * voulu conserver ici quand Contact a reçu son propre bandeau. Récupéré tel quel
+ * sous `assets/video/catalogue.mp4`.
+ *
+ * ⚠️ Ses libellés de jours sont fautifs (« Tuoday », « Wesday », « Frisit »,
+ * dimanche en double) : c'est précisément pour ça qu'il avait été écarté de la
+ * page Calendrier. `dim: true` + `align: start` restent donc OBLIGATOIRES : la
+ * colonne de texte couvre la zone fautive et le voile rend le reste illisible.
+ */
 $afsac_hero_eyebrow = function_exists( 'get_field' ) ? (string) get_field( 'afsac_page_eyebrow' ) : '';
 if ( '' === $afsac_hero_eyebrow ) {
 	$afsac_hero_eyebrow = __( 'Notre catalogue', 'afsac' );
@@ -48,18 +60,23 @@ if ( '' === $afsac_hero_chapo ) {
 	$afsac_hero_chapo = __( 'TRAINAIR PLUS & AVSEC, en français et en anglais.', 'afsac' );
 }
 get_template_part(
-	'template-parts/shared/guide-hero',
+	'template-parts/shared/video-hero',
 	null,
 	array(
-		'eyebrow' => $afsac_hero_eyebrow,
+		'layout'    => 'overlay',
+		'align'     => 'start',
+		'dim'       => true,
+		'video_src' => get_theme_file_uri( 'assets/video/catalogue.mp4' ),
+		'poster'    => get_theme_file_uri( 'assets/images/catalogue-hero-poster.jpg' ),
+		'eyebrow'   => $afsac_hero_eyebrow,
 		/*
 		 * Le H1 ne mentionne PLUS « 11 domaines OACI » (demande client) : les 11
 		 * domaines structurent TRAINAIR PLUS uniquement, alors que ce catalogue
 		 * couvre TRAINAIR PLUS *et* AVSEC. Le chiffre reste là où il est exact :
 		 * dans l'onglet TRAINAIR (ses chiffres + le titre de sa grille).
 		 */
-		'title'   => __( 'Catalogue des formations OACI', 'afsac' ),
-		'chapo'   => $afsac_hero_chapo,
+		'title'     => __( 'Catalogue des formations OACI', 'afsac' ),
+		'lead'      => $afsac_hero_chapo,
 		/*
 		 * Pas de statistiques ici (retour client : « trop de scroll, trop de
 		 * répétition ») : elles faisaient doublon avec les chiffres des deux
@@ -187,7 +204,7 @@ get_template_part(
 							? afsac_get_area_accent_color( $afsac_area )
 							: '';
 
-						// Compteur de cours (sous-domaines inclus, langue courante).
+						// Compteur de cours (sous-domaines inclus, TRAINAIR PLUS des deux langues).
 						$afsac_count = function_exists( 'afsac_get_area_course_count' )
 							? afsac_get_area_course_count( $afsac_area )
 							: 0;
@@ -276,7 +293,7 @@ get_template_part(
 				),
 			),
 			'cta'     => array(
-				'label' => __( 'Tous les cours AVSEC', 'afsac' ),
+				'label' => __( 'Tous le programme AVSEC', 'afsac' ),
 				'url'   => add_query_arg( array( 'famille' => 'avsec' ), $afsac_archive_url ),
 			),
 		)

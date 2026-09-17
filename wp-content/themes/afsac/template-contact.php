@@ -4,8 +4,8 @@
  *
  * Page contact INDEXÉE : hero VIDÉO partagé (.afsac-video-hero, bandeau client)
  * puis 2 colonnes — formulaire (lead → CPT afsac_message, mêmes garde-fous que
- * l'inscription) et bloc coordonnées + carte Leaflet (1 marqueur, coords depuis
- * les options ACF, sans clé API). Le traitement POST vit dans le plugin
+ * l'inscription) et bloc coordonnées + carte GOOGLE MAPS (iframe d'intégration,
+ * sans clé API ni JavaScript ; cf. afsac_map_embed_src()). Le traitement POST vit dans le plugin
  * (includes/contact.php) ; les e-mails/CRM dans messaging.php.
  *
  * @package AFSAC\Theme
@@ -43,10 +43,38 @@ if ( '' === $afsac_sujet_pre && isset( $_GET['sujet'] ) ) { // phpcs:ignore Word
 	}
 }
 
-$afsac_coords = function_exists( 'afsac_contact_coords' ) ? afsac_contact_coords() : array();
-$afsac_c      = function ( $k ) use ( $afsac_coords ) {
+/*
+ * Coordonnées : SOURCE UNIQUE avec le pied de page et la barre du haut —
+ * afsac_get_contact() (réglages Customizer, repli afsac_contact_defaults()).
+ * Les options ACF afsac_contact_* portaient encore les valeurs de maquette
+ * (« contact@afsac.example », « +216 71 000 000 », adresse Tunis-Carthage) ;
+ * elles ne servent donc plus que pour ce qui n'a pas d'équivalent ailleurs :
+ * horaires, latitude/longitude de la carte et réseaux sociaux.
+ */
+$afsac_coords            = function_exists( 'afsac_contact_coords' ) ? afsac_contact_coords() : array();
+$afsac_footer_contact    = afsac_get_contact();
+$afsac_coords['address'] = $afsac_footer_contact['address'];
+$afsac_coords['phone']   = $afsac_footer_contact['phone_display'];
+$afsac_coords['email']   = $afsac_footer_contact['email'];
+
+$afsac_c = function ( $k ) use ( $afsac_coords ) {
 	return isset( $afsac_coords[ $k ] ) ? (string) $afsac_coords[ $k ] : '';
 };
+
+// Numéros et e-mails affichés : exactement ceux du pied de page (2ᵉ numéro et
+// e-mails secondaires inclus, s'ils sont renseignés au Customizer).
+$afsac_phones = array_values(
+	array_filter(
+		array(
+			array( $afsac_footer_contact['phone'], $afsac_footer_contact['phone_display'] ),
+			array( $afsac_footer_contact['phone_2'], $afsac_footer_contact['phone_2_display'] ),
+		),
+		static function ( $tel ) {
+			return '' !== $tel[1];
+		}
+	)
+);
+$afsac_mails = $afsac_footer_contact['emails'];
 $afsac_socials = array(
 	'linkedin' => __( 'LinkedIn', 'afsac' ),
 	'facebook' => __( 'Facebook', 'afsac' ),
@@ -67,11 +95,11 @@ $afsac_socials = array(
 		$afsac_chapo = __( 'Une question, un projet de formation ? Notre équipe vous répond.', 'afsac' );
 	}
 	/*
-	 * Hero VIDÉO : c'est la variante nº 1 du bandeau « calendrier » livrée par le
-	 * client, non retenue pour la page Calendrier (ses libellés de jours sont
-	 * incohérents — « Vesday », « Frisit », dimanche en double). Elle est ici en
-	 * simple ambiance monde + avion, avec voile renforcé (`dim`) : le texte
-	 * couvre la partie fautive et le reste ne se lit pas.
+	 * Hero VIDÉO — bandeau « CONTACT » livré par le client le 02/09/2026, qui
+	 * remplace la variante nº 1 du bandeau « calendrier » utilisée jusque-là.
+	 * Le plan (ciel clair + ATR en approche) porte déjà le mot « CONTACT » en
+	 * incrustation à gauche : voile renforcé (`dim`) pour qu'il passe en
+	 * ambiance derrière le H1, comme sur les autres bandeaux clairs.
 	 */
 	get_template_part(
 		'template-parts/shared/video-hero',
@@ -95,7 +123,9 @@ $afsac_socials = array(
 					'label' => __( 'Langues · FR EN', 'afsac' ),
 				),
 				array(
-					'value' => '1981',
+					// Chronologie officielle du client : création en 2008 (l'ancien
+					// « 1981 » venait de la maquette, cf. template-qui-sommes-nous.php).
+					'value' => '2008',
 					'label' => __( 'Au service de l’aviation civile', 'afsac' ),
 				),
 			),
@@ -205,21 +235,25 @@ $afsac_socials = array(
 							</div>
 						</div>
 					<?php endif; ?>
-					<?php if ( '' !== $afsac_c( 'phone' ) ) : ?>
+					<?php if ( ! empty( $afsac_phones ) ) : ?>
 						<div class="afsac-contact-info__item">
 							<svg class="afsac-contact-info__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
 							<div>
-								<span class="afsac-eyebrow"><?php esc_html_e( 'Téléphone', 'afsac' ); ?></span>
-								<p><a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $afsac_c( 'phone' ) ) ); ?>"><?php echo esc_html( $afsac_c( 'phone' ) ); ?></a></p>
+								<span class="afsac-eyebrow"><?php echo esc_html( count( $afsac_phones ) > 1 ? __( 'Téléphones', 'afsac' ) : __( 'Téléphone', 'afsac' ) ); ?></span>
+								<?php foreach ( $afsac_phones as $afsac_tel ) : ?>
+									<p><a href="tel:<?php echo esc_attr( $afsac_tel[0] ); ?>"><?php echo esc_html( $afsac_tel[1] ); ?></a></p>
+								<?php endforeach; ?>
 							</div>
 						</div>
 					<?php endif; ?>
-					<?php if ( '' !== $afsac_c( 'email' ) ) : ?>
+					<?php if ( ! empty( $afsac_mails ) ) : ?>
 						<div class="afsac-contact-info__item">
 							<svg class="afsac-contact-info__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
 							<div>
-								<span class="afsac-eyebrow"><?php esc_html_e( 'E-mail', 'afsac' ); ?></span>
-								<p><a href="mailto:<?php echo esc_attr( $afsac_c( 'email' ) ); ?>"><?php echo esc_html( $afsac_c( 'email' ) ); ?></a></p>
+								<span class="afsac-eyebrow"><?php echo esc_html( count( $afsac_mails ) > 1 ? __( 'E-mails', 'afsac' ) : __( 'E-mail', 'afsac' ) ); ?></span>
+								<?php foreach ( $afsac_mails as $afsac_mail ) : ?>
+									<p><a href="mailto:<?php echo esc_attr( $afsac_mail ); ?>"><?php echo esc_html( $afsac_mail ); ?></a></p>
+								<?php endforeach; ?>
 							</div>
 						</div>
 					<?php endif; ?>
@@ -259,9 +293,36 @@ $afsac_socials = array(
 					<?php endif; ?>
 				</div>
 
-				<?php if ( is_numeric( $afsac_c( 'lat' ) ) && is_numeric( $afsac_c( 'lng' ) ) ) : ?>
-					<div class="afsac-contact-map" data-afsac-contact-map role="application" aria-label="<?php esc_attr_e( 'Carte de localisation AFSAC', 'afsac' ); ?>"></div>
-				<?php endif; ?>
+				<?php
+				/*
+				 * CARTE — intégration Google Maps (demande client 02/09/2026, en
+				 * remplacement de Leaflet + OpenStreetMap).
+				 *
+				 * Un simple <iframe> : pas de clé API, pas de JavaScript, pas de CDN
+				 * tiers à charger. La source vient d'afsac_map_embed_src() — le lien
+				 * d'intégration du Customizer s'il est renseigné, sinon une requête
+				 * bâtie sur l'ADRESSE, si bien que la carte suit tout déménagement
+				 * sans retoucher de coordonnées.
+				 *
+				 * `loading="lazy"` : la carte est sous le pli, elle ne doit pas peser
+				 * sur le premier rendu ni appeler Google avant d'être approchée.
+				 */
+				?>
+				<div class="afsac-contact-map">
+					<iframe
+						class="afsac-contact-map__frame"
+						src="<?php echo esc_url( afsac_map_embed_src() ); ?>"
+						title="<?php esc_attr_e( 'Carte de localisation AFSAC', 'afsac' ); ?>"
+						loading="lazy"
+						referrerpolicy="no-referrer-when-downgrade"
+						allowfullscreen
+					></iframe>
+				</div>
+				<p class="afsac-contact-map__link">
+					<a href="<?php echo esc_url( afsac_map_place_url() ); ?>" rel="noopener noreferrer" target="_blank">
+						<?php esc_html_e( 'Ouvrir dans Google Maps', 'afsac' ); ?>
+					</a>
+				</p>
 			</aside>
 
 		</div>

@@ -32,6 +32,9 @@ $afsac_virtual = ! empty( $args['virtual'] );
 $afsac_hassess = ! empty( $args['has_session'] );
 $afsac_locslug = isset( $args['loc_slug'] ) ? (string) $args['loc_slug'] : '';
 $afsac_reduced = ! empty( $args['reduced'] );
+// Typologie AVSEC (cours certifiant / atelier OACI) : cible du filtre du même
+// nom sur le programme AVSEC. Vide ailleurs.
+$afsac_kind    = isset( $args['kind'] ) ? (string) $args['kind'] : '';
 
 // Motif de repli (helper partagé : registre + choix déterministe).
 $afsac_motif = function_exists( 'afsac_course_motif' ) ? afsac_course_motif( $afsac_subs, $afsac_typek, get_the_ID() ) : '';
@@ -51,6 +54,7 @@ $afsac_icon_meth = afsac_meta_icon( 'method' );
 	data-session="<?php echo $afsac_hassess ? '1' : '0'; ?>"
 	data-location="<?php echo esc_attr( $afsac_locslug ); ?>"
 	data-reduced="<?php echo $afsac_reduced ? '1' : '0'; ?>"
+	data-kind="<?php echo esc_attr( $afsac_kind ); ?>"
 	data-title="<?php echo esc_attr( get_the_title() ); ?>">
 
 	<div class="afsac-course-row__media">

@@ -5,7 +5,18 @@
  * Importe les fiches descriptives AVSEC du client (dossier ZIP fourni) sous
  * forme de formations structurées, en FR et EN, appariées par Polylang. Le
  * contenu (but, objectifs, modules, public cible, prérequis, durée…) est
- * extrait des fiches ; les PDF NE sont PAS attachés (source uniquement).
+ * extrait des fiches.
+ *
+ * Le PDF d'origine, lui, est proposé au téléchargement sur la fiche : il vit
+ * dans la médiathèque, rattaché au post par le champ ACF `afsac_fiche_pdf`
+ * (un par langue). Ce seed ne le touche pas — il ne gère que le contenu.
+ *
+ * PÉRIMÈTRE (arrêté avec le client le 03/09/2026) : ce dataset est la liste
+ * EXHAUSTIVE des cours AVSEC du centre, celle des deux brochures « Programme
+ * des Formations AVSEC/OACI 2026 » (FR) et « Aviation Security Annual Training
+ * Program 2026 » (EN) — programme annuel + formations à la demande. Les cours
+ * du catalogue mondial OACI classés en sûreté n'y ont PAS leur place : ils ont
+ * été supprimés de la famille AVSEC à cette date.
  *
  * Rattachement systématique : famille = AVSEC, domaine (area) = Sûreté de
  * l'aviation / Aviation Security, langue = Français (post FR) / English (post
@@ -44,8 +55,9 @@ function afsac_import_courses() {
 			'key'        => 'avsec-fret-poste',
 			'certificat' => 1,
 			'fr'         => array(
-				'title'     => 'Sûreté du Fret et de la Poste',
+				'title'     => 'Sûreté du fret et de la poste',
 				'duree'     => '5 jours',
+				'frais'     => 1000,
 				'goal'      => 'Permettre au personnel concerné de comprendre l’origine et le but des mesures et procédures de sûreté nécessaires à la protection du fret, du courrier et de la poste contre les actes d’intervention illicite, et d’appliquer les contrôles de sûreté appropriés aux expéditions, conformément à l’Annexe 17 et au Manuel de sûreté de l’aviation de l’OACI (Doc 8973).',
 				'objectifs' => array(
 					'Comprendre pleinement l’origine et le but des mesures et des procédures de sûreté nécessaires à la protection du fret, du courrier et des colis express de la poste et des provisions de bord.',
@@ -107,8 +119,9 @@ function afsac_import_courses() {
 			'key'        => 'avsec-culture-surete',
 			'certificat' => 1,
 			'fr'         => array(
-				'title'     => 'Atelier sur la Culture de la Sûreté',
-				'duree'     => '5 jours',
+				'title'     => 'Atelier sur la Culture de Sûreté',
+				'duree'     => '4 jours',
+				'frais'     => 800,
 				'goal'      => 'Sensibiliser le personnel des aéroports sur l’importance de l’aspect sûreté dans l’exercice de leur travail et leur permettre d’expliquer les principes, l’importance et les avantages d’une culture de la sûreté efficace, ainsi que de présenter les outils et les pratiques optimales pour développer une culture de la sûreté solide et durable.',
 				'objectifs' => array(
 					'Définir le contexte de l’atelier, en soulignant l’importance de la culture de la sûreté pour dissuader, détecter et prévenir les actes d’intervention illicite.',
@@ -131,6 +144,7 @@ function afsac_import_courses() {
 			'en'         => array(
 				'title'     => 'Security Culture Workshop',
 				'duree'     => '4 days',
+				'frais'     => 800,
 				'goal'      => 'The purpose of this workshop is to equip participants with the knowledge and tools to cultivate and maintain a robust security culture within their organizations, enhancing their ability to deter, detect, and prevent unlawful interference effectively.',
 				'objectifs' => array(
 					'Explain the principles, importance and benefits of an effective security culture in deterring, detecting and preventing acts of unlawful interference.',
@@ -158,7 +172,7 @@ function afsac_import_courses() {
 			'key'        => 'avsec-gestion-crises',
 			'certificat' => 1,
 			'fr'         => array(
-				'title'     => 'Atelier sur la Gestion de Crises',
+				'title'     => 'Gestion de crise en sûreté de l’aviation civile',
 				'duree'     => '5 jours',
 				'goal'      => 'Donner au personnel de direction les connaissances et les compétences nécessaires pour établir et mettre en œuvre des procédures efficaces de gestion de crises, afin de riposter aux urgences majeures de sûreté survenant dans un aéroport.',
 				'objectifs' => array(
@@ -219,7 +233,7 @@ function afsac_import_courses() {
 			'key'        => 'avsec-gestion-risques',
 			'certificat' => 1,
 			'fr'         => array(
-				'title'     => 'Atelier sur la Gestion des Risques',
+				'title'     => 'Gestion des risques',
 				'duree'     => '5 jours',
 				'goal'      => 'L’atelier vise à doter les participants des compétences nécessaires pour identifier, évaluer et gérer les risques en aviation civile. Ils apprendront à reconnaître les menaces, les vulnérabilités et les conséquences, tout en appliquant la méthodologie de gestion des risques de l’OACI pour déterminer les mesures de sûreté appropriées. L’atelier inclut des exercices pratiques pour renforcer la compréhension des techniques de gestion des risques.',
 				'objectifs' => array(
@@ -284,7 +298,7 @@ function afsac_import_courses() {
 			'key'        => 'avsec-pcqsac',
 			'certificat' => 1,
 			'fr'         => array(
-				'title'     => 'Atelier sur le Programme de Contrôle Qualité de Sûreté de l’Aviation Civile (PCQSAC)',
+				'title'     => 'Programme de Contrôle Qualité en Sûreté de l’Aviation Civile (PCQSAC)',
 				'duree'     => '5 jours',
 				'goal'      => 'L’atelier vise à fournir aux responsables de la sûreté de l’aviation les connaissances nécessaires pour développer et appliquer un Programme national de contrôle de la qualité de la sûreté de l’aviation civile (PNCQSAC). Il couvre les nouvelles normes de l’OACI, les principes du contrôle qualité, et aide à l’élaboration, à la mise en œuvre et à la maintenance du PNCQSAC.',
 				'objectifs' => array(
@@ -307,7 +321,7 @@ function afsac_import_courses() {
 				),
 			),
 			'en'         => array(
-				'title'     => 'National Civil Aviation Security Quality Control Programme Workshop (NCASQCP)',
+				'title'     => 'National Civil Aviation Security Quality Control Program Workshop',
 				'duree'     => '5 days',
 				'goal'      => 'To provide aviation security management personnel the knowledge and skills needed to develop effective aviation security quality control measures under a National Civil Aviation Security Quality Control Programme (NCASQCP). The workshop provides tools to assist the development of documentation, implementation methodology and maintenance of appropriate oversight and internal quality assurance procedures.',
 				'objectifs' => array(
@@ -335,7 +349,7 @@ function afsac_import_courses() {
 			'key'        => 'avsec-pnsac',
 			'certificat' => 1,
 			'fr'         => array(
-				'title'     => 'Atelier sur le Programme National de Sûreté de l’Aviation Civile (PNSAC)',
+				'title'     => 'Programme National de Sûreté de l’Aviation Civile (PNSAC)',
 				'duree'     => '5 jours',
 				'goal'      => 'L’atelier vise à permettre aux participants de comprendre, rédiger et réviser le Programme national de sûreté de l’aviation civile (PNSAC). Ils apprendront les méthodologies appropriées pour développer, maintenir et actualiser le programme, tout en acquérant des compétences pour élaborer un plan national d’urgence en aviation civile.',
 				'objectifs' => array(
@@ -360,7 +374,7 @@ function afsac_import_courses() {
 				),
 			),
 			'en'         => array(
-				'title'     => 'National Civil Aviation Security Programme Workshop (NCASP)',
+				'title'     => 'National Civil Aviation Security Program Workshop',
 				'duree'     => '5 days',
 				'goal'      => 'This interactive workshop enables participants to communicate the objectives of the National Civil Aviation Security Programme (NCASP), allocate the responsibilities of aviation security stakeholders, and develop and draft a National Civil Aviation Security Programme in accordance with ICAO requirements.',
 				'objectifs' => array(
@@ -400,8 +414,9 @@ function afsac_import_courses() {
 			'key'        => 'avsec-risque-interne',
 			'certificat' => 1,
 			'fr'         => array(
-				'title'     => 'Atelier sur le Risque Interne',
+				'title'     => 'Atelier sur le risque interne',
 				'duree'     => '5 jours',
+				'frais'     => 1000,
 				'goal'      => 'L’objectif de cet atelier est d’équiper le personnel de sûreté de l’aviation des connaissances et compétences nécessaires pour développer des scénarios crédibles de menaces internes et créer des plans d’action efficaces pour les atténuer. À la fin de l’atelier, les participants seront capables d’identifier les menaces internes potentielles, d’évaluer les risques associés en utilisant la méthodologie d’évaluation des risques de l’OACI, et de développer des stratégies d’atténuation pratiques.',
 				'objectifs' => array(
 					'Comprendre le concept des menaces internes et appliquer les principes généraux de la gestion des risques.',
@@ -433,6 +448,7 @@ function afsac_import_courses() {
 			'en'         => array(
 				'title'     => 'Insider Risk Workshop',
 				'duree'     => '5 days',
+				'frais'     => 1000,
 				'goal'      => 'The purpose of this workshop is to equip aviation security personnel with the knowledge and skills necessary to develop credible insider threat scenarios and create effective mitigation action plans. By the end of the workshop, participants will be able to identify potential insider threats, assess associated risks using the ICAO Risk Assessment Methodology, and develop practical mitigation strategies.',
 				'objectifs' => array(
 					'Understand the concept of insider threats and apply general principles of risk management.',
@@ -468,7 +484,7 @@ function afsac_import_courses() {
 			'key'        => 'avsec-certification',
 			'certificat' => 1,
 			'fr'         => array(
-				'title'     => 'Atelier sur les Systèmes de Certification de la Sûreté de l’Aviation Civile',
+				'title'     => 'Systèmes de Certification en Sûreté de l’Aviation',
 				'duree'     => '5 jours',
 				'goal'      => 'L’atelier permet aux participants de découvrir les éléments indicatifs figurant dans le Manuel de sûreté de l’aviation et offre l’occasion de concevoir des projets de programme pouvant servir de base à l’élaboration de systèmes de certification spécifiques aux États et/ou être intégrés à des systèmes existants.',
 				'objectifs' => array(
@@ -494,7 +510,7 @@ function afsac_import_courses() {
 				),
 			),
 			'en'         => array(
-				'title'     => 'Aviation Security Certification System Workshop',
+				'title'     => 'Aviation Security Certification Systems Workshop',
 				'duree'     => '5 days',
 				'goal'      => 'This ICAO workshop allows participants to discover the guidance material contained in the Aviation Security Manual and provides an opportunity to design a draft program that can serve as a basis for the development of State-specific certification systems and/or be integrated into existing systems.',
 				'objectifs' => array(
@@ -528,8 +544,9 @@ function afsac_import_courses() {
 			'key'        => 'avsec-responsables',
 			'certificat' => 1,
 			'fr'         => array(
-				'title'     => 'Formation à l’Intention des Responsables AVSEC',
+				'title'     => 'Formation des responsables de la sûreté de l’aviation civile (AVSEC Managers)',
 				'duree'     => '7 jours',
+				'frais'     => 1500,
 				'goal'      => 'Permettre à des membres du personnel d’encadrement de planifier, coordonner et faire appliquer des mesures de prévention axées sur la sûreté aéroportuaire, conformément aux programmes nationaux et aéroportuaires agréés en la matière.',
 				'objectifs' => array(
 					'Expliquer l’origine et la finalité des instruments juridiques de l’OACI liés à la sûreté de l’aviation (Annexe 17, Manuel de sûreté – Doc 8973) et les éléments qui caractérisent les actes d’intervention illicite.',
@@ -566,6 +583,7 @@ function afsac_import_courses() {
 			'en'         => array(
 				'title'     => 'Aviation Security Managers Course',
 				'duree'     => '7 days',
+				'frais'     => 1500,
 				'goal'      => 'To enable participants at the managerial level to plan, coordinate and implement the application of airport security preventive measures in accordance with approved national and airport security programmes.',
 				'objectifs' => array(
 					'Plan, coordinate and implement the application of airport security preventive measures in accordance with approved programmes.',
@@ -601,8 +619,9 @@ function afsac_import_courses() {
 			'key'        => 'avsec-formation-base',
 			'certificat' => 1,
 			'fr'         => array(
-				'title'     => 'Formation de Base du Personnel de Sûreté d’Aéroport',
+				'title'     => 'Formation de base du personnel de sûreté d’aéroport',
 				'duree'     => '10 jours',
+				'frais'     => 1200,
 				'goal'      => 'Le cours, suivi d’une période minimale de six mois d’expérience de travail pratique sous la supervision d’un superviseur AVSEC qualifié, fournit au personnel de sûreté aéroportuaire la formation de base nécessaire pour mettre en œuvre, surveiller et appliquer les mesures préventives de sûreté de l’aéroport, conformément aux programmes approuvés localement.',
 				'objectifs' => array(
 					'Travailler et circuler en sécurité à l’aéroport.',
@@ -634,6 +653,7 @@ function afsac_import_courses() {
 			'en'         => array(
 				'title'     => 'Aviation Security Basic Course',
 				'duree'     => '5 days',
+				'frais'     => 1000,
 				'goal'      => 'To educate security personnel, and those responsible for the implementation of aviation security measures, in order to enhance overall protection against acts of unlawful interference.',
 				'objectifs' => array(
 					'Apply knowledge, skills and abilities desired for an aviation security officer.',
@@ -664,8 +684,9 @@ function afsac_import_courses() {
 			'key'        => 'avsec-imagerie',
 			'certificat' => 1,
 			'fr'         => array(
-				'title'     => 'Imagerie Radioscopique liée à la Sûreté de l’Aviation',
+				'title'     => 'Imagerie radioscopique en sûreté de l’aviation civile',
 				'duree'     => '5 jours',
+				'frais'     => 1000,
 				'goal'      => 'Ce cours vise à fournir aux participants les compétences nécessaires pour utiliser un système radioscopique dans un aéroport. Ils apprendront à comprendre l’importance de la prévention, à reconnaître des objets dangereux, à analyser des images radioscopiques et à appliquer les protocoles de sécurité. Le cours combine théorie et pratique pour garantir une maîtrise complète du système radioscopique et de la résolution des menaces.',
 				'objectifs' => array(
 					'Comprendre l’importance de la prévention en rappelant quelques incidents survenus.',
@@ -728,8 +749,9 @@ function afsac_import_courses() {
 			'key'        => 'avsec-inspecteurs',
 			'certificat' => 1,
 			'fr'         => array(
-				'title'     => 'Inspecteurs Nationaux en Sûreté de l’Aviation',
+				'title'     => 'Inspecteurs nationaux en sûreté de l’aviation civile',
 				'duree'     => '7 jours',
+				'frais'     => 1100,
 				'goal'      => 'Permettre aux auditeurs et inspecteurs de sûreté de l’aviation d’acquérir les connaissances théoriques et pratiques nécessaires pour conduire des audits, inspections, enquêtes et/ou tests nationaux, en appliquant les compétences pertinentes et conformément à l’Annexe 17 et au Manuel de sûreté de l’aviation de l’OACI (Doc 8973 – à diffusion restreinte).',
 				'objectifs' => array(
 					'Déterminer quels sont les éléments de surveillance constitutifs d’un programme national de contrôle de qualité de la sûreté de l’aviation.',
@@ -756,6 +778,7 @@ function afsac_import_courses() {
 			'en'         => array(
 				'title'     => 'Aviation Security National Inspectors Course',
 				'duree'     => '7 days',
+				'frais'     => 1100,
 				'goal'      => 'The purpose of this course is to enable aviation security auditors/inspectors to acquire the theoretical and practical knowledge necessary for conducting national audits, inspections and/or tests through the application of the relevant competencies and in accordance with Annex 17 – Aviation Security and the ICAO Aviation Security Manual (Doc 8973 – Restricted).',
 				'objectifs' => array(
 					'Determine monitoring elements contained in a National Civil Aviation Security Quality Control Programme (NCASQP).',
@@ -793,8 +816,9 @@ function afsac_import_courses() {
 			'key'        => 'avsec-instructeurs',
 			'certificat' => 1,
 			'fr'         => array(
-				'title'     => 'Instructeurs Nationaux en Sûreté de l’Aviation',
+				'title'     => 'Formation des instructeurs en sûreté de l’aviation civile',
 				'duree'     => '7 jours',
+				'frais'     => 1100,
 				'goal'      => 'Permettre au personnel de sûreté de l’aviation de dispenser à un personnel sélectionné des cours spécialisés de formation à la sûreté de l’aviation, validés et axés sur les matériaux didactiques, tels que les Mallettes pédagogiques normalisées (MPN) et les Mallettes de formation à la sûreté de l’aviation (MPSA).',
 				'objectifs' => array(
 					'Dispenser une formation AVSEC en appliquant les principes généraux d’apprentissage et d’enseignement.',
@@ -825,6 +849,7 @@ function afsac_import_courses() {
 			'en'         => array(
 				'title'     => 'Aviation Security National Instructors Course',
 				'duree'     => '5 days',
+				'frais'     => 1000,
 				'goal'      => 'The purpose of this course is to enable aviation security instructors to perform a competency-based and effective role in the delivery of their national aviation security (AVSEC) training activities, through the application of the relevant competencies and in accordance with Annex 17 – Aviation Security and the ICAO Aviation Security Manual (Doc 8973 – Restricted).',
 				'objectifs' => array(
 					'Apply knowledge, skills, and abilities desired for an aviation security instructor.',
@@ -856,7 +881,7 @@ function afsac_import_courses() {
 			'key'        => 'avsec-psa',
 			'certificat' => 1,
 			'fr'         => array(
-				'title'     => 'Programme de Sûreté d’Aéroport (PSA)',
+				'title'     => 'Programme de Sûreté de l’Aéroport (PSA)',
 				'duree'     => '5 jours',
 				'goal'      => 'Cet atelier interactif est conçu pour familiariser les participants aux exigences du Programme de sûreté d’aéroport (PSA) et leur permettre de rédiger et de mettre à jour ce programme.',
 				'objectifs' => array(
@@ -878,7 +903,7 @@ function afsac_import_courses() {
 				),
 			),
 			'en'         => array(
-				'title'     => 'Airport Security Programme Workshop',
+				'title'     => 'Airport Security Program Workshop',
 				'duree'     => '5 days',
 				'goal'      => 'By the end of the Airport Security Programme Workshop, participants will understand the requirements of an Airport Security Programme (ASP), be capable of developing and reviewing ASPs, and be equipped with the methodology and processes necessary for ASP maintenance, updates and revisions, ensuring compliance with relevant regulations and enhancing airport security measures.',
 				'objectifs' => array(
@@ -937,7 +962,7 @@ function afsac_import_courses() {
 				),
 			),
 			'en'         => array(
-				'title'     => 'National Civil Aviation Security Training Programme Workshop (NCASTP)',
+				'title'     => 'National Civil Aviation Security Training Program Workshop',
 				'duree'     => '5 days',
 				'goal'      => 'The goal of the workshop is to enable participants to identify the general principles of a National Civil Aviation Security Training Programme (NCASTP) and to acknowledge the training requirements. Participants will develop a draft NCASTP using the provided template, in accordance with the ICAO Aviation Security Manual (Doc 8973 – Restricted).',
 				'objectifs' => array(
@@ -974,8 +999,9 @@ function afsac_import_courses() {
 			'key'        => 'avsec-superviseurs',
 			'certificat' => 1,
 			'fr'         => array(
-				'title'     => 'Superviseurs de Sûreté d’Aéroport',
+				'title'     => 'Superviseur en sûreté d’aéroport',
 				'duree'     => '5 jours',
+				'frais'     => 1000,
 				'goal'      => 'S’assurer que le personnel concerné des aéroports peut superviser et contrôler la mise en œuvre des mesures préventives de sûreté de l’aviation (AVSEC) en appliquant les compétences que doivent nécessairement avoir les superviseurs de sûreté.',
 				'objectifs' => array(
 					'Superviser la mise en œuvre des mesures préventives de sûreté de l’aviation et contrôler la qualité de l’exécution des diverses tâches.',
@@ -1001,6 +1027,7 @@ function afsac_import_courses() {
 			'en'         => array(
 				'title'     => 'Airport Security Supervisors Course',
 				'duree'     => '5 days',
+				'frais'     => 1000,
 				'goal'      => 'To ensure the relevant personnel at airports can supervise and monitor the implementation of aviation security preventive measures through the application of the relevant competencies required for security supervisors.',
 				'objectifs' => array(
 					'Supervise the implementation of the aviation security preventive measures and monitor the quality of the performance of the various tasks.',
@@ -1029,8 +1056,9 @@ function afsac_import_courses() {
 			'key'        => 'avsec-facilitation',
 			'certificat' => 1,
 			'fr'         => array(
-				'title'     => 'Cours sur l’Annexe 9 de l’OACI – Facilitation (FAL)',
+				'title'     => 'Cours sur l’Annexe 9 de l’OACI – Facilitation',
 				'duree'     => '5 jours',
+				'frais'     => 1000,
 				'goal'      => 'Le cours sur l’Annexe 9 de l’OACI – Facilitation fournit une formation globale en facilitation au personnel compétent des autorités de l’aviation civile (AAC) et des autorités de contrôle frontalier, pour leur permettre d’aborder de manière collective et coordonnée entre organismes les dispositions relatives à la facilitation contenues dans l’Annexe 9, et d’appuyer l’élaboration et la mise en œuvre du Programme national de facilitation du transport aérien (PNFTA), du Comité national de facilitation du transport aérien (CNFTA) et du Comité de facilitation des aéroports.',
 				'objectifs' => array(
 					'Expliquer les articles de la Convention de Chicago liés à la facilitation contenus dans l’Annexe 9.',
@@ -1061,8 +1089,9 @@ function afsac_import_courses() {
 				),
 			),
 			'en'         => array(
-				'title'     => 'ICAO Annex 9 – Facilitation (FAL)',
+				'title'     => 'ICAO Annex 9 - Facilitation',
 				'duree'     => '5 days',
+				'frais'     => 1000,
 				'goal'      => 'The ICAO Annex 9 – Facilitation course provides relevant staff from Civil Aviation Authorities (CAA) and border control authorities with the competencies to deal collectively, in an inter-agency manner, with Annex 9’s facilitation provisions and to support the development and implementation of a National Air Transport Facilitation Programme (NATFP), National Air Transport Facilitation Committee (NATFC) and Airport Facilitation Committee.',
 				'objectifs' => array(
 					'Explain the facilitation-related Articles of the Chicago Convention contained in Annex 9.',
@@ -1096,11 +1125,12 @@ function afsac_import_courses() {
 
 		// 18 — Airport Landside Security (EN uniquement).
 		array(
-			'key'        => 'avsec-landside',
+			'key'        => 'avsec-landside-security',
 			'certificat' => 1,
 			'en'         => array(
 				'title'     => 'Airport Landside Security',
 				'duree'     => '5 days',
+				'frais'     => 1500,
 				'goal'      => 'This course provides relevant aviation security personnel at the national/airport level with the necessary knowledge and skills to design and implement preventive security measures in the landside area of an airport, in accordance with ICAO Annex 17 (12th edition), the Aviation Security Manual Doc 8973 – Restricted (13th edition), the National Civil Aviation Security Programme (NCASP) and the Airport Security Programme (ASP).',
 				'objectifs' => array(
 					'Analyse existing and emerging threats and risks for landside security.',
@@ -1125,13 +1155,47 @@ function afsac_import_courses() {
 			),
 		),
 
-		// 19 — Behaviour Detection Course (EN uniquement).
+		// 19 — Formation sur la détection des comportements / Behaviour Detection Course.
 		array(
 			'key'        => 'avsec-behaviour-detection',
 			'certificat' => 1,
+			'fr'         => array(
+				'title'     => 'Formation sur la détection des comportements',
+				'duree'     => '5 jours',
+				'frais'     => 1000,
+				'goal'      => 'Former le personnel de sûreté et les responsables de la mise en œuvre des mesures de sûreté de l’aviation aux techniques et aux méthodes de détection des comportements, afin de renforcer la protection d’ensemble contre les actes d’intervention illicite.',
+				'objectifs' => array(
+					'Identifier les responsabilités de l’État en matière de formation à la détection des comportements.',
+					'Expliquer la définition de la détection des comportements et les applications de l’évaluation de sûreté fondée sur les risques dans le contexte aéroportuaire.',
+					'Reconnaître et évaluer les menaces pesant sur la sûreté de l’aviation, y compris les modes opératoires et l’élaboration des contre-mesures.',
+					'Décrire les avantages de la détection des comportements dans le cadre de la sûreté de l’aviation.',
+					'Identifier les instruments juridiques sur lesquels s’appuie un programme de détection des comportements.',
+					'Expliquer les principes, les objectifs et la stratégie de déploiement des agents de détection comportementale dans les aéroports.',
+					'Effectuer les contrôles documentaires et repérer les signes critiques dans les documents.',
+					'Reconnaître les différents types de documents et leurs caractéristiques.',
+					'Identifier et interpréter les signes suspects et critiques présentés par les bagages.',
+				),
+				'modules'   => array(
+					'Contexte de la détection des comportements',
+					'Les menaces contre l’aviation civile',
+					'La première impression',
+					'La seconde impression',
+					'Documents et bagages',
+					'L’évaluation',
+					'Stratégie',
+					'Relation avec le passager',
+				),
+				'public'    => 'Cette formation s’adresse aux personnes intervenant dans la sûreté de l’aviation : personnel de sûreté, personnel aéroportuaire, forces de l’ordre, agents publics chargés des politiques de sûreté et professionnels du secteur aéronautique participant à la détection et à la prévention des menaces contre la sûreté aéroportuaire.',
+				'prerequis' => array(
+					'Être titulaire d’un diplôme de fin d’études secondaires.',
+					'Justifier d’une année d’expérience en sûreté de l’aviation.',
+					'Maîtriser les outils informatiques.',
+				),
+			),
 			'en'         => array(
 				'title'     => 'Behaviour Detection Course',
 				'duree'     => '5 days',
+				'frais'     => 1000,
 				'goal'      => 'This course is designed to educate security personnel, and those responsible for the implementation of aviation security measures, in behaviour detection techniques and methods to enhance overall protection against acts of unlawful interference.',
 				'objectifs' => array(
 					'Identify the State’s responsibilities regarding behaviour detection training.',
@@ -1159,6 +1223,107 @@ function afsac_import_courses() {
 					'Secondary school graduate.',
 					'One-year aviation security experience.',
 					'Computer literacy.',
+				),
+			),
+		),
+
+		// 20 — Maintenance des équipements de Sûreté (FR uniquement : absent du
+		// programme annuel anglais). Contenu repris de l'import catalogue (STP
+		// AVSEC/139/MES/278FR) ; durée alignée sur le Programme 2026 (05 jours).
+		array(
+			'key'        => 'avsec-maintenance-equipements-surete',
+			'certificat' => 1,
+			'langues'    => array( 'fr' ),
+			'fr'         => array(
+				'title'     => 'Maintenance des équipements de Sûreté',
+				'duree'     => '5 jours',
+				'frais'     => 1000,
+				'goal'      => 'Permettre aux techniciens et aux agents de sûreté d’identifier les équipements de sûreté et la fonction qu’ils assurent, puis d’en assurer la maintenance préventive et curative, afin de garantir la disponibilité et le niveau de performance des moyens de contrôle déployés à l’aéroport.',
+				'objectifs' => array(
+					'Identifier les équipements de sûreté et la fonction assurée par chacun d’eux.',
+					'Assurer la maintenance préventive des équipements de sûreté.',
+					'Assurer la maintenance curative des équipements de sûreté.',
+				),
+				'modules'   => array(
+					'Introduction',
+					'Maintenance préventive du RX',
+					'Maintenance préventive du portique',
+					'Maintenance préventive du magnétomètre',
+					'Maintenance curative du RX',
+					'Maintenance curative du portique',
+					'Maintenance curative du magnétomètre',
+				),
+				'public'    => 'Les agents de sûreté (opérateurs, agents de fouille, agents fret…) et les techniciens de maintenance des équipements de sûreté. Public cible secondaire : superviseurs et inspecteurs de sûreté.',
+				'prerequis' => array(
+					'Avoir des notions de base en sûreté et/ou en maintenance des équipements de sûreté.',
+					'Justifier d’au moins un an d’expérience professionnelle dans le domaine de la sûreté et/ou de la maintenance des équipements de sûreté.',
+				),
+			),
+		),
+
+		/*
+		 * 21 & 22 — Recyclages « à la demande » (section 2 des deux programmes 2026 :
+		 * « Recyclage des inspecteurs / instructeurs nationaux », 3 jours).
+		 *
+		 * Le client n'a fourni AUCUNE fiche descriptive pour ces deux cours : seuls
+		 * l'intitulé, la durée et la modalité sont attestés. Objectifs et modules sont
+		 * donc laissés VIDES plutôt qu'inventés — le gabarit de la fiche masque les
+		 * sections vides. À compléter dès réception des fiches.
+		 */
+		array(
+			'key'        => 'avsec-recyclage-inspecteurs',
+			'certificat' => 1,
+			'fr'         => array(
+				'title'     => 'Recyclage des inspecteurs nationaux',
+				'duree'     => '3 jours',
+				'goal'      => 'Permettre aux inspecteurs nationaux en sûreté de l’aviation civile déjà certifiés d’actualiser leurs connaissances et de maintenir leur qualification, au regard des évolutions de l’Annexe 17 et du Manuel de sûreté de l’aviation de l’OACI (Doc 8973). Ce cours est dispensé à la demande, en Tunisie ou sur le site du bénéficiaire.',
+				'objectifs' => array(),
+				'modules'   => array(),
+				'public'    => 'Inspecteurs nationaux en sûreté de l’aviation civile en fonction, ayant déjà suivi la formation initiale correspondante.',
+				'prerequis' => array(
+					'Avoir suivi la formation « Inspecteurs nationaux en sûreté de l’aviation civile ».',
+					'Exercer des fonctions d’inspection au sein de l’autorité compétente.',
+				),
+			),
+			'en'         => array(
+				'title'     => 'AVSEC Inspector Refresh Course',
+				'duree'     => '3 days',
+				'goal'      => 'To allow certified national aviation security inspectors to refresh their knowledge and maintain their qualification in line with developments in Annex 17 and the ICAO Aviation Security Manual (Doc 8973). Delivered on demand, in Tunisia or at the requesting party’s site.',
+				'objectifs' => array(),
+				'modules'   => array(),
+				'public'    => 'Serving national civil aviation security inspectors who have already completed the corresponding initial course.',
+				'prerequis' => array(
+					'Completion of the Aviation Security National Inspectors Course.',
+					'Currently performing inspection duties within the appropriate authority.',
+				),
+			),
+		),
+
+		array(
+			'key'        => 'avsec-recyclage-instructeurs',
+			'certificat' => 1,
+			'fr'         => array(
+				'title'     => 'Recyclage des instructeurs nationaux',
+				'duree'     => '3 jours',
+				'goal'      => 'Permettre aux instructeurs nationaux en sûreté de l’aviation civile déjà certifiés d’actualiser leurs compétences pédagogiques et leurs connaissances techniques, et de maintenir leur qualification d’instructeur. Ce cours est dispensé à la demande, en Tunisie ou sur le site du bénéficiaire.',
+				'objectifs' => array(),
+				'modules'   => array(),
+				'public'    => 'Instructeurs nationaux en sûreté de l’aviation civile en fonction, ayant déjà suivi la formation initiale correspondante.',
+				'prerequis' => array(
+					'Avoir suivi la formation « Instructeurs nationaux en sûreté de l’aviation civile ».',
+					'Assurer des activités d’instruction en sûreté de l’aviation.',
+				),
+			),
+			'en'         => array(
+				'title'     => 'AVSEC Instructor Refresh Course',
+				'duree'     => '3 days',
+				'goal'      => 'To allow certified national aviation security instructors to refresh their instructional skills and technical knowledge and to maintain their instructor qualification. Delivered on demand, in Tunisia or at the requesting party’s site.',
+				'objectifs' => array(),
+				'modules'   => array(),
+				'public'    => 'Serving national civil aviation security instructors who have already completed the corresponding initial course.',
+				'prerequis' => array(
+					'Completion of the Aviation Security National Instructors Course.',
+					'Currently delivering aviation security training.',
 				),
 			),
 		),
@@ -1280,7 +1445,19 @@ function afsac_seed_formation_post( $d, $key, $lang, $terms, &$report ) {
 
 	if ( ! empty( $existing ) ) {
 		$postarr['ID'] = (int) $existing[0];
-		$post_id       = wp_update_post( $postarr, true );
+
+		/*
+		 * SLUG FIGÉ. Sans `post_name`, WordPress le recalcule à partir du titre dès
+		 * que celui-ci change : le 03/09/2026 un simple ajustement d'intitulé a
+		 * ainsi déplacé une fiche déjà en ligne (404 sur l'ancienne URL). Le seed
+		 * doit pouvoir corriger un libellé sans jamais casser un lien.
+		 */
+		$existing_slug = get_post_field( 'post_name', $postarr['ID'] );
+		if ( '' !== (string) $existing_slug ) {
+			$postarr['post_name'] = $existing_slug;
+		}
+
+		$post_id = wp_update_post( $postarr, true );
 		$report['updated']++;
 	} else {
 		$post_id = wp_insert_post( $postarr, true );
@@ -1312,6 +1489,17 @@ function afsac_seed_formation_post( $d, $key, $lang, $terms, &$report ) {
 
 	// Champs ACF structurés.
 	afsac_import_set_field( $post_id, 'afsac_duree', isset( $d['duree'] ) ? $d['duree'] : '' );
+
+	/*
+	 * Tarif : relevé dans les brochures 2026 — EUR côté français, USD côté
+	 * anglais, comme les deux documents. Les cours « à la demande » n'y sont pas
+	 * chiffrés : leur `frais` est absent du dataset et le champ reste vide, ce
+	 * que la fiche et le calendrier savent afficher (« sur demande »).
+	 */
+	if ( isset( $d['frais'] ) && '' !== (string) $d['frais'] ) {
+		afsac_import_set_field( $post_id, 'afsac_frais_montant', (int) $d['frais'] );
+		afsac_import_set_field( $post_id, 'afsac_devise', ( 'fr' === $lang ) ? 'EUR' : 'USD' );
+	}
 	afsac_import_set_field( $post_id, 'afsac_objectifs', afsac_import_html_list( isset( $d['objectifs'] ) ? $d['objectifs'] : array() ) );
 	afsac_import_set_field( $post_id, 'afsac_structure', implode( "\n", isset( $d['modules'] ) ? $d['modules'] : array() ) );
 	afsac_import_set_field( $post_id, 'afsac_public_cible', afsac_import_richtext( isset( $d['public'] ) ? $d['public'] : '' ) );
@@ -1365,18 +1553,19 @@ function afsac_seed_formations() {
 	$area   = afsac_import_term_pair( 'Sûreté de l’aviation', 'Aviation Security', 'afsac_area', $termrep );
 	$lg_fr  = afsac_import_term_pair( 'Français', 'French', 'afsac_langue', $termrep );  // concept « français »
 	$lg_en  = afsac_import_term_pair( 'Anglais', 'English', 'afsac_langue', $termrep );  // concept « anglais »
-	$lg_ar  = afsac_import_term_pair( 'Arabe', 'Arabic', 'afsac_langue', $termrep );     // concept « arabe »
 
 	/*
 	 * Table des termes de LANGUE DE DISPENSATION : [concept][langue du post] => term_id.
 	 * Modèle validé avec le client : afsac_langue liste les langues dans lesquelles le
 	 * cours est DISPENSÉ (pas la langue de la fiche, portée par Polylang). Un post FR
-	 * porte donc les termes côté FR (« Français », « Anglais », « Arabe »).
+	 * porte donc les termes côté FR (« Français », « Anglais »).
+	 *
+	 * Le concept « arabe » n'y figure plus : le terme existe encore en base pour les
+	 * fiches hors AVSEC, mais le seed ne l'affecte ni ne le recrée.
 	 */
 	$lang_terms = array(
 		'fr' => array( 'fr' => $lg_fr['fr'], 'en' => $lg_fr['en'] ),
 		'en' => array( 'fr' => $lg_en['fr'], 'en' => $lg_en['en'] ),
-		'ar' => array( 'fr' => $lg_ar['fr'], 'en' => $lg_ar['en'] ),
 	);
 
 	$base_fr = array(
@@ -1395,15 +1584,18 @@ function afsac_seed_formations() {
 		$en_id = 0;
 
 		/*
-		 * Langues de DISPENSATION. Source : brochure client « Aviation Security Annual
-		 * Training Program 2026 », note A — « All courses and Workshops are delivered in
-		 * three languages: English, French and Arabic. » Tous les cours AVSEC sont donc
-		 * dispensés en FR + EN + AR par défaut. Un cours peut surcharger via `langues`
-		 * (ex. 'langues' => array( 'en' ) si un cours n'existe qu'en anglais).
+		 * Langues de DISPENSATION : FR + EN par défaut. Un cours peut surcharger via
+		 * `langues` (ex. 'langues' => array( 'en' ) si un cours n'existe qu'en anglais).
+		 *
+		 * L'ARABE A ÉTÉ RETIRÉ (demande client, 03/09/2026 : « just français et anglais,
+		 * l'arabe non »), comme il l'a déjà été de la brochure, de la vitrine et du
+		 * sélecteur du calendrier. La note A de la brochure « Aviation Security Annual
+		 * Training Program 2026 » annonce pourtant trois langues (EN/FR/AR) : le cours
+		 * RESTE dispensable en arabe sur demande, le site ne l'annonce simplement plus.
 		 */
 		$delivered = ! empty( $course['langues'] )
 			? (array) $course['langues']
-			: array( 'fr', 'en', 'ar' );
+			: array( 'fr', 'en' );
 
 		// IDs de termes, résolus dans la langue de CHAQUE post.
 		$langues_fr = array();
